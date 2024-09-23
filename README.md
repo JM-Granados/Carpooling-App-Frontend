@@ -20,3 +20,9 @@
         ```
         the latter is to open android studio.
     3. Watch the following video to know how to run the app on an Android device: https://www.youtube.com/watch?v=lhTbyjzujAE
+    4. Note: To see the changes in android studio you have to run:
+
+        ```bash
+        npm run build
+        npx cap sync
+        ```
