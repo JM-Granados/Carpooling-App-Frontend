@@ -26,7 +26,7 @@ function App() {
         </p>
       </div>
       <p className="read-the-docs">
-        Hola, estoy probando que se vea en android
+        Hola, estoy probando que se vea en android hola
       </p>
     </>
   )
