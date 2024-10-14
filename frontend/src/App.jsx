@@ -1,36 +1,30 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import { StrictMode } from 'react';
+import { IonApp, setupIonicReact } from '@ionic/react';
+import { IonReactRouter } from '@ionic/react-router';
+import { Route, Redirect, Switch } from 'react-router-dom';
+import './App.css';
+
+import HomeGuest from './HomeGuest'
+
+
+setupIonicReact();
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Hola, estoy probando que se vea en android hola
-      </p>
-    </>
+    <StrictMode>
+    <IonApp>
+      <IonReactRouter>
+        <Switch>
+          <Route exact path="/" component={HomeGuest} />
+          <Redirect to="/" />
+        </Switch>
+      </IonReactRouter>
+    </IonApp>
+    </StrictMode>
   )
 }
 
