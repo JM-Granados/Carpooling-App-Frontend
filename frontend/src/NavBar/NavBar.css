@@ -1,0 +1,238 @@
+/* NavBar-.css */
+
+/* --------------------------------------
+   Colores Principales
+   -------------------------------------- */
+
+/* Fondo principal: establece el color de fondo principal para elementos clave del sitio. */
+.fondoPrinc {
+    background-color: #22214D; /* Oscuro azul-púrpura utilizado como color de fondo dominante. */
+    color: #22214D; /* El texto adopta el mismo color para ocultarse cuando sea necesario. */
+}
+
+/* Fondo secundario: utilizado para diferenciar secciones o elementos secundarios. */
+.fondpSec { 
+    background-color: #3B4290; /* Azul más claro que el fondo principal para contraste y diferenciación. */
+    color: #3B4290; /* Alinea el color del texto con el fondo para usos específicos donde se requiera. */
+}
+
+/* Barra lateral o elementos del NavBar que necesitan un estilo específico para diferenciarse. */
+.sidebar-NavBar-Objetos {
+    background-color: #2D285E; /* Color de fondo para la barra lateral o menús desplegables en el NavBar. */
+    color: #2D285E; /* Mantiene el texto del mismo color que el fondo para consistencia visual. */
+}
+
+/* Botones primarios: destinados para acciones importantes o críticas. */
+.botonesPrinc {
+    background-color: #E53F67; /* Rojo, destacando importancia y urgencia. */
+    color: #E53F67; /* Texto del mismo color para efectos de diseño cuando es necesario ocultarlo. */
+}
+
+/* Botones secundarios: utilizados para acciones de menor importancia. */
+.botonesSec {
+    background-color: #F6AB0F; /* Naranja, menos prominente que el rojo pero aún visible. */
+    color: #F6AB0F; /* Texto del mismo color, útil para efectos visuales específicos. */
+}
+
+/* Texto dentro de componentes: optimiza la legibilidad manteniendo un alto contraste. */
+.letras {
+    background-color: #FDFFFA; /* Fondo claro para garantizar que el texto sea legible. */
+    color: #FDFFFA; /* Color de texto claro, usado generalmente sobre fondos oscuros. */
+}
+
+/* --------------------------------------
+   Estilos Generales del Body y Navbar
+   -------------------------------------- */
+
+/* Configuración general del body aplicada a toda la página para mantener un tema coherente. */
+body {
+    background-color: #22214D; /* Fondo oscuro constante en toda la página. */
+    color: #FDFFFA; /* Texto claro para contraste con el fondo oscuro. */
+}
+
+/* Configuraciones específicas para la barra de navegación, asegurando consistencia en todos los dispositivos. */
+.navbar-custom {
+    background-color: #2D285E; /* Fondo oscuro específico para la barra de navegación. */
+    color: #FDFFFA; /* Texto claro para legibilidad. */
+    height: 56px; /* Altura fija para mantener una apariencia uniforme. */
+    width: auto; /* Ancho que se adapta al contenedor para flexibilidad en diferentes tamaños de pantalla. */
+}
+
+/* --------------------------------------
+   Ajustes de Imágenes y Íconos
+   -------------------------------------- */
+
+/* Ajustes para la imagen del logo, asegurando adecuada visibilidad y estética. */
+.navbar-logo {
+    margin-left: 36px; /* Separación desde el borde izquierdo para evitar amontonamiento. */
+    margin-right: 26px; /* Espacio después del logo antes de otros elementos o bordes. */
+}
+
+/* Configuración para el ícono de usuario, asegurando que esté visiblemente separado de otros elementos. */
+.User_icon {
+    margin-left: 26px; /* Espacio desde el borde izquierdo o elementos adyacentes para evitar superposición. */
+}
+
+/* --------------------------------------
+   Estilos de Enlaces y Botones
+   -------------------------------------- */
+
+/* Estilos para enlaces dentro de la barra de navegación, definidos para mejorar la experiencia del usuario. */
+.navbar-nav .nav-link {
+    color: #FDFFFA; /* Texto claro para destacar sobre fondos oscuros. */
+}
+
+/* Estilo para enlaces activos, haciéndolos más visibles para indicar la página actual. */
+.navbar-nav .nav-link.active {
+    color: #E53F67; /* Rojo para resaltar el enlace de la página actual. */
+}
+
+/* Efecto hover para enlaces, aumentando la interactividad y la respuesta visual. */
+.navbar-nav .nav-link:hover {
+    color: #E53F67; /* Cambia a rojo al pasar el mouse para indicar interactividad. */
+}
+
+/* Configuraciones para los botones principales en la barra de navegación, diseñados para acciones primarias. */
+.navbar-nav .btn.btn-primary {
+    color: #22214D; /* Texto oscuro para contraste sobre el botón naranja. */
+    background-color: #F6AB0F; /* Fondo naranja para destacar el botón como una opción principal. */
+    border-color: #F6AB0F; /* Borde del mismo color para una apariencia limpia y uniforme. */
+    margin-right: 11px; /* Margen derecho para separación de otros elementos o botones. */
+}
+
+/* Alinea verticalmente los elementos dentro de la barra de navegación para una presentación centrada y uniforme. */
+.navbar-nav {
+    align-items: center;
+}
+
+/* Estilos para el estado hover del botón primario en la barra de navegación, mejorando la interactividad visual. */
+.navbar-nav .btn.btn-primary:hover {
+    color: #FDFFFA;  /* Texto blanco para mejor contraste y visibilidad. */
+    background-color: #E53F67; /* Cambia a rojo para indicar acción o selección. */
+    border-color: #E53F67; /* Borde rojo consistente con el fondo para un efecto uniforme. */
+}
+
+/* Cambia el color de los enlaces de la barra de navegación al pasar el mouse, proporcionando feedback visual. */
+.navbar-nav .nav-link:hover {
+    color: #E53F67; /* Resalta los enlaces con color rojo al pasar el mouse. */
+}
+
+/* Margen derecho para el botón de alternancia, asegurando una separación adecuada del borde o elementos adyacentes. */
+.navbar-toggler {
+    margin-right: 36px;
+}
+
+/* Elimina el borde del botón de alternancia cuando está enfocado para evitar distracciones visuales. */
+button.navbar-toggler:focus {
+    border-color: #FDFFFA; /* Borde transparente para un estilo limpio. */
+}
+
+/* Estilos para el botón dropdown cuando está desplegado, gestionando la consistencia visual durante su activación. */
+.nav-link.dropdown-toggle, 
+.nav-link.dropdown-toggle.show {
+    margin-right: 36px; /* Margen consistente para alinear correctamente el dropdown. */
+}
+
+/* Cambia el color del pseudo-elemento 'after' del dropdown toggle para mejor visualización cuando está activo. */
+.nav-link.dropdown-toggle.show::after {
+    color: #E53F67; /* Rojo para indicar que el dropdown está activo. */
+}
+
+/* Estilos básicos para ítems dentro del menú dropdown, incluyendo color y fondo para coherencia visual. */
+.nav-item.dropdown .dropdown-item {
+    background-color: #3B4290; /* Fondo oscuro para contrastar con el texto. */
+    color: #FDFFFA; /* Texto blanco para legibilidad. */
+    border-color: #FDFFFA; /* Borde claro para definir claramente los elementos. */
+    border-left-color: #FDFFFA; /* Borde izquierdo claro para mantener la coherencia visual. */
+}
+
+/* Aumenta la visibilidad de los ítems del dropdown al pasar el mouse, mejorando la interactividad. */
+.nav-item.dropdown .dropdown-item:hover {
+    color: #E53F67; /* Texto rojo para destacar la opción bajo el cursor. */
+}
+
+/* Estilo para los divisores dentro del dropdown, usando el color principal para coherencia. */
+.nav-item.dropdown .dropdown-divider {
+    background-color: #FDFFFA; /* Color claro para separar visualmente los ítems del menú. */
+}
+
+/* Ajusta la posición del menú dropdown relacionado con el botón toggler, mejorando la alineación y presentación. */
+.nav-item.dropdown .dropdown-menu {
+    transform: translateX(-40px); /* Mueve el menú a la izquierda para alinear con el toggle. */
+    background-color: #3B4290; /* Fondo oscuro coherente con el diseño del NavBar. */
+    top: 75px; /* Posiciona el menú justo debajo del NavBar. */
+}
+
+/*----------------------------------------------------------------------------------------------------------------*/
+
+/* Estilos básicos para el menú dropdown. */
+.dropdown-menu {
+    position: absolute;
+    right: 0; /* Alinea el menú con el lado derecho del toggler para una apariencia ordenada. */
+    top: 75px; /* Altura ajustada para alinear justo debajo del NavBar. */
+    left: auto; /* Anula cualquier otro ajuste de posición izquierda heredado. */
+    background-color: #3B4290; /* Fondo oscuro para coherencia con el estilo del NavBar. */
+    border: none; /* Elimina el borde para un look más limpio y moderno. */
+}
+
+/* Estilo para mostrar el menú dropdown. */
+.dropdown-menu.show {
+    margin-right: 36px; /* Margen derecho para mantener el menú alineado con los bordes del NavBar. */
+    display: block; /* Hace que el menú sea visible cuando se activa. */
+}
+
+/* Estilos para los ítems dentro de los menús dropdown. */
+.dropdown-item {
+    background-color: #3B4290; /* Establece un fondo oscuro para los ítems del dropdown. */
+    color: #FDFFFA; /* Texto blanco para asegurar la legibilidad contra el fondo oscuro. */
+    border-color: #FDFFFA; /* Color de borde claro para delimitar claramente los ítems dentro del dropdown. */
+    border-left-color: #FDFFFA; /* Especifica el color del borde izquierdo, manteniendo coherencia con el resto del borde. */
+}
+
+/* Estilos para los divisores dentro de los menús dropdown. */
+.dropdown-divider {
+    background-color: #FDFFFA; /* Utiliza un color claro para los divisores, proporcionando un contraste visual que separa los ítems del menú. */
+}
+
+/* Ajuste para el botón toggler del menú dropdown, asegurando que no haya bordes visibles que distraigan. */
+.navbar-toggler {
+    border-color: transparent; /* Borde transparente para un diseño limpio y sin distracciones. */
+}
+
+/* Elimina el borde cuando el botón toggler está enfocado, para mantener la interfaz limpia y sin distracciones visuales. */
+button.navbar-toggler:focus {
+    border-color: transparent; /* Configura el color del borde como transparente, eliminando el contorno predeterminado que podría distraer. */
+    box-shadow: none; /* Sin sombra para mantener la interfaz limpia y profesional. */
+}
+
+/* Ajuste para el padding superior de la marca del NavBar, asegurando que el logo esté centrado verticalmente. */
+.navbar-brand {
+    padding-top: 0px; /* Elimina el padding superior para alinear el logo adecuadamente. */
+}
+
+/* Aumenta la visibilidad de los ítems del dropdown al pasar el mouse, mejorando la interactividad. */
+.dropdown-item:hover {
+    color: #E53F67; /* Texto rojo para destacar la opción bajo el cursor. */
+    background-color:#3B4290;
+}
+
+.dropdown-item::after {
+    color: #E53F67; /* Texto rojo para destacar la opción bajo el cursor. */
+    background-color:#3B4290;
+}
+
+/* Media query para ajustes en dispositivos con un ancho máximo de 768px */
+@media (max-width: 768px) {
+    /* Ajustes para la imagen del logo, asegurando adecuada visibilidad y estética en dispositivos móviles. */
+    .navbar-logo {
+        margin-left: 16px; /* Reducción del margen izquierdo en dispositivos móviles para evitar amontonamiento. */
+        margin-right: 26px; /* Espacio suficiente después del logo antes de otros elementos o bordes. */
+    }
+
+    /* Ajustes para el botón de alternancia, mejorando la accesibilidad en interfaces táctiles pequeñas. */
+    .navbar-toggler {
+        margin-right: 16px; /* Ajusta el margen derecho para mejorar la manipulación en dispositivos móviles. */
+    }
+}
+
+/*--------------------------------------------------------------------------------*/
