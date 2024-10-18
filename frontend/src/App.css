@@ -1,0 +1,6 @@
+/* Configuración general del body aplicada a toda la página para mantener un tema coherente. */
+body {
+    background-color: #22214D; /* Fondo oscuro constante en toda la página. */
+    color: #FDFFFA; /* Texto claro para contraste con el fondo oscuro. */
+    cursor: url("Cursor.png"), auto;
+}

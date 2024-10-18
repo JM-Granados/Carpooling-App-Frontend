@@ -48,6 +48,7 @@
 body {
     background-color: #22214D; /* Fondo oscuro constante en toda la página. */
     color: #FDFFFA; /* Texto claro para contraste con el fondo oscuro. */
+    cursor: url("Cursor.png"), auto;
 }
 
 /* Configuraciones específicas para la barra de navegación, asegurando consistencia en todos los dispositivos. */

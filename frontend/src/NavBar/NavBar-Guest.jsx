@@ -3,13 +3,28 @@
     2. Permitir la navegación cuando copien y peguen. Es decir, que si vaya a las pestañas que tiene que ir 
         Faltan ventanas que no están creadas "#".
 
-  Notas para demás desarrolladores:
+Notas para demás desarrolladores:
     1. Pueden usar exactamente lo mismo que sale aquí pero deben cambiar los items
     2. Dejé "Salir" para que puedan copiar y pegar. Pero se debe de quitar, ya no hay un salir más allá de la vista de invitado
     3. Recuerden también cambiar los permisos, es decir, quién puede ver qué navbar. El más importante es el adminXinst y el cliente
         porque son los únicos que pueden cambiar de vista cliente -> conductor, por lo que algunos item deben cambiar "convertirme en conductor" -> "Publicar viaje"
+    4. El logo del usuario lo deben de cambiar por la foto de perfil
 */
 
+
+/**
+ * @fileoverview Este archivo contiene el componente NavBar-Guest, el objeto que será la barra de navegación para los invitados
+ * Incluye: Solicitar viaje, Publicar viaje, Nosotros, Ingresar, Registrar y la imagen futura del usuario, la cual también lleva otras
+ *      funciones.
+ * Además, tiene una función que es únicamente para que sea responsive, eliminando todos los botones y solo dejando la imagen 
+ *      de usuario junto con todos los botones dentro del dropdown
+ * Notas para demás desarrolladores:
+ *      1. Pueden usar exactamente lo mismo que sale aquí pero deben cambiar los items
+ *      2. Dejé "Salir" para que puedan copiar y pegar. Pero se debe de quitar, ya no hay un salir más allá de la vista de invitado
+ *      3. Recuerden también cambiar los permisos, es decir, quién puede ver qué navbar. El más importante es el adminXinst y el cliente
+ *          porque son los únicos que pueden cambiar de vista cliente -> conductor, por lo que algunos item deben cambiar "convertirme en conductor" -> "Publicar viaje"
+ *      4. El logo del usuario lo deben de cambiar por la foto de perfil
+ */
 
 /**
  * Importaciones de React y otras librerías.
@@ -87,7 +102,7 @@ const NavComponent = () => {
                         </li>
                         <li><hr className="dropdown-divider"></hr></li>
                         <li>
-                            <Link to="" className="dropdown-item">Salir</Link>
+                            <Link to="/" className="dropdown-item">Salir</Link>
                         </li>
                 </div>              
     
@@ -141,7 +156,7 @@ const NavComponent = () => {
                                 <li><a className="dropdown-item" href="/Nosotros">Nosotros</a></li>
                                 <li><a className="dropdown-item" href="/Login">Configuración</a></li>
                                 <li><hr className="dropdown-divider"></hr></li>
-                                <li><a className="dropdown-item" href="">Salir</a></li>
+                                <li><a className="dropdown-item" href="/">Salir</a></li>
                             </ul>
                         </li>
                     </ul>

@@ -40,10 +40,12 @@
     color: #FDFFFA; /* Color de texto claro, usado generalmente sobre fondos oscuros. */
 }
 
-
-
-
 /* Estilos generales para la sección hero del componente HomeGuest. */
+
+/* Configuración general del body aplicada a toda la página para mantener un tema coherente. */
+body {
+    cursor: url("Cursor.png"), auto;
+}
 
 /* Contenedor principal de la sección hero, establece un posicionamiento relativo para anidar elementos absolutos dentro. */
 .hero-section {
@@ -79,8 +81,25 @@
 /* Personalización de inputs dentro del formulario, asegurando coherencia visual con el tema. */
 input.form-control {
     background-color: #3B4290; /* Fondo que coincide con el contenedor general. */
-    border-color: #3B4290; /* Bordes que se mezclan con el fondo para una apariencia limpia. */
+    border-color: transparent; /* Bordes que se mezclan con el fondo para una apariencia limpia. */
     color: #FDFFFA; /* Texto claro para garantizar legibilidad contra fondo oscuro. */
+}
+
+input.form-control.custom-input-color {
+    background-color: #3B4290;
+    border: 1px solid transparent; /* Inicialmente transparente */
+    color: #FDFFFA;
+    border-radius: 8px; /* Redondea las esquinas */
+}
+
+input.form-control.custom-input-color:hover {
+    border: 1px solid #FFFFFF;
+    border-radius: 8px; /* Redondea las esquinas */
+}
+
+input.form-control.custom-input-color:focus {
+    border: 1px solid #FFFFFF;
+    border-radius: 8px; /* Redondea las esquinas */
 }
 
 /* Personalización adicional para el texto dentro de los elementos de grupo de entrada. */
@@ -100,6 +119,10 @@ input.form-control {
     background-color: #3B4290; /* Fondo oscuro, manteniendo coherencia con el input. */
 }
 
+.custom-input-color:hover {
+    background-color: #FDFFFA; /* Fondo oscuro, manteniendo coherencia con el input. */
+}
+
 /* Estilos aplicados a los controles de formulario dentro de grupos de entrada para unificar el tema visual. */
 .input-group>.form-control, .input-group>.form-floating, .input-group>.form-select {
     background-color: #3B4290;
@@ -113,6 +136,11 @@ button.btn.btn-outline-secondary {
     align-items: center;  /* Alinea el contenido verticalmente en el centro */
     justify-content: center;  /* Alinea el contenido horizontalmente en el centro */
     height: 50px;  /* Altura fija del botón; ajusta según necesidad */
+    padding-left: 15px;
+}
+
+.form-control.custom-input-color {
+    margin-right: 10px;
 }
 
 /* Estilos para el divisor vertical en un grupo de input */
@@ -120,13 +148,32 @@ button.btn.btn-outline-secondary {
     background-color: #FDFFFA; /* Color de fondo para el divisor, que puede ser innecesario si solo deseas una línea */
     border-left: 1px solid #ccc; /* Borde izquierdo sólido para crear la línea divisoria con un color gris */
     height: auto; /* Asegura que el divisor se extienda a lo largo de todo el grupo de entrada */
-    margin-left: 10px; /* Espacio adicional a la izquierda del divisor */
     margin-right: 10px; /* Espacio adicional a la derecha del divisor */
 }
 
 /* Estilo para esconder el grupo de divisores en la tabla */
 .table-group-divider {
     display: none; /* Oculta los divisores de grupo por defecto */
+}
+
+/*Adding specific selectors to target MUI components */
+.custom-input-color .MuiInputBase-input {
+    color: #FDFFFA !important; /* Sets input text color */
+}
+
+.custom-input-label .MuiInputLabel-root {
+    color: #FDFFFA !important; /* Sets label text color */
+}
+
+.input-group-date {
+    display: flex;
+    justify-content: flex-start; /* Mantiene todo alineado a la izquierda */
+    align-items: center; /* Alinea los elementos verticalmente */
+    width: 100%; /* Asegura que el contenedor ocupe el ancho completo */
+}
+
+.btn-outline-secondary {
+    margin-left: auto; /* Empuja el botón hacia la derecha */
 }
 
 /* Media queries para ajustes en dispositivos de menos de 768px de ancho */
