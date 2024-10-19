@@ -31,6 +31,8 @@ import './HomeGuest.css'; // Estilos específicos para el componente HomeGuest.
 import Carpool from '../../íconos/Carpool.png'; // Icono gráfico representativo del carpooling.
 import DesdeHasta from '../../íconos/Desde-Hasta.png'; // Iconos para los campos de entrada de origen y destino.
 import Calendar from '../../íconos/Calendar.png'; // Icono de calendario para el campo de fecha.
+import CarpoolImagen from '../../íconos/CarpoolImagen.png' // Imagen sobre carpooling. Hay que arreglarla (mal cortado el borde)
+import Arrow from '../../íconos/Arrow.png'
 
 /**
  * Función HomeGuest que renderiza la vista principal para usuarios no autenticados.
@@ -337,7 +339,7 @@ function HomeGuest() {
 
             {/* Contenedor para los campos de entrada de búsqueda de viajes */} 
             <div className="container text-start mt-3">
-                <div className="row">
+                <div className="row mx-1">
                     {/* Campo de entrada para especificar el origen del viaje */}
                     <div className="col-12 col-md-4">
                         <div className="input-group mb-2 mt-2">
@@ -379,10 +381,32 @@ function HomeGuest() {
                 </div>
             </div>
 
-            <div class="h-100 p-3 bg-primary rounded d-flex justify-content-center align-items-center">
-                <div class="text-white text-center fs-1 fw-medium">
-                    Inicia sesión para buscar o publicar viajes
+            <div class="card mt-4 rounded-5">
+                <div class="IniciaSesion row g-0 mx-5">
+                    <div class="col align-self-center">
+                        <div class="card-body">
+                            <h5 class="card-title ">Inicia sesión para buscar o publicar viajes</h5>
+                        </div>
+                    </div>
+                    
+                    <div class="col">
+                        <img src={CarpoolImagen} class="card-img my-5" alt="CarpoolImagen"/>
+                    </div>
                 </div>
+            </div>
+
+            <div class="BotonesLogin d-flex mx-auto mt-2 mb-5 justify-content-center">
+                <Link to="/Login" type="button" class="Login btn btn-primary mx-2 bg-transparent border-0 border-bottom rounded-0">
+                    Conductor
+
+                    <img src={Arrow} alt="Arrow" className="Arrow"/>
+                </Link>
+
+                <Link to="/Login" type="button" class="Login btn btn-secondary mx-2 bg-transparent border-0 border-bottom rounded-0">
+                    Viajero
+
+                    <img src={Arrow} alt="Arrow" className="Arrow"/>
+                </Link>
             </div>
         </div>
     );

@@ -58,7 +58,7 @@ const NavComponent = () => {
      */
     return (
         /* Contenedor principal de la barra de navegación utilizando clases de Bootstrap para el diseño. */
-        <nav className="navbar navbar-expand-lg navbar-custom">
+        <nav className="navbar navbar-expand-lg navbar-custom fixed-top">
             {/* 'container-fluid' permite que el contenido de la navbar se extienda de borde a borde, ocupando todo el ancho disponible. */}
             <div className="container-fluid">
                 {/* Área del logo o nombre de la empresa en la barra de navegación, actúa como enlace a la página de inicio. */}

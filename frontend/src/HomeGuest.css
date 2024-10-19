@@ -45,6 +45,7 @@
 /* Configuración general del body aplicada a toda la página para mantener un tema coherente. */
 body {
     cursor: url("Cursor.png"), auto;
+    padding-top: 56px; /*Deben poner esto siempre*/
 }
 
 /* Contenedor principal de la sección hero, establece un posicionamiento relativo para anidar elementos absolutos dentro. */
@@ -165,6 +166,7 @@ button.btn.btn-outline-secondary {
     color: #FDFFFA !important; /* Sets label text color */
 }
 
+
 .input-group-date {
     display: flex;
     justify-content: flex-start; /* Mantiene todo alineado a la izquierda */
@@ -174,6 +176,35 @@ button.btn.btn-outline-secondary {
 
 .btn-outline-secondary {
     margin-left: auto; /* Empuja el botón hacia la derecha */
+}
+
+.card {
+    background-color: #3B4290;
+    margin-right: 10%;
+    margin-left: 10%;
+}
+
+.card-title{
+    color: #FDFFFA;
+    font-size: 350%;
+}
+
+.Login {
+    border-bottom-color: #E53F67 !important;
+    border-bottom-width: 0.2rem !important;
+    display: flex;
+    width: 18%;
+    justify-content: space-between;
+}
+
+.Login:hover {
+    border-bottom-color: #F6AB0F !important;
+    color: #F6AB0F;
+}
+
+.Arrow {
+    height: 50%;
+    align-self: center;
 }
 
 /* Media queries para ajustes en dispositivos de menos de 768px de ancho */
@@ -195,5 +226,40 @@ button.btn.btn-outline-secondary {
         display: block; /* Muestra los divisores horizontales en dispositivos móviles */
         margin-left: 10px; /* Espacio adicional a la izquierda */
         width: 96%; /* Ajusta el ancho al 96% del contenedor padre, centrado con márgenes automáticos */
+    }
+
+    .IniciaSesion {
+        flex-direction: column;
+    }
+
+    .card-title{
+        font-size: 150%;
+        text-align: center;
+    }
+
+    .card-img {
+        margin-top: 0rem !important;
+        margin-bottom: 1.3rem !important;
+    }
+    
+    .Arrow {
+        height: 15px;
+        align-self: center;
+        display: block;
+        margin-left: 50px;
+    }
+
+    .Login {
+        display: flex;
+        align-items: start;
+        justify-content:space-between;
+        min-width: 60%;
+        margin-bottom: 10px;
+        padding: 5px 20px;
+    }
+
+    .BotonesLogin {
+        flex-direction: column;
+        align-items: center;
     }
 }
