@@ -1,0 +1,342 @@
+/* ActividadReciente.css */
+
+/* --------------------------------------
+   Colores Principales
+   -------------------------------------- */
+
+/* Fondo principal: establece el color de fondo principal para elementos clave del sitio. */
+.fondoPrinc {
+    background-color: #22214D; /* Oscuro azul-púrpura utilizado como color de fondo dominante. */
+    color: #22214D; /* El texto adopta el mismo color para ocultarse cuando sea necesario. */
+}
+
+/* Fondo secundario: utilizado para diferenciar secciones o elementos secundarios. */
+.fondpSec { 
+    background-color: #3B4290; /* Azul más claro que el fondo principal para contraste y diferenciación. */
+    color: #3B4290; /* Alinea el color del texto con el fondo para usos específicos donde se requiera. */
+}
+
+/* Barra lateral o elementos del NavBar que necesitan un estilo específico para diferenciarse. */
+.sidebar-NavBar-Objetos {
+    background-color: #2D285E; /* Color de fondo para la barra lateral o menús desplegables en el NavBar. */
+    color: #2D285E; /* Mantiene el texto del mismo color que el fondo para consistencia visual. */
+}
+
+/* Botones primarios: destinados para acciones importantes o críticas. */
+.botonesPrinc {
+    background-color: #E53F67; /* Rojo, destacando importancia y urgencia. */
+    color: #E53F67; /* Texto del mismo color para efectos de diseño cuando es necesario ocultarlo. */
+}
+
+/* Botones secundarios: utilizados para acciones de menor importancia. */
+.botonesSec {
+    background-color: #F6AB0F; /* Naranja, menos prominente que el rojo pero aún visible. */
+    color: #F6AB0F; /* Texto del mismo color, útil para efectos visuales específicos. */
+}
+
+/* Texto dentro de componentes: optimiza la legibilidad manteniendo un alto contraste. */
+.letras {
+    background-color: #FDFFFA; /* Fondo claro para garantizar que el texto sea legible. */
+    color: #FDFFFA; /* Color de texto claro, usado generalmente sobre fondos oscuros. */
+}
+
+/* Estilos generales para la sección hero del componente HomeGuest. */
+
+/* Configuración general del body aplicada a toda la página para mantener un tema coherente. */
+body {
+    cursor: url("Cursor.png"), auto;
+    padding-top: 56px; /*Deben poner esto siempre*/
+}
+
+/* Contenedor principal de la sección hero, establece un posicionamiento relativo para anidar elementos absolutos dentro. */
+.hero-section {
+    position: relative;
+    color: #FFFFFF; /* Texto blanco para alto contraste sobre fondos oscuros. */
+}
+
+/* Estiliza la imagen de fondo para la sección hero. */
+.hero-image {
+    background-image: url('../../íconos/Carpool.png'); /* Asegura que la ruta de la imagen sea la correcta para su correcta visualización. */
+    height: 300px; /* Altura fija de la imagen, considerar ajustar al 100% de la altura de la ventana si es necesario. */
+    background-size: cover; /* Cubre completamente el espacio del contenedor, sin distorsión. */
+    background-position: center; /* Centra la imagen en el contenedor para una visualización óptima. */
+}
+
+/* Contenido dentro de la sección hero, ajusta z-index para asegurar que esté por encima de otros elementos, como overlays. */
+.content {
+    z-index: 2;
+}
+
+/* Estilos específicos para el título principal dentro de la sección hero. */
+.Titulo {
+    margin-top: 100px; /* Espaciado superior para distanciar el título de otros elementos. */
+    color: #22214D; /* Color oscuro azul-púrpura, proporcionando un contraste visual con el fondo claro u overlay. */
+}
+
+/* Estilos generales para contenedores usados en el componente. */
+.container {
+    background-color: #3B4290; /* Fondo oscuro azul claro proporcionando contraste visual. */
+    border-radius: 1.5rem; /* Bordes redondeados para un estilo suavizado. */
+}
+
+/* Personalización de inputs dentro del formulario, asegurando coherencia visual con el tema. */
+input.form-control {
+    background-color: #3B4290; /* Fondo que coincide con el contenedor general. */
+    border-color: transparent; /* Bordes que se mezclan con el fondo para una apariencia limpia. */
+    color: #FDFFFA; /* Texto claro para garantizar legibilidad contra fondo oscuro. */
+}
+
+input.form-control.custom-input-color {
+    background-color: #3B4290;
+    border: 1px solid transparent; /* Inicialmente transparente */
+    color: #FDFFFA;
+    border-radius: 8px; /* Redondea las esquinas */
+}
+
+input.form-control.custom-input-color:hover {
+    border: 1px solid #FFFFFF;
+    border-radius: 8px; /* Redondea las esquinas */
+}
+
+input.form-control.custom-input-color:focus {
+    border: 1px solid #FFFFFF;
+    border-radius: 8px; /* Redondea las esquinas */
+}
+
+/* Personalización adicional para el texto dentro de los elementos de grupo de entrada. */
+.input-group-text {
+    background-color: #3B4290;
+    border-color: #3B4290;
+}
+
+/* Clase específica para cambiar el color del texto en inputs, útil para sobrescribir estilos por defecto. */
+.custom-input-color {
+    color: #FDFFFA; /* Establece un color de texto claro. */
+}
+
+/* Ajustes para placeholders de los inputs personalizados para mejorar la legibilidad y estilo. */
+.custom-input-color::placeholder {
+    color: #FDFFFA; /* Texto claro para el placeholder. */
+    background-color: #3B4290; /* Fondo oscuro, manteniendo coherencia con el input. */
+}
+
+.custom-input-color:hover {
+    background-color: #FDFFFA; /* Fondo oscuro, manteniendo coherencia con el input. */
+}
+
+/* Estilos aplicados a los controles de formulario dentro de grupos de entrada para unificar el tema visual. */
+.input-group>.form-control, .input-group>.form-floating, .input-group>.form-select {
+    background-color: #3B4290;
+    color: #FDFFFA;
+}
+
+/* Estilos para botones secundarios, asegurando legibilidad y coherencia estética con el tema general. */
+button.btn.btn-outline-secondary {
+    color: #FDFFFA; /* Texto claro sobre botones con posible fondo oscuro. */
+    display: flex;
+    align-items: center;  /* Alinea el contenido verticalmente en el centro */
+    justify-content: center;  /* Alinea el contenido horizontalmente en el centro */
+    height: 50px;  /* Altura fija del botón; ajusta según necesidad */
+    padding-left: 15px;
+}
+
+.form-control.custom-input-color {
+    margin-right: 10px;
+}
+
+/* Estilos para el divisor vertical en un grupo de input */
+.vr {
+    background-color: #FDFFFA; /* Color de fondo para el divisor, que puede ser innecesario si solo deseas una línea */
+    border-left: 1px solid #ccc; /* Borde izquierdo sólido para crear la línea divisoria con un color gris */
+    height: auto; /* Asegura que el divisor se extienda a lo largo de todo el grupo de entrada */
+    margin-right: 10px; /* Espacio adicional a la derecha del divisor */
+}
+
+/* Estilo para esconder el grupo de divisores en la tabla */
+.table-group-divider {
+    display: none; /* Oculta los divisores de grupo por defecto */
+}
+
+/*Adding specific selectors to target MUI components */
+.custom-input-color .MuiInputBase-input {
+    color: #FDFFFA !important; /* Sets input text color */
+}
+
+.custom-input-label .MuiInputLabel-root {
+    color: #FDFFFA !important; /* Sets label text color */
+}
+
+
+.input-group-date {
+    display: flex;
+    justify-content: flex-start; /* Mantiene todo alineado a la izquierda */
+    align-items: center; /* Alinea los elementos verticalmente */
+    width: 100%; /* Asegura que el contenedor ocupe el ancho completo */
+}
+
+.btn-outline-secondary {
+    margin-left: auto; /* Empuja el botón hacia la derecha */
+}
+
+.card {
+    background-color: #3B4290;
+    margin-right: 10%;
+    margin-left: 10%;
+}
+
+.card-title{
+    color: #FDFFFA;
+    font-size: 350%;
+}
+
+.Login {
+    border-bottom-color: #E53F67 !important;
+    border-bottom-width: 0.2rem !important;
+    display: flex;
+    width: 18%;
+    justify-content: space-between;
+}
+
+.Login:hover {
+    border-bottom-color: #F6AB0F !important;
+    color: #F6AB0F;
+}
+
+.Arrow {
+    height: 50%;
+    align-self: center;
+}
+
+
+
+.container {
+    max-width: 1200px;
+}
+
+/* Card de viaje */
+.trip-card {
+    background-color: #3B4290;
+    border-radius: 10px;
+    color: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border: 2px solid #9d2999; /* Borde personalizado */
+    
+}
+
+/*cuando uno pasa mouse encima*/
+.trip-card:hover {
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2); /* Sombra más intensa */
+}
+.trip-card h6 {
+    font-weight: bold;
+}
+
+.trip-card p {
+    margin: 5px 0;
+}
+
+/* Botón Ver Viaje */
+.btn-danger {
+    background-color: #E53F67;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+.btn-danger:hover {
+    background-color: #A73548;
+}
+
+
+
+
+/* Contenedor de la flecha */
+.arrow-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Botón de la flecha */
+.arrow-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+/* Imagen de la flecha */
+.arrow-image {
+    width: 30px; /* Ajusta el tamaño de la flecha */
+    height: 30px;
+}
+
+/* Efecto al pasar el ratón por encima */
+.arrow-button:hover {
+    transform: scale(1.1);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+
+/* Media queries para ajustes en dispositivos de menos de 768px de ancho */
+@media (max-width: 768px) {
+    .Titulo {
+        font-size: calc(1rem); /* Ajusta el tamaño de la fuente del título a 1rem, lo cual es innecesario usar calc aquí */
+        margin-top: 1px; /* Reduce el margen superior del título a 1px */
+    } 
+
+    .hero-image {
+        height: 150px; /* Reduce la altura de la imagen de héroe para dispositivos pequeños */
+    }
+
+    .vr {
+        display: none; /* Oculta los divisores verticales en dispositivos móviles */
+    }
+
+    .table-group-divider {
+        display: block; /* Muestra los divisores horizontales en dispositivos móviles */
+        margin-left: 10px; /* Espacio adicional a la izquierda */
+        width: 96%; /* Ajusta el ancho al 96% del contenedor padre, centrado con márgenes automáticos */
+    }
+
+    .IniciaSesion {
+        flex-direction: column;
+    }
+
+    .card-title{
+        font-size: 150%;
+        text-align: center;
+    }
+
+    .card-img {
+        margin-top: 0rem !important;
+        margin-bottom: 1.3rem !important;
+    }
+    
+    .Arrow {
+        height: 15px;
+        align-self: center;
+        display: block;
+        margin-left: 50px;
+    }
+
+    .Login {
+        display: flex;
+        align-items: start;
+        justify-content:space-between;
+        min-width: 60%;
+        margin-bottom: 10px;
+        padding: 5px 20px;
+    }
+
+    .BotonesLogin {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    
+
+
+
+}

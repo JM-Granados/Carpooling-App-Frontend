@@ -1,8 +1,15 @@
+/**
+ * @fileoverview Este archivo contiene el componente HomeGuest, que es la página principal para usuarios no autenticados.
+ * Incluye una sección hero con una imagen de fondo y texto de bienvenida, así como un formulario de búsqueda para viajes.
+ * Cada botón lleva solo a Login, Signup o Nosotros
+ */
+
+// Importaciones de React y otras librerías.
 import * as React from 'react';
 import axios from 'axios'; // Librería para realizar solicitudes HTTP, utilizada potencialmente en futuras operaciones de red.
 
 // Importación de componentes y estilos locales.
-import NavBarAdmin from '../src/NavBar/NavBarAdmin'; // Componente NavBar_Guest para la barra de navegación de usuarios no autenticados.
+import NavBar_Client from '../src/NavBar/NavBar-Client'; // Componente NavBar_Guest para la barra de navegación de usuarios no autenticados.
 import { Link } from 'react-router-dom'; // Componente Link para navegación SPA (Single Page Application).
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider, DateTimePicker } from '@mui/x-date-pickers';
@@ -10,7 +17,7 @@ import { MobileDateTimePicker } from '@mui/x-date-pickers/MobileDateTimePicker';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { DateTimePickerTabs } from '@mui/x-date-pickers/DateTimePicker';
 import Box from '@mui/material/Box';
-import './HomeAdmin.css'; // Estilos específicos para el componente HomeAdmin.
+import './ActividadReciente.css'; // Estilos específicos para el componente HomeGuest.
 
 // Importación de recursos gráficos.
 import Carpool from '../../íconos/Carpool.png'; // Icono gráfico representativo del carpooling.
@@ -18,8 +25,6 @@ import DesdeHasta from '../../íconos/Desde-Hasta.png'; // Iconos para los campo
 import Calendar from '../../íconos/Calendar.png'; // Icono de calendario para el campo de fecha.
 import FlechaIngresar from '../../íconos/flecha ingresar.png'; // Icono de flecha para el botón de búsqueda.
 import Arrow from '../../íconos/Arrow.png'
-import viajes from '../../íconos/viajes.png'
-import viajeros from '../../íconos/viajero.png'
 
 /**
  * Función HomeGuest que renderiza la vista principal para usuarios no autenticados.
@@ -44,11 +49,11 @@ const theme = createTheme({
                     // Estiliza la etiqueta (label) cuando el TextField está en su estado no contraído (no shrink)
                     '& .MuiInputLabel-outlined': {
                         transform: 'translate(12px, 10px) scale(1)',  // Ajusta esto para centrar cuando no está shrink
-
+                        
                     },
                     // Estiliza la raíz del componente cuando está delineado (outlined)
                     '& .MuiOutlinedInput-root': {
-                        borderRadius: '0px',// Elimina el radio del borde para bordes rectos
+                            borderRadius: '0px',// Elimina el radio del borde para bordes rectos
                         // Define estilos para el borde del input cuando se interactúa con él (hover o focus)
                         '&.MuiOutlinedInput-notchedOutline': {
                             borderColor: 'transparent', // Borde transparente en estado normal
@@ -185,8 +190,116 @@ const theme = createTheme({
                 }
             }
         },
+
+        // Personalización de la apariencia del calendario de fechas.
+        MuiDateCalendar: {
+            styleOverrides: {
+                root: {
+                    // Establece el color de fondo y texto del calendario para mejorar la legibilidad y coherencia visual.
+                    backgroundColor: '#3B4290',
+                    color: '#FDFFFA',
+                }
+            }
+        },
+
+        // Ajustes para los labels de los días de la semana dentro del calendario.
+        MuiDayCalendar: {
+            styleOverrides: {
+                weekDayLabel: {
+                    // Asegura que el color de los labels de los días de la semana sea blanco para destacar sobre el fondo oscuro.
+                    color: '#FDFFFA !important',
+                }
+            }
+        },
+
+        // Configuración de estilos para los días dentro de los componentes de selección de fecha.
+        MuiPickersDay: {
+            styleOverrides: {
+                dayWithMargin: {
+                    // Define el color de texto para los días con margen, asegurando que sean legibles.
+                    color: '#FDFFFA'
+                },
+                root: {
+                    // Estilos aplicados a todos los días en el componente picker.
+                    '&.Mui-selected': {
+                        // Estilo para los días seleccionados, utilizando un color de fondo rojo para resaltar la selección.
+                        backgroundColor: '#E53F67',
+                        '&:hover': {
+                            // Color de fondo cuando se pasa el ratón por encima de un día seleccionado, haciendo que sea más oscuro.
+                            backgroundColor: '#A73548',
+                        }
+                    },
+                    '&:not(.Mui-selected)': {
+                        // Define el color de borde para días no seleccionados para mantener la coherencia visual.
+                        borderColor: '#F6AB0F',
+                        '&:hover': {
+                            // Establece un color de fondo al pasar el ratón por encima de días no seleccionados, para un feedback visual claro.
+                            backgroundColor: '#353B82',
+                        }
+                    }
+                }
+            }
+        },
+        // Configuración para las acciones de los diálogos, usualmente botones en la parte inferior.
+        MuiDialogActions: {
+            styleOverrides: {
+                root: {
+                    // Establece un color de fondo consistente para las acciones dentro de los diálogos, coherente con el tema general.
+                    backgroundColor: '#3B4290',
+                }
+            }
+        },
+
+        // Personalización para todos los botones dentro de la aplicación.
+        MuiButton: {
+            styleOverrides: {
+                root: {
+                    // Color del texto de los botones para garantizar visibilidad.
+                    color: '#F6AB0F',
+                    '&:hover': {
+                        // Define un cambio de color de fondo al pasar el ratón por encima para una retroalimentación visual intuitiva.
+                        backgroundColor: '#353B82',
+                    }
+                }
+            }
+        },
+
+        // Estilos para el reloj utilizado en los pickers de tiempo.
+        MuiTimeClock: {
+            styleOverrides: {
+                root: {
+                    // Asegura que el reloj se muestre con un fondo que se integra con el resto de la interfaz.
+                    backgroundColor: '#3B4290',
+                }
+            }
+        },
+
+        // Ajustes para el componente de reloj.
+        MuiClock: {
+            styleOverrides: {
+                squareMask: {
+                    // Fondo para la máscara del reloj, garantizando que contraste con los elementos que se sobreponen.
+                    backgroundColor: '#FDFFFA'
+                }
+            }
+        },
+
+        // Estilos para los switchers de flecha en los componentes de selección de fechas y tiempo.
+        MuiPickersArrowSwitcher: {
+            styleOverrides: {
+                button: {
+                    // Fondo transparente para los botones con flechas, manteniendo la interfaz limpia y minimalista.
+                    backgroundColor: 'transparent',
+                    '&:hover': {
+                        // Cambio de color de fondo al pasar el ratón por encima para mejorar la interactividad.
+                        backgroundColor: '#353B82',
+                    }
+                }
+            }
+        }
     }
 });
+
 function CustomTabs(props) {
     return (
         // React.Fragment permite agrupar una lista de hijos sin agregar nodos extra al DOM.
@@ -200,236 +313,53 @@ function CustomTabs(props) {
         </React.Fragment>
     );
 }
-function HomeAdmin() {
-    return (
 
+
+
+function ActividadCliente() {
+    return (
         <div>
             {/* Barra de navegación para usuarios no autenticados */}
-            <NavBarAdmin />
-            <div style={{ fontSize: '30px' }}>Estadísticas Generales</div> {/* Texto temporal */}
+            <NavBar_Client />
 
+            <div style={{ fontSize: '30px' }}>Actividad Reciente</div> {/* Texto temporal */}
 
             {/* Contenedor principal para las cards y la flecha */}
-
-            <div className='container4'>
+            <div className="container mt-4 d-flex align-items-center justify-content-between">
                 {/* Contenedor de las cards */}
-                <div className="row-12 container3 ">
-                    <div className="col-3 container2">
-                        <div className='row'>
-                            <div className='col'>
-                            <img src={viajes} class="card-img my-5" alt="imageviajes"/>
-                            </div>
-                            <div className='col'>
-                                <div className='row'>
-                                <div style={{ fontSize: '20px' }}>Viajes</div>
-                                </div>
-                                <div className='row'>
-                                    *Estadistica de viajes propia*
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-3 container2">
-                    <div className='row'>
-                            <div className='col'>
-                            <img src={viajeros} class="card-img my-5" alt="imageviajeros"/>
-                            </div>
-                            <div className='col'>
-                                <div className='row'>
-                                <div style={{ fontSize: '20px' }}>Viajeros</div>
-                                </div>
-                                <div className='row'>
-                                    *Estadistica de viajes propia*
-                                </div>
+                <div className="row flex-grow-1 justify-content-center">
+                    {[1, 2, 3].map((_, index) => (
+                        <div className="col-12 col-md-4 mb-3" key={index}>
+                            <div className="card trip-card p-3">
+                            <div style={{ fontSize: '20px' }}>Conductor:</div>
+                            <div style={{ fontSize: '15px' }}>*nombre conductor*</div>
+                            <div style={{ fontSize: '20px' }}>Vehículo:</div>
+                            <div style={{ fontSize: '15px' }}>*datos vehiculo*</div>
+                            <div style={{ fontSize: '20px' }}>Inicio:</div>
+                            <div style={{ fontSize: '15px' }}>*inicio viaje*</div>
+                            <div style={{ fontSize: '20px' }}>Final:</div>
+                            <div style={{ fontSize: '15px' }}>*final viaje*</div>
+                            <div style={{ fontSize: '20px' }}>Cupos:</div>
+                            <div style={{ fontSize: '15px' }}>*cantidad cupos*</div>
+                            <div style={{ fontSize: '20px' }}>Fecha:</div>
+                            <div style={{ fontSize: '15px' }}>*nformato fecha*</div>{/*creo que esto me toca*/}
+                            <div style={{ fontSize: '20px' }}>Precio:</div>
+                            <div style={{ fontSize: '15px' }}>*Precio Viaje*</div>
+                                <button className="btn btn-danger w-100 mt-2">Ver Viaje</button>
                             </div>
                         </div>
-                    </div>
-                    <div className="col-3 container2">
-                    <div className='row'>
-                            <div className='col'>
-                            <img src={viajeros} class="card-img my-5" alt="imageconductores"/>
-                            </div>
-                            <div className='col'>
-                                <div className='row'>
-                                <div style={{ fontSize: '20px' }}>Conductores</div>
-                                </div>
-                                <div className='row'>
-                                    *Estadistica de viajes propia*
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-3 container2">
-                    <div className='row'>
-                            <div className='col'>
-                            <img src={viajeros} class="card-img my-5" alt="imageinstituciones"/>
-                            </div>
-                            <div className='col'>
-                                <div className='row'>
-                                <div style={{ fontSize: '20px' }}>Instituciones</div>
-                                </div>
-                                <div className='row'>
-                                    *Estadistica de viajes propia*
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
+                    ))}
                 </div>
 
-
-
-            </div>
-            <div className='container4'>
-                {/* Contenedor de las cards */}
-                <div className="row-12 container3 ">
-                    <div className="col-6 container2">
-                        <h4>
-                            Top 5 usuarios con más viajes (conductor)
-                        </h4>
-                        <div className='row'>
-
-                            <div className='col-4'>
-
-                                *grafico*
-                            </div>
-                            <div className='col-8'>
-
-                                *estadistica*
-                            </div>
-                        </div>
-
-                    </div>
-                    <div className="col-6 container2">
-                        <h4>
-                            Top 5 usuarios con más viajes (viajero)
-                        </h4>
-                        <div className='row'>
-
-                            <div className='col-4'>
-
-                                *grafico*
-                            </div>
-                            <div className='col-8'>
-
-                                *estadistica*
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-            <div className='container4'>
-                {/* Contenedor de las cards */}
-                <div className="row-12 container3 ">
-                    <div className="col-6 container2">
-                        <h4>
-                            Top 5 instituciones con más viajes
-                        </h4>
-                        <div className='row'>
-
-                            <div className='col-4'>
-
-                                *grafico*
-                            </div>
-                            <div className='col-8'>
-
-                                *estadistica*
-                            </div>
-                        </div>
-
-                    </div>
-                    <div className="col-6 container2">
-                        <h4>
-                            Top 5 instituciones con más usuarios
-                        </h4>
-                        <div className='row'>
-
-                            <div className='col-4'>
-
-                                *grafico*
-                            </div>
-                            <div className='col-8'>
-
-                                *estadistica*
-                            </div>
-                        </div>
-
-                    </div>
-
+                {/* Imagen de la flecha */}
+                <div className="arrow-container ms-3">
+                    <button className="arrow-button">
+                        <img src={FlechaIngresar} alt="Flecha Ingresar" className="arrow-image" />
+                    </button>
                 </div>
             </div>
-            <div className='container4'>
-                {/* Contenedor de las cards */}
-                <div className="row-12 container3 ">
-                    <div className="col-3 container2">
-                        <div className='row'>
-                            <div className='col'>
-                            <img src={viajeros} class="card-img my-5" alt="imageviajeros"/>
-                            </div>
-                            <div className='col'>
-                                <div className='row'>
-                                <div style={{ fontSize: '20px' }}>Promedio de precios</div>
-                                </div>
-                                <div className='row'>
-                                    *Estadistica de viajes propia*
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-3 container2">
-                    <div className='row'>
-                            <div className='col'>
-                            <img src={viajeros} class="card-img my-5" alt="imageviajeros"/>
-                            </div>
-                            <div className='col'>
-                                <div className='row'>
-                                <div style={{ fontSize: '20px' }}>Porcentaje de viajes por genero</div>
-                                </div>
-                                <div className='row'>
-                                    *Estadistica de viajes propia*
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-3 container2">
-                    <div className='row'>
-                            <div className='col'>
-                            <img src={viajeros} class="card-img my-5" alt="imageconductores"/>
-                            </div>
-                            <div className='col'>
-                                <div className='row'>
-                                <div style={{ fontSize: '20px' }}>Porcentaje de viajes completados en la última semana, mes y año</div>
-                                </div>
-                                <div className='row'>
-                                    *Estadistica de viajes propia*
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-3 container2">
-                    <div className='row'>
-                            <div className='col'>
-                            <img src={viajeros} class="card-img my-5" alt="imageinstituciones"/>
-                            </div>
-                            <div className='col'>
-                                <div className='row'>
-                                <div style={{ fontSize: '20px' }}>Porcentaje de nuevos usuarios de la última semana, mes y año</div>
-                                </div>
-                                <div className='row'>
-                                    *Estadistica de viajes propia*
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-            
         </div>
     );
 }
 
-export default HomeAdmin;
+export default ActividadCliente;
