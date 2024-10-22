@@ -18,6 +18,9 @@ import DesdeHasta from '../../íconos/Desde-Hasta.png'; // Iconos para los campo
 import Calendar from '../../íconos/Calendar.png'; // Icono de calendario para el campo de fecha.
 import FlechaIngresar from '../../íconos/flecha ingresar.png'; // Icono de flecha para el botón de búsqueda.
 import Arrow from '../../íconos/Arrow.png'
+import viajes from '../../íconos/viajes.png'
+import viajeros from '../../íconos/viajero.png'
+
 /**
  * Función HomeGuest que renderiza la vista principal para usuarios no autenticados.
  * Esta función componente devuelve JSX que incluye una sección hero, campos de entrada para búsqueda de viajes, y una barra de navegación.
@@ -208,68 +211,226 @@ function HomeAdmin() {
 
             {/* Contenedor principal para las cards y la flecha */}
 
-            <div className='holaxd'>
+            <div className='container4'>
                 {/* Contenedor de las cards */}
-                <div className="row-12 containerhola ">
-                    <div className="col-3 hola">
+                <div className="row-12 container3 ">
+                    <div className="col-3 container2">
                         <div className='row'>
                             <div className='col'>
-                                imagen
+                            <img src={viajes} class="card-img my-5" alt="imageviajes"/>
                             </div>
                             <div className='col'>
                                 <div className='row'>
-                                    hola2
+                                <div style={{ fontSize: '20px' }}>Viajes</div>
                                 </div>
                                 <div className='row'>
-                                    hola1
+                                    *Estadistica de viajes propia*
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className="col-3 hola">
-                        hola
+                    <div className="col-3 container2">
+                    <div className='row'>
+                            <div className='col'>
+                            <img src={viajeros} class="card-img my-5" alt="imageviajeros"/>
+                            </div>
+                            <div className='col'>
+                                <div className='row'>
+                                <div style={{ fontSize: '20px' }}>Viajeros</div>
+                                </div>
+                                <div className='row'>
+                                    *Estadistica de viajes propia*
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div className="col-3 hola">
-                        hola
+                    <div className="col-3 container2">
+                    <div className='row'>
+                            <div className='col'>
+                            <img src={viajeros} class="card-img my-5" alt="imageconductores"/>
+                            </div>
+                            <div className='col'>
+                                <div className='row'>
+                                <div style={{ fontSize: '20px' }}>Conductores</div>
+                                </div>
+                                <div className='row'>
+                                    *Estadistica de viajes propia*
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div className="col-3 hola">
-                        hola
+                    <div className="col-3 container2">
+                    <div className='row'>
+                            <div className='col'>
+                            <img src={viajeros} class="card-img my-5" alt="imageinstituciones"/>
+                            </div>
+                            <div className='col'>
+                                <div className='row'>
+                                <div style={{ fontSize: '20px' }}>Instituciones</div>
+                                </div>
+                                <div className='row'>
+                                    *Estadistica de viajes propia*
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    
                 </div>
 
 
 
             </div>
-            <div className='holaxd'>
+            <div className='container4'>
                 {/* Contenedor de las cards */}
-                <div className="row-12 containerhola ">
-                    <div className="col-6 hola">
+                <div className="row-12 container3 ">
+                    <div className="col-6 container2">
                         <h4>
-                            titulo por mientras
+                            Top 5 usuarios con más viajes (conductor)
                         </h4>
                         <div className='row'>
 
                             <div className='col-4'>
 
-                                hola1
+                                *grafico*
                             </div>
                             <div className='col-8'>
 
-                                hola2
+                                *estadistica*
                             </div>
                         </div>
 
                     </div>
-                    <div className="col-6 hola">
-                        hola
+                    <div className="col-6 container2">
+                        <h4>
+                            Top 5 usuarios con más viajes (viajero)
+                        </h4>
+                        <div className='row'>
+
+                            <div className='col-4'>
+
+                                *grafico*
+                            </div>
+                            <div className='col-8'>
+
+                                *estadistica*
+                            </div>
+                        </div>
+
                     </div>
 
+                </div>
+
+            </div>
+            <div className='container4'>
+                {/* Contenedor de las cards */}
+                <div className="row-12 container3 ">
+                    <div className="col-6 container2">
+                        <h4>
+                            Top 5 instituciones con más viajes
+                        </h4>
+                        <div className='row'>
+
+                            <div className='col-4'>
+
+                                *grafico*
+                            </div>
+                            <div className='col-8'>
+
+                                *estadistica*
+                            </div>
+                        </div>
+
+                    </div>
+                    <div className="col-6 container2">
+                        <h4>
+                            Top 5 instituciones con más usuarios
+                        </h4>
+                        <div className='row'>
+
+                            <div className='col-4'>
+
+                                *grafico*
+                            </div>
+                            <div className='col-8'>
+
+                                *estadistica*
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div className='container4'>
+                {/* Contenedor de las cards */}
+                <div className="row-12 container3 ">
+                    <div className="col-3 container2">
+                        <div className='row'>
+                            <div className='col'>
+                            <img src={viajeros} class="card-img my-5" alt="imageviajeros"/>
+                            </div>
+                            <div className='col'>
+                                <div className='row'>
+                                <div style={{ fontSize: '20px' }}>Promedio de precios</div>
+                                </div>
+                                <div className='row'>
+                                    *Estadistica de viajes propia*
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-3 container2">
+                    <div className='row'>
+                            <div className='col'>
+                            <img src={viajeros} class="card-img my-5" alt="imageviajeros"/>
+                            </div>
+                            <div className='col'>
+                                <div className='row'>
+                                <div style={{ fontSize: '20px' }}>Porcentaje de viajes por genero</div>
+                                </div>
+                                <div className='row'>
+                                    *Estadistica de viajes propia*
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-3 container2">
+                    <div className='row'>
+                            <div className='col'>
+                            <img src={viajeros} class="card-img my-5" alt="imageconductores"/>
+                            </div>
+                            <div className='col'>
+                                <div className='row'>
+                                <div style={{ fontSize: '20px' }}>Poircentaje de viajes completados en la última semana, mes y año</div>
+                                </div>
+                                <div className='row'>
+                                    *Estadistica de viajes propia*
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-3 container2">
+                    <div className='row'>
+                            <div className='col'>
+                            <img src={viajeros} class="card-img my-5" alt="imageinstituciones"/>
+                            </div>
+                            <div className='col'>
+                                <div className='row'>
+                                <div style={{ fontSize: '20px' }}>Porcentaje de nuevos usuarios de la última semana, mes y año</div>
+                                </div>
+                                <div className='row'>
+                                    *Estadistica de viajes propia*
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
 
 
 
             </div>
-
+            
         </div>
     );
 }

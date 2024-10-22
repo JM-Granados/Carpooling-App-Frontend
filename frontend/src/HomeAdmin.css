@@ -74,24 +74,24 @@ body {
 }
 
 /* Estilos generales para contenedores usados en el componente. */
-.container { /* Fondo oscuro azul claro proporcionando contraste visual. */
+.container1 { /* Fondo oscuro azul claro proporcionando contraste visual. */
     border-radius: 1.5rem; /* Bordes redondeados para un estilo suavizado. */
     width: 100%; /* Ancho completo para adaptarse a diferentes tamaños de pantalla. */
     padding: 0px; /* Espaciado interno para evitar que el contenido toque los bordes. */
 }
-.hola {
+.container2 {
     background-color: #3B4290; /* Fondo oscuro azul claro proporcionando contraste visual. */
     border-radius: 1.5rem; /* Bordes redondeados para un estilo suavizado. */
     padding: 10px;
     margin: 5px;
 }
-.containerhola{
+.container3{
     width: 80%; /* Ancho completo para adaptarse a diferentes tamaños de pantalla. */
     padding : 10px;
     display: flex;
 
 }
-.holaxd{
+.container4{
    display : flex;
     align-items: center;
     justify-content: center;
