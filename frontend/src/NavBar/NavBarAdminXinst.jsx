@@ -68,9 +68,7 @@ const NavComponent = () => {
                 </button>
                 <div className={`dropdown-menu${isDropdownOpen ? ' show' : ''} shadow-lg` } aria-expanded={isDropdownOpen}>
                 <li><Link to="/Login" className="dropdown-item">Ingresar</Link>                            </li>
-                        <li>
-                            <Link to="/Signup" className="dropdown-item">Agregar Institución</Link>    
-                        </li>
+                        
                         <li>
                             <Link to="/Login" className="dropdown-item">Estadisticas</Link>    
                         </li>
@@ -98,8 +96,27 @@ const NavComponent = () => {
                         </li>
                 </div>              
     
-               {/* Div contenedor para los elementos del menú que se mostrarán u ocultarán dependiendo del estado de 'collapse'. */}
-               <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                {/* Div contenedor para los elementos del menú que se mostrarán u ocultarán dependiendo del estado de 'collapse'. */}
+                <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                     {/* Lista de enlaces de navegación, 'me-auto' mueve los elementos hacia la izquierda y los margenes aseguran espacio adecuado. */}
+                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                        {/* Elementos individuales de la lista, representan diferentes páginas o secciones del sitio. */}
+                        <li className="nav-item">
+                            <Link to="/Login" className="btn btn">
+                                <a className="nav-link active" aria-current="page">Solicitar viaje</a>
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/Login" className="btn btn">
+                                <a className="nav-link" aria-current="page">Publicar viaje</a>
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/Nosotros" className="btn btn">
+                                <a className="nav-link" aria-current="page">Nosotros</a>
+                            </Link>
+                        </li>
+                    </ul>
                     {/* Lista de enlaces de navegación, 'me-auto' mueve los elementos hacia la izquierda y los margenes aseguran espacio adecuado. */}
                     <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                         {/* Elementos individuales de la lista, representan diferentes páginas o secciones del sitio. */}
@@ -110,7 +127,17 @@ const NavComponent = () => {
                         </li>
                         <li className="nav-item">
                             <Link to="/Login" className="btn btn">
-                                <a className="nav-link" aria-current="page">Ver instituciones</a>
+                                <a className="nav-link" aria-current="page">Detalles del viaje actual</a>
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/Login" className="btn btn">
+                                <a className="nav-link" aria-current="page">Convertirme en conductor</a>
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/Login" className="btn btn">
+                                <a className="nav-link" aria-current="page">Detalles del viaje actual</a>
                             </Link>
                         </li>
                         
@@ -119,11 +146,7 @@ const NavComponent = () => {
                     <ul className="navbar-nav mb-2 mb-lg-0">
                         <li className="nav-item">
                             {/* Botón para 'Ingresar', con estilos Bootstrap para botones. */}
-                            <Link to="/Login" className="btn btn-primary">
-                                Agregar institución
-                                {/* Imagen usada como icono dentro del botón, con rotación para efecto visual. */}
-                                <img src={flecha} alt="flecha" className="flecha" height={20} style={{marginLeft: '11px', transform: 'rotate(180deg)'}}/>
-                            </Link>
+ 
                         </li>
                         
                         
