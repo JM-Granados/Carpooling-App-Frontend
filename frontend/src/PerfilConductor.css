@@ -1,0 +1,29 @@
+/* Fondo principal: establece el color de fondo principal para elementos clave del sitio. */
+.fondoPrinc {
+    background-color: #22214D; /* Oscuro azul-púrpura utilizado como color de fondo dominante. */
+    color: #22214D; /* El texto adopta el mismo color para ocultarse cuando sea necesario. */
+}
+
+/* Barra lateral o elementos del NavBar que necesitan un estilo específico para diferenciarse. */
+.sidebar-NavBar-Objetos {
+    background-color: #2D285E; /* Color de fondo para la barra lateral o menús desplegables en el NavBar. */
+    color: #2D285E; /* Mantiene el texto del mismo color que el fondo para consistencia visual. */
+}
+
+/* Botones primarios: destinados para acciones importantes o críticas. */
+.botonesPrinc {
+    background-color: #E53F67; /* Rojo, destacando importancia y urgencia. */
+    color: #E53F67; /* Texto del mismo color para efectos de diseño cuando es necesario ocultarlo. */
+}
+
+/* Botones secundarios: utilizados para acciones de menor importancia. */
+.botonesSec {
+    background-color: #F6AB0F; /* Naranja, menos prominente que el rojo pero aún visible. */
+    color: #F6AB0F; /* Texto del mismo color, útil para efectos visuales específicos. */
+}
+
+/* Texto dentro de componentes: optimiza la legibilidad manteniendo un alto contraste. */
+.letras {
+    background-color: #FDFFFA; /* Fondo claro para garantizar que el texto sea legible. */
+    color: #FDFFFA; /* Color de texto claro, usado generalmente sobre fondos oscuros. */
+}
