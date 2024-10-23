@@ -20,6 +20,7 @@ import HomeDriver from './HomeDriver';
 import HomeAdmin from './HomeAdmin';
 import ActividadCliente from './ActividadCliente';
 import ActividadConductor from './ActividadConductor';
+import PerfilConductor from './PerfilConductor';
 // Configura Ionic React para este proyecto.
 setupIonicReact();
 
@@ -46,6 +47,7 @@ function App() {
           <Route exact path="/HomeAdmin" component={HomeAdmin} /> {/* Ruta para la página principal de invitados. */}
           <Route exact path="/ActividadCliente" component={ActividadCliente} /> {/* Ruta para la página principal de invitados. */}
           <Route exact path="/ActividadConductor" component={ActividadConductor} /> {/* Ruta para la página principal de invitados. */}
+          <Route exact path="/PerfilConductor" component={PerfilConductor} /> {/* Ruta para la página de perfil conductor. */}
           <Redirect to="/" /> {/* Redirige cualquier ruta no definida a la página principal. */}
         </Switch>
       </IonReactRouter>

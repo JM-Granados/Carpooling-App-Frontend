@@ -14,11 +14,6 @@ import Box from '@mui/material/Box';
 import './PerfilConductor.css'; // Estilos específicos para el componente Perfil Conductor.
 
 // Importación de recursos gráficos.
-import Carpool from '../../íconos/Carpool.png'; // Icono gráfico representativo del carpooling.
-import DesdeHasta from '../../íconos/Desde-Hasta.png'; // Iconos para los campos de entrada de origen y destino.
-import Calendar from '../../íconos/Calendar.png'; // Icono de calendario para el campo de fecha.
-import FlechaIngresar from '../../íconos/flecha ingresar.png'; // Icono de flecha para el botón de búsqueda.
-import Arrow from '../../íconos/Arrow.png'
 import avatar from '../../íconos/perfil.png'
 /**
  * Función HomeGuest que renderiza la vista principal para usuarios no autenticados.
@@ -186,64 +181,36 @@ const theme = createTheme({
         },
     }
 });
-function CustomTabs(props) {
-    return (
-        // React.Fragment permite agrupar una lista de hijos sin agregar nodos extra al DOM.
-        <React.Fragment>
-            {/* DateTimePickerTabs es un componente de MUI que muestra las pestañas para cambiar entre seleccionar fecha y hora. 
-                Se pasan todas las props recibidas al componente para mantener su funcionalidad y añadir personalización. */}
-            <DateTimePickerTabs {...props} />
-            {/* Box es un componente de MUI usado aquí como un contenedor que puede aplicar estilos.
-                Se establece un fondo rojo (#E53F67) y una altura fija de 5px, actuando como una barra decorativa debajo de los tabs. */}
-            <Box sx={{ backgroundColor: '#E53F67', height: 5 }} />
-        </React.Fragment>
-    );
-}
-
-
-
 
 
 // Componente de calificación
-const Rating = () => {
-  const [rating, setRating] = useState(0);
-  const [hover, setHover] = useState(0);
-
-  return (
-    <div>
-      <div style={{ display: 'flex' }}>
-        {[...Array(5)].map((star, index) => {
-          const ratingValue = index + 1;
-
-          return (
-            <label key={index}>
-              <input
-                type="radio"
-                name="rating"
-                value={ratingValue}
-                onClick={() => setRating(ratingValue)}
-                style={{ display: 'none' }}
-              />
+const Rating = ({ rating }) => {
+    return (
+      <div>
+        <div style={{ display: 'flex' }}>
+          {/* Generamos 5 estrellas */}
+          {[...Array(5)].map((star, index) => {
+            return (
               <svg
+                key={index}
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
-                fill={ratingValue <= (hover || rating) ? 'gold' : 'gray'}
+                fill={index < rating ? 'gold' : 'gray'}  // Si el índice es menor que la calificación, se pinta de dorado
                 width="24px"
                 height="24px"
-                onMouseEnter={() => setHover(ratingValue)}
-                onMouseLeave={() => setHover(0)}
-                style={{ cursor: 'pointer' }}
+                style={{ marginRight: '5px' }}  // Margen para separar las estrellas
               >
                 <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
               </svg>
-            </label>
-          );
-        })}
+            );
+          })}
+        </div>
+        <p>Calificación: {rating} de 5</p>
       </div>
-      <p>Calificación: {rating} de 5</p>
-    </div>
-  );
-};
+    );
+  };
+
+
 
 function perfilDriver() {
     return (
@@ -256,15 +223,16 @@ function perfilDriver() {
 
             {/* Contenedor principal para las cards y la flecha */}
 
-            <div className='holaxd'>
+            <div className='informacion'>
                 {/* Contenedor de las cards */}
-                <div className="row-12 containerhola ">
-                    <div className="col-3 hola">
+                <div className="row-15 containerhola ">
+                    <div className="col-5 hola">
                         <div className='row'>
-                            <div className='col'>
+                            <div className='col name'>
                                 imagen
                             </div>
-                            <div className='col'>
+                            
+                            <div className='col-3'>
                                 <div className='row'>
                                     hola2
                                 </div>
@@ -292,7 +260,7 @@ function perfilDriver() {
                     <div className="col-6 hola">
                         <h4>Calificaciones</h4>
                         {/* Componente de calificación */}
-                        <Rating rating={4} /> 
+                        <Rating rating={5} /> 
 
                         <div className='row'>
                             <div className='col-4'>
