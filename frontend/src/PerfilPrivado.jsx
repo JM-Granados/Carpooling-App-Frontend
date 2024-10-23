@@ -6,13 +6,6 @@ import axios from 'axios';
 
 import NavBarDriver from '../src/NavBar/NavBar-Driver'; // Componente NavBar_Guest para la barra de navegación de usuarios no autenticados.
 import NavBarClient from '../src/NavBar/NavBar-Client'; // Componente NavBar_Guest para la barra de navegación de usuarios no autenticados.
-import { Link } from 'react-router-dom'; // Componente Link para navegación SPA (Single Page Application).
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider, DateTimePicker } from '@mui/x-date-pickers';
-import { MobileDateTimePicker } from '@mui/x-date-pickers/MobileDateTimePicker';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { DateTimePickerTabs } from '@mui/x-date-pickers/DateTimePicker';
-import Box from '@mui/material/Box';
 
 import './PerfilConductor.css'; // Estilos específicos para el componente Perfil Conductor.
 import './ActividadReciente.css'; // Estilos específicos para el componente Perfil Conductor.
@@ -31,29 +24,35 @@ function PerfilPrivado() {
         <div>
             {/* Barra de navegación para usuarios no autenticados */}
 
-            <NavBarDriver />
+            <NavBarClient />
             <div style={{ fontSize: '30px', fontWeight: 'bold', marginLeft: '40px', marginTop: '40px' }}>Perfil</div>
 
-            <NavBarClient />
-            <div style={{ fontSize: '30px', fontWeight: 'bold', marginLeft: '40px', marginTop: '40px' }}>Perfil Conductor</div>
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: 'auto', padding: '20px' }}>
+                <img 
+                    src={avatar} 
+                    alt="Foto del Conductor" 
+                    style={{ 
+                        width: '150px',  /* Ancho fijo de la imagen */
+                        height: '150px', /* Alto fijo de la imagen */
+                        objectFit: 'cover', /* Ajusta la imagen dentro del contenedor sin deformarse */
+                        borderRadius: '50%', /* Si quieres que la imagen sea redonda, puedes usar esto */
+                    }} 
+                />
+            </div>
 
-            <img src={avatar} alt="Foto del Conductor" style={{ width: '150px', height: '150px', marginTop: '10px', marginLeft: '550px' }} />
-
-            {/* Contenedor principal para las cards y la flecha */}
-
-            <div className='holaxd'>
+            <div className='ConteinerInfo'>
                 {/* Contenedor de las cards */}
-                <div className="row-12 containerhola ">
-                    <div className="col-4 hola">
-                        <div style={{ fontSize: '20px' }}>Nombre:</div>
+                <div className="row-12 containerAdaptable" style={{ display: 'flex', justifyContent: 'space-between'}}>
+                    <div className="col-4 cuadroInfo">
+                        <div style={{ fontSize: '20px', fontWeight: 'bold' }}>Nombre:</div>
                         <div style={{ fontSize: '15px' }}>*nombre usuario*</div>
                     </div>
-                    <div className="col-4 hola">
-                        <div style={{ fontSize: '20px' }}>Institución:</div>
+                    <div className="col-4 cuadroInfo">
+                        <div style={{ fontSize: '20px', fontWeight: 'bold'}}>Institución:</div>
                         <div style={{ fontSize: '15px' }}>*nombre institución*</div>
                     </div>
-                    <div className="col-4 hola">
-                        <div style={{ fontSize: '20px' }}>Contacto:</div>
+                    <div className="col-4 cuadroInfo">
+                        <div style={{ fontSize: '20px', fontWeight: 'bold' }}>Contacto:</div>
                         <div className='row'>
                             <div className='col-3'>
                                 Correo:
@@ -76,29 +75,32 @@ function PerfilPrivado() {
                 </div>
             </div>
 
-            <div className='holaxd'>
+            <div className='ConteinerInfo'>
                 {/* Contenedor de las cards */}
-                <div className="row-12 containerhola ">
-                    <div className="col-3 hola">
-                        <div style={{ fontSize: '20px' }}>Cumpleaños:</div>
+                <div className="row-12 containerAdaptable"  style={{ display: 'flex', justifyContent: 'space-between'}}>
+                    <div className="col-3 cuadroInfo">
+                        <div style={{fontSize: '20px', fontWeight: 'bold' }}>Cumpleaños:</div>
                         <div style={{ fontSize: '15px' }}>*fecha cumpleaños*</div>
                     </div>
-                    <div className="col-3 hola">
-                        <div style={{ fontSize: '20px' }}>Cédula:</div>
+                    <div className="col-3 cuadroInfo">
+                        <div style={{fontSize: '20px', fontWeight: 'bold' }}>Cédula:</div>
                         <div style={{ fontSize: '15px' }}>*numero cedula*</div>
                     </div>
-                    <div className="col-3 hola">
-                        <div style={{ fontSize: '20px' }}>Licencia:</div>
+                    <div className="col-3 cuadroInfo">
+                        <div style={{fontSize: '20px', fontWeight: 'bold' }}>Licencia:</div>
                         <div style={{ fontSize: '15px' }}>*numero licencia*</div>
                     </div>
-                    <div className="col-3 hola">
-                        <div style={{ fontSize: '20px' }}>Genero:</div>
+                    <div className="col-3 cuadroInfo">
+                        <div style={{fontSize: '20px', fontWeight: 'bold' }}>Genero:</div>
                         <div style={{ fontSize: '15px' }}>*Genero*</div>
                     </div>
 
                 </div>
+            </div >
+            <div class = "container-button">
+            <button className="custom-button">Configuración</button>
             </div>
-            <button className="btn btn-danger w-100 mt-2">Configuración</button>
+           
         </div>
     );
 }
