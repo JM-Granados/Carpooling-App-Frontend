@@ -38,24 +38,32 @@ body {
     width: 100%; /* Ancho completo para adaptarse a diferentes tamaños de pantalla. */
     padding: 0px; /* Espaciado interno para evitar que el contenido toque los bordes. */
 }
-.hola {
+
+/*ConteinerInfo, containerAdaptable y ConteinerInfo son para declarar los cuadros de informacion*/
+.cuadroInfo {
     background-color: #3B4290; /* Fondo oscuro azul claro proporcionando contraste visual. */
     border-radius: 1.5rem; /* Bordes redondeados para un estilo suavizado. */
     padding: 10px;
     margin: 5px;
+    height: 30vh;
+    align-items: center;
 }
-.containerhola{
-    width: 80%; /* Ancho completo para adaptarse a diferentes tamaños de pantalla. */
+.containerAdaptable{
+    width: 70%; /* Ancho completo para adaptarse a diferentes tamaños de pantalla. */
     padding : 10px;
     display: flex;
+    
 
 }
-.holaxd{
+.ConteinerInfo{
    display : flex;
     align-items: center;
     justify-content: center;
     margin-top: 20px;
 }
+
+
+
 
 /* Personalización de inputs dentro del formulario, asegurando coherencia visual con el tema. */
 input.form-control {
