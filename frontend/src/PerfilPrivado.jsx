@@ -3,7 +3,17 @@ import { useState } from 'react';
 import axios from 'axios';
 
 // Importación de componentes y estilos locales.
+
 import NavBarDriver from '../src/NavBar/NavBar-Driver'; // Componente NavBar_Guest para la barra de navegación de usuarios no autenticados.
+import NavBarClient from '../src/NavBar/NavBar-Client'; // Componente NavBar_Guest para la barra de navegación de usuarios no autenticados.
+import { Link } from 'react-router-dom'; // Componente Link para navegación SPA (Single Page Application).
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider, DateTimePicker } from '@mui/x-date-pickers';
+import { MobileDateTimePicker } from '@mui/x-date-pickers/MobileDateTimePicker';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { DateTimePickerTabs } from '@mui/x-date-pickers/DateTimePicker';
+import Box from '@mui/material/Box';
+
 import './PerfilConductor.css'; // Estilos específicos para el componente Perfil Conductor.
 import './ActividadReciente.css'; // Estilos específicos para el componente Perfil Conductor.
 
@@ -20,8 +30,12 @@ function PerfilPrivado() {
     return (
         <div>
             {/* Barra de navegación para usuarios no autenticados */}
+
             <NavBarDriver />
             <div style={{ fontSize: '30px', fontWeight: 'bold', marginLeft: '40px', marginTop: '40px' }}>Perfil</div>
+
+            <NavBarClient />
+            <div style={{ fontSize: '30px', fontWeight: 'bold', marginLeft: '40px', marginTop: '40px' }}>Perfil Conductor</div>
 
             <img src={avatar} alt="Foto del Conductor" style={{ width: '150px', height: '150px', marginTop: '10px', marginLeft: '550px' }} />
 
