@@ -25,6 +25,8 @@ import PerfilConductor from './PerfilConductor';
 
 import PerfilPrivado from './PerfilPrivado';
 
+import MainTest from './MainTest';
+
 // Configura Ionic React para este proyecto.
 setupIonicReact();
 
@@ -56,6 +58,8 @@ function App() {
 
           <Route path="/PerfilPrivado" component={PerfilPrivado} /> {/* Ruta para la página de perfil privado. */}
 
+
+          <Route exact path="/MainTest" component={MainTest} /> {/* Ruta para la página de perfil conductor. */}
           <Redirect to="/" /> {/* Redirige cualquier ruta no definida a la página principal. */}
         </Switch>
       </IonReactRouter>

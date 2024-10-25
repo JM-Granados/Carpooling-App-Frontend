@@ -7,7 +7,7 @@ import NavBarDriver from '../src/NavBar/NavBar-Driver'; // Componente NavBar_Gue
 import './PerfilConductor.css'; // Estilos específicos para el componente Perfil Conductor.
 
 // Importación de recursos gráficos.
-import avatar from '../../íconos/perfil.png'
+
 /**
  * Función HomeGuest que renderiza la vista principal para usuarios no autenticados.
  * Esta función componente devuelve JSX que incluye una sección hero, campos de entrada para búsqueda de viajes, y una barra de navegación.
@@ -16,7 +16,7 @@ import avatar from '../../íconos/perfil.png'
  */
 
 
-// Componente de calificación
+// Funcion que dibuja las estrellas y las colorea las que sean necesarias
 const Rating = ({ rating }) => {
     return (
       <div>
@@ -45,13 +45,14 @@ const Rating = ({ rating }) => {
 
 
 
-function perfilDriver() {
+function PerfilDriver({ nombre, viajesRealizados, correo, telefono, stars, avatar }) {
     return (
         <div>
-            {/* Barra de navegación para usuarios no autenticados */}
+            {/* Barra de navegación de conductores */}
             <NavBarDriver />
             <div style={{ fontSize: '30px', fontWeight: 'bold', marginLeft: '40px', marginTop: '40px' }}>Perfil Conductor</div>
             
+            {/* Se hace la imagen del perfil de manera responsive*/}
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: 'auto', padding: '20px' }}>
                 <img 
                     src={avatar} 
@@ -66,17 +67,17 @@ function perfilDriver() {
             </div>
 
 
-
+            {/* Contenedor que tiene la informacion basica*/}
             <div className='ConteinerInfo'>
-                {/* Contenedor de las cards */}
+                
                 <div className="row-12 containerAdaptable" style={{ display: 'flex', justifyContent: 'space-between'}}>
                     <div className="col-4 cuadroInfo" >
                         <div style={{ fontSize: '20px', fontWeight: 'bold' }}>Nombre:</div>
-                        <div style={{ fontSize: '15px' }}>*nombre usuario*</div>
+                        <div style={{ fontSize: '15px' }}>{nombre}</div>
                     </div>
                     <div className="col-4 cuadroInfo">
                         <div style={{ fontSize: '20px', fontWeight: 'bold' }}>Viajes Realizados:</div>
-                        <div style={{ fontSize: '15px' }}>*55*</div>
+                        <div style={{ fontSize: '15px' }}>{viajesRealizados}</div>
                     </div>
                     <div className="col-4 cuadroInfo">
                     <div style={{ fontSize: '20px', fontWeight: 'bold' }}>Contacto:</div>
@@ -85,7 +86,7 @@ function perfilDriver() {
                                 Correo:
                             </div>
                             <div className='col-5'>
-                                *Información del correo*
+                                {correo}
                             </div>
                         </div>
                         <div className='row'>
@@ -93,20 +94,21 @@ function perfilDriver() {
                                 Telefono:
                             </div>
                             <div className='col-5'>
-                                *número telefono*
+                                {telefono}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
+            {/* Contenedor que tienen la calificacion*/}
             <div className='ConteinerInfo '>
-                {/* Contenedor de las cards */}
+               
                 <div className="row-12 containerAdaptable"  style={{ display: 'flex', justifyContent: 'space-between'}}>
                     <div className="col-4 cuadroInfo" >
                         <h4>Calificaciones</h4>
                         
-                        <Rating rating={5} /> {/*se envia a rating un int (1-5) de estrellas que tiene el conductor*/}
+                        <Rating rating={stars} /> {/*se envia a rating un int (1-5) de estrellas que tiene el conductor*/}
                     </div>
                 </div>
             </div>
@@ -114,4 +116,5 @@ function perfilDriver() {
     );
 }
 
-export default perfilDriver;
+export default PerfilDriver;
+
