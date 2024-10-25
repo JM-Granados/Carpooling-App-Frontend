@@ -27,6 +27,8 @@ import PerfilPrivado from './PerfilPrivado';
 
 import MainTest from './MainTest';
 
+import IntegrantesViaje from './IntegrantesViaje';
+
 // Configura Ionic React para este proyecto.
 setupIonicReact();
 
@@ -58,8 +60,8 @@ function App() {
 
           <Route path="/PerfilPrivado" component={PerfilPrivado} /> {/* Ruta para la página de perfil privado. */}
 
-
-          <Route exact path="/MainTest" component={MainTest} /> {/* Ruta para la página de perfil conductor. */}
+          <Route exact path="/IntegrantesViaje" component={IntegrantesViaje} /> {/* Ruta para la página de Integrantes de Viaje. */}
+          <Route exact path="/MainTest" component={MainTest} /> {/* Ruta para la página de test. */}
           <Redirect to="/" /> {/* Redirige cualquier ruta no definida a la página principal. */}
         </Switch>
       </IonReactRouter>
