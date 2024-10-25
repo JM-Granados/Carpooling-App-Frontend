@@ -1,44 +1,3 @@
-/* HomeClient.css */
-
-/* --------------------------------------
-   Colores Principales
-   -------------------------------------- */
-
-/* Fondo principal: establece el color de fondo principal para elementos clave del sitio. */
-.fondoPrinc {
-    background-color: #22214D; /* Oscuro azul-púrpura utilizado como color de fondo dominante. */
-    color: #22214D; /* El texto adopta el mismo color para ocultarse cuando sea necesario. */
-}
-
-/* Fondo secundario: utilizado para diferenciar secciones o elementos secundarios. */
-.fondpSec { 
-    background-color: #3B4290; /* Azul más claro que el fondo principal para contraste y diferenciación. */
-    color: #3B4290; /* Alinea el color del texto con el fondo para usos específicos donde se requiera. */
-}
-
-/* Barra lateral o elementos del NavBar que necesitan un estilo específico para diferenciarse. */
-.sidebar-NavBar-Objetos {
-    background-color: #2D285E; /* Color de fondo para la barra lateral o menús desplegables en el NavBar. */
-    color: #2D285E; /* Mantiene el texto del mismo color que el fondo para consistencia visual. */
-}
-
-/* Botones primarios: destinados para acciones importantes o críticas. */
-.botonesPrinc {
-    background-color: #E53F67; /* Rojo, destacando importancia y urgencia. */
-    color: #E53F67; /* Texto del mismo color para efectos de diseño cuando es necesario ocultarlo. */
-}
-
-/* Botones secundarios: utilizados para acciones de menor importancia. */
-.botonesSec {
-    background-color: #F6AB0F; /* Naranja, menos prominente que el rojo pero aún visible. */
-    color: #F6AB0F; /* Texto del mismo color, útil para efectos visuales específicos. */
-}
-
-/* Texto dentro de componentes: optimiza la legibilidad manteniendo un alto contraste. */
-.letras {
-    background-color: #FDFFFA; /* Fondo claro para garantizar que el texto sea legible. */
-    color: #FDFFFA; /* Color de texto claro, usado generalmente sobre fondos oscuros. */
-}
 
 /* Estilos generales para la sección hero del componente HomeGuest. */
 
@@ -74,10 +33,53 @@ body {
 }
 
 /* Estilos generales para contenedores usados en el componente. */
-.container {
+.container { /* Fondo oscuro azul claro proporcionando contraste visual. */
+    border-radius: 1.5rem; /* Bordes redondeados para un estilo suavizado. */
+    width: 100%; /* Ancho completo para adaptarse a diferentes tamaños de pantalla. */
+    padding: 0px; /* Espaciado interno para evitar que el contenido toque los bordes. */
+}
+
+/*ConteinerInfo, containerAdaptable y ConteinerInfo son para declarar los cuadros de informacion*/
+.cuadroInfo {
     background-color: #3B4290; /* Fondo oscuro azul claro proporcionando contraste visual. */
     border-radius: 1.5rem; /* Bordes redondeados para un estilo suavizado. */
+    padding: 10px;
+    margin: 5px;
+    height: 30vh;
+    align-items: center;
 }
+.containerAdaptable{
+    width: 70%; /* Ancho completo para adaptarse a diferentes tamaños de pantalla. */
+    padding : 10px;
+    display: flex;
+    
+
+}
+.ConteinerInfo{
+   display : flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.custom-button {
+    width: 200px;  /* Ancho fijo de 200px */
+    height: 50px;  /* Alto fijo de 50px */
+    font-size: 16px; /* Tamaño de fuente ajustado */
+    background-color:#E53F67 !important;
+    border-bottom-color: #E53F67 !important;
+    border-bottom-width: 0.2rem !important;
+    border: none;
+}
+
+.container-button {
+    display: flex;                /* Habilita flexbox */
+    justify-content: center;      /* Centra horizontalmente */
+    align-items: center;          /* Centra verticalmente */
+    height: 20vh;                /* Altura del contenedor para centrar verticalmente */
+}
+
+
 
 /* Personalización de inputs dentro del formulario, asegurando coherencia visual con el tema. */
 input.form-control {
@@ -208,19 +210,230 @@ button.btn.btn-outline-secondary {
 }
 
 
+
+.container {
+    max-width: 1200px;
+}
+
+
+
+/* Contenedor del modal */
+.modal-content {
+  background-color: #2a2a5e;
+  padding: 30px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; /* Espacio entre elementos */
+}
+
+/* Imagen del perfil */
+.profile-image {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-top: 10px;
+}
+
+/* Información alineada correctamente */
+.info-container p {
+  margin: 5px 0;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+}
+
+/* Título */
+h2 {
+  color: white;
+  margin: 10px 0;
+  font-size: 24px;
+  text-align: center;
+}
+
+/* Contenedor de calificación */
+.rating-container h4 {
+  margin: 10px 0;
+  color: white;
+  text-align: center;
+}
+
+/* Alinear correctamente el botón de cerrar */
+.close-button {
+  background-color: #ff4d4d;
+  border: none;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+
+/* Contenedor del modal */
+.modal-content {
+  background-color: #2a2a5e;
+  padding: 30px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; /* Espacio entre elementos */
+}
+
+/* Imagen del perfil */
+.profile-image {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-top: 10px;
+}
+
+/* Información alineada correctamente */
+.info-container p {
+  margin: 5px 0;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+}
+
+/* Título */
+h2 {
+  color: white;
+  margin: 10px 0;
+  font-size: 24px;
+  text-align: center;
+}
+
+/* Contenedor de calificación */
+.rating-container h4 {
+  margin: 10px 0;
+  color: white;
+  text-align: center;
+}
+
+/* Alinear correctamente el botón de cerrar */
+.close-button {
+  background-color: #ff4d4d;
+  border: none;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+
+
+
+
+/* Estilo del fondo del modal (overlay) */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center; /* Alinea horizontalmente */
+    align-items: center; /* Alinea verticalmente */
+    z-index: 1000;
+}
+  
+/* Contenedor del modal */
+.modal-content {
+    background-color: #2a2a5e;
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  } 
+/* Imagen del perfil */
+.profile-image {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-top: 10px;
+}
+
+/* Información alineada correctamente */
+.info-container p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+}
+  
+/* Título */
+h2 {
+    color: white;
+    margin: 10px 0;
+    font-size: 24px;
+    text-align: center;
+}
+  
+/* Contenedor de calificación */
+.rating-container h4 {
+    margin: 10px 0;
+    color: white;
+    text-align: center;
+}
+  
+/* Alinear correctamente el botón de cerrar */
+.close-button {
+    background-color: #ff4d4d;
+    border: none;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    align-self: flex-end;
+  }
+
+
+/* Card de viaje */
+.trip-card {
+    background-color: #3B4290;
+    border-radius: 10px;
+    color: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border: 2px solid #9d2999; /* Borde personalizado */
+    
+}
+
+/*cuando uno pasa mouse encima*/
+.trip-card:hover {
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2); /* Sombra más intensa */
+}
+.trip-card h6 {
+    font-weight: bold;
+}
+
+.trip-card p {
+    margin: 5px 0;
+}
+
 /* Botón Ver Viaje */
 .btn-danger {
-    
-        background-color: #E53F67;
-        border: none;
-        padding: 8px 30px; /* Relleno más pequeño */
-        font-size: 1rem; /* Ajusta el tamaño de la fuente */
-        width: 5x;
-        border-radius: 5px;
-        display: inline-block;
-        transition: background-color 0.3s;
-        cursor: pointer;
-    
+    background-color: #E53F67;
+    border: none;
+    transition: background-color 0.3s;
 }
 
 .btn-danger:hover {
@@ -230,13 +443,36 @@ button.btn.btn-outline-secondary {
 
 
 
-/* Estilo del Título "Publicar Viaje" */
-.titulo-publicar {
-    font-size: 4rem;
-    font-weight: bold;
-    color: #FFFFFF;
-    text-align: center;
+/* Contenedor de la flecha */
+.arrow-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+/* Botón de la flecha */
+.arrow-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+/* Imagen de la flecha */
+.arrow-image {
+    width: 30px; /* Ajusta el tamaño de la flecha */
+    height: 30px;
+}
+
+/* Efecto al pasar el ratón por encima */
+.arrow-button:hover {
+    transform: scale(1.1);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+.big-text {
+    font-size: 24px; /* Ajusta el tamaño según lo que necesites */
+  }
 
 
 /* Media queries para ajustes en dispositivos de menos de 768px de ancho */
@@ -294,4 +530,7 @@ button.btn.btn-outline-secondary {
         flex-direction: column;
         align-items: center;
     }
+
+
+
 }

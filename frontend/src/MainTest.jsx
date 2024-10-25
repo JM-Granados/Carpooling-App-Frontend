@@ -3,6 +3,7 @@ import PerfilDriver from './PerfilConductor';
 import avatarP from '../../íconos/perfil.png';
 
 import Integrantes from './IntegrantesViaje';
+import PerfilDrivers from './EmergenteCalificarConductor';
 
 // Simulando datos de una base de datos
 const driverProfile = {
@@ -28,7 +29,7 @@ const driverProfileI = {
 function test() {
   return (
     <div>
-      <PerfilDriver 
+      <PerfilDrivers 
         nombre= {driverProfile.nombre} 
         viajesRealizados={driverProfile.viajesRealizados} 
         correo={driverProfile.correo}  
@@ -39,9 +40,9 @@ function test() {
     </div>
   );
 }
-
+export default test;
 //--------------------------------------------------------------
-
+/*
 function test2() {
     return (
       <div>
@@ -57,4 +58,5 @@ function test2() {
     );
   }
 
-export default test2;
+export default test2
+*/
