@@ -324,7 +324,6 @@ function CustomTabs(props) {
 
 
 function HomeDriver() {
-    // Renderiza el componente HomeGuest con su estructura y contenido.
     return (
         <div>
             {/* Barra de navegación para usuarios no autenticados */}
@@ -337,79 +336,82 @@ function HomeDriver() {
                 </div>
             </div>
 
-            {/* Contenedor para los campos de entrada de búsqueda de viajes */} 
-            <div className="container text-start mt-3">
-                <div className="row mx-1">
-                    {/* Campo de entrada para especificar el origen del viaje */}
-                    <div className="col-12 col-md-4">
-                        <div className="input-group mb-2 mt-2">
-                            <img src={DesdeHasta} alt="DesdeHasta" className="input-group-text" id="basic-addon1" height={40}/>
-                            <input type="text" className="form-control custom-input-color" placeholder="De" aria-label="lol" aria-describedby="basic-addon1" />
-                            <div class="vr"></div>  {/* Visual divider */}
-                        </div>
-                    </div>
-                    {/* Divisor visual */}
-                    <tbody class="table-group-divider"></tbody>
 
-                    {/* Campo de entrada para especificar el destino del viaje */}
-                    <div className="col-12 col-md-4">
-                        <div className="input-group mb-2 mt-2">
-                            <img src={DesdeHasta} alt="DesdeHasta" className="input-group-text" id="basic-addon1" height={40}/>
-                            <input type="text" className="form-control custom-input-color" placeholder="Hasta" aria-label="Hasta" aria-describedby="basic-addon1" />
-                            <div class="vr"></div>  {/* Visual divider */}
-                        </div>
-                    </div>
-                    {/* Divisor visual */}
-                    <tbody class="table-group-divider"></tbody>
-
-                    {/* Campo de entrada para especificar la fecha del viaje */}
-                    <div className="col-12 col-md-4">
-                        <div className="input-group-date mb-2 mt-2">
-                            <ThemeProvider theme={theme}>  {/* Aplica el tema personalizado */}
-                                <LocalizationProvider dateAdapter={AdapterDayjs}>  {/* Proporciona la localización para el picker */}
-                                    <img src={Calendar} alt="Calendar" className="input-group-text" id="basic-addon1" height={40}/>
-                                    <MobileDateTimePicker 
-                                        label="¿Cuándo?"
-                                        slots={{ tabs: CustomTabs }}
-                                        disablePast
-                                    />
-                                </LocalizationProvider>
-                            </ThemeProvider>
-                            
-                        </div>
-                    </div>
-                    {/* Divisor visual */}
-                    <tbody class="table-group-divider"></tbody>
-
-                    {/* Campo de entrada para especificar la fecha del viaje */}
-                    <div className="col-12 col-md-4">
-                        <div className="input-group-date mb-2 mt-2">
-                            <ThemeProvider theme={theme}>  {/* Aplica el tema personalizado */}
-                                <LocalizationProvider dateAdapter={AdapterDayjs}>  {/* Proporciona la localización para el picker */}
-                                    <img src={Calendar} alt="Calendar" className="input-group-text" id="basic-addon1" height={40}/>
-                                    <MobileDateTimePicker 
-                                        label="¿Cuándo?"
-                                        slots={{ tabs: CustomTabs }}
-                                        disablePast
-                                    />
-                                </LocalizationProvider>
-                            </ThemeProvider>
-                            
-                        </div>
-                    </div>
-
-
-                    <button className="btn btn-danger w-100 mt-2">Publicar</button>
-                </div>
+             {/* Título "Publicar Viaje" */}
+             <div className="text-center mt-3">
+                <h1 className="titulo-publicar">Publicar Viaje</h1>
             </div>
 
-            
+            {/* Contenedor para los campos de entrada */}
+            <div className="container text-start mt-3">
+                {/* Primera Fila: 4 Columnas */}
+                <div className="row mx-1">
+                    <div className="col-12 col-md-3 mb-3">
+                        <div className="input-group">
+                            <img src={DesdeHasta} alt="DesdeHasta" className="input-group-text" height={40} />
+                            <input type="text" className="form-control custom-input-color" placeholder="De" />
+                        </div>
+                    </div>
+
+                    <div className="col-12 col-md-3 mb-3">
+                        <div className="input-group">
+                            <img src={DesdeHasta} alt="DesdeHasta" className="input-group-text" height={40} />
+                            <input type="text" className="form-control custom-input-color" placeholder="Hasta" />
+                        </div>
+                    </div>
+
+                    <div className="col-12 col-md-3 mb-3">
+                        <div className="input-group-date">
+                            <ThemeProvider theme={theme}>
+                                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                    <img src={Calendar} alt="Calendar" className="input-group-text" height={40} />
+                                    <MobileDateTimePicker label="¿Cuándo?" disablePast />
+                                </LocalizationProvider>
+                            </ThemeProvider>
+                        </div>
+                    </div>
+
+                    <div className="col-12 col-md-3 mb-3">
+                        <div className="input-group">
+                            <img src={DesdeHasta} alt="DesdeHasta" className="input-group-text" height={40} />
+                            <input type="text" className="form-control custom-input-color" placeholder="Ruta" />
+                        </div>
+                    </div>
+                </div>
+
+                {/* Segunda Fila: 3 Columnas */}
+                <div className="row mx-1">
+                    <div className="col-12 col-md-4 mb-3">
+                        <div className="input-group">
+                            <img src={DesdeHasta} alt="DesdeHasta" className="input-group-text" height={40} />
+                            <input type="text" className="form-control custom-input-color" placeholder="Auto" />
+                        </div>
+                    </div>
+
+                    <div className="col-12 col-md-4 mb-3">
+                        <div className="input-group">
+                            <img src={DesdeHasta} alt="DesdeHasta" className="input-group-text" height={40} />
+                            <input type="text" className="form-control custom-input-color" placeholder="Precio" />
+                        </div>
+                    </div>
+
+                    <div className="col-12 col-md-4 mb-3">
+                        <div className="input-group">
+                            <img src={DesdeHasta} alt="DesdeHasta" className="input-group-text" height={40} />
+                            <input type="text" className="form-control custom-input-color" placeholder="Cupos" />
+                        </div>
+                    </div>
+                </div>
+
+                
+            </div>
+            {/* Botón para publicar */}
+            <div className="col-12 mt-4 text-center">
+                    <button className="btn btn-danger w-100">Publicar</button>
+                </div>
         </div>
     );
 }
 
-
-
-// Exportación del componente HomeGuest para su uso en otras partes de la aplicación.
 export default HomeDriver;
 

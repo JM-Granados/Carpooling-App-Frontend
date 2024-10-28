@@ -20,7 +20,8 @@ import HomeDriver from './HomeDriver';
 import HomeAdmin from './HomeAdmin';
 import ActividadCliente from './ActividadCliente';
 import ActividadConductor from './ActividadConductor';
-
+import EmergenteCalificarConductor from './EmergenteCalificarConductor';
+import EmergenteCalificarViajeros from './EmergenteCalificarViajeros';
 import PerfilConductor from './PerfilConductor';
 
 import PerfilPrivado from './PerfilPrivado';
@@ -57,7 +58,8 @@ function App() {
           <Route exact path="/ActividadConductor" component={ActividadConductor} /> {/* Ruta para la página principal de invitados. */}
 
           <Route exact path="/PerfilConductor" component={PerfilConductor} /> {/* Ruta para la página de perfil conductor. */}
-
+          <Route exact path="/EmergenteCalificarConductor" component={EmergenteCalificarConductor} /> {/* Ruta para la página de perfil privado. */}   
+          <Route exact path="/EmergenteCalificarViajeros" component={EmergenteCalificarViajeros} /> {/* Ruta para la página de perfil privado. */}       
           <Route path="/PerfilPrivado" component={PerfilPrivado} /> {/* Ruta para la página de perfil privado. */}
 
           <Route exact path="/IntegrantesViaje" component={IntegrantesViaje} /> {/* Ruta para la página de Integrantes de Viaje. */}
