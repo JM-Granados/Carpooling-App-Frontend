@@ -31,6 +31,7 @@ const Rating = ({ rating }) => {
           {/* Generamos 5 estrellas */}
           {[...Array(5)].map((star, index) => {
             return (
+              
               <svg
                 key={index}
                 xmlns="http://www.w3.org/2000/svg"
@@ -40,17 +41,17 @@ const Rating = ({ rating }) => {
                 height="24px"
                 style={{ marginRight: '5px' }}  // Margen para separar las estrellas
               >
+                
                 <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
               </svg>
             );
           })}
-        </div>
-        {/*<p>Calificación: {rating} de 5</p>*/}
+        </div> 
       </div>
     );
   };
 
-function Integrantes({ nombre, viajes, correo, telefono, stars, parada}) {
+function Integrantes({ usuarios }) {
     return (
         <div>
             {/* Barra de navegación para usuarios no autenticados */}
@@ -62,21 +63,22 @@ function Integrantes({ nombre, viajes, correo, telefono, stars, parada}) {
             <div className="container mt-4 d-flex align-items-center justify-content-between">
                 {/* Contenedor de las cards */}
                 <div className="row flex-grow-1 justify-content-center">
-                    {[1, 2, 3].map((_, index) => (
+                    {usuarios.map((usuario, index) => (
                         <div className="col-12 col-md-4 mb-3" key={index}>
                             <div className="card trip-card p-3">
                             
                             <div style={{ fontSize: '20px', fontWeight: 'bold' }}>Nombre:</div>
-                            <div style={{ fontSize: '15px' }}>{nombre}</div>
+                            <div style={{ fontSize: '15px' }}>{usuario.nombre}</div>
                             <div style={{ fontSize: '20px', fontWeight: 'bold' }}>Telefono:</div>
-                            <div style={{ fontSize: '15px' }}>{telefono}</div>
+                            <div style={{ fontSize: '15px' }}>{usuario.telefono}</div>
                             <div style={{ fontSize: '20px', fontWeight: 'bold' }}>Correo:</div>
-                            <div style={{ fontSize: '15px' }}>{correo}</div>
+                            <div style={{ fontSize: '15px' }}>{usuario.correo}</div>
                             <div style={{ fontSize: '20px', fontWeight: 'bold' }}>Cantidad de viajes:</div>
-                            <div style={{ fontSize: '15px' }}>{viajes}</div>
-                            <Rating rating={stars} />
+                            <div style={{ fontSize: '15px' }}>{usuario.viajesRealizados}</div>
+                            <div style={{ fontSize: '20px', fontWeight: 'bold' }}>Clasificación:</div>
+                            <Rating rating={usuario.stars} />
                             <div style={{ fontSize: '20px', fontWeight: 'bold' }}>Parada:</div>
-                            <div style={{ fontSize: '15px' }}>{parada}</div>
+                            <div style={{ fontSize: '15px' }}>{usuario.parada}</div>
                                 <button className="btn btn-danger w-100 mt-2">Eliminar Viajero</button>
                             </div>
                         </div>
