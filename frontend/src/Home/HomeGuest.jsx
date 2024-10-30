@@ -17,9 +17,9 @@ import * as React from 'react';
 import axios from 'axios'; // Librería para realizar solicitudes HTTP, utilizada potencialmente en futuras operaciones de red.
 
 // Importación de componentes y estilos locales.
-import NavBar_Guest from '../src/NavBar/NavBar-Guest'; // Componente NavBar_Guest para la barra de navegación de usuarios no autenticados.
-import NavBarAdmin from '../src/NavBar/NavBarAdmin'; // Componente NavBarAdmin para la barra de navegación de administradores.
-import NavBarAdminXinst from '../src/NavBar/NavBarAdminXinst'; // Componente NavBarAdminXinst para la barra de navegación de administradores.
+import NavBar_Guest from '../NavBar/NavBar-Guest'; // Componente NavBar_Guest para la barra de navegación de usuarios no autenticados.
+import NavBarAdmin from '../NavBar/NavBarAdmin'; // Componente NavBarAdmin para la barra de navegación de administradores.
+import NavBarAdminXinst from '../NavBar/NavBarAdminXinst'; // Componente NavBarAdminXinst para la barra de navegación de administradores.
 import { Link } from 'react-router-dom'; // Componente Link para navegación SPA (Single Page Application).
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider, DateTimePicker } from '@mui/x-date-pickers';

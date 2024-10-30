@@ -8,13 +8,13 @@ import { IonReactRouter } from '@ionic/react-router'; // Importa el componente d
 import { Route, Redirect, Switch } from 'react-router-dom'; // Importa componentes de React Router para el manejo de rutas.
 
 // Importación de componentes de vistas o páginas.
-import HomeGuest from './HomeGuest'; // Vista inicial para usuarios invitados.
-import Login from './Login'; // Vista de inicio de sesión.
-import Nosotros from './Nosotros'; // Vista sobre información del sistema.
-import PerfilViajero from './PerfilViajero'; // Vista del perfil de un viajero.
-import RegistrarVehiculo from './RegistrarVehiculo'; // Vista para el registro de vehículos.
-import RegistrarVehiculoLicencia from './RegistrarVehiculoLicencia'; // Vista para el registro de licencia de vehículos.
-import Signup from './Signup'; // Vista para el registro de nuevos usuarios.
+import HomeGuest from './Home/HomeGuest'; // Vista inicial para usuarios invitados.
+import Login from './Ingreso/Login'; // Vista de inicio de sesión.
+import Nosotros from './Nosotros/Nosotros'; // Vista sobre información del sistema.
+import PerfilViajero from './Perfil/PerfilViajero'; // Vista del perfil de un viajero.
+import RegistrarVehiculo from './Registros/RegistrarVehiculo'; // Vista para el registro de vehículos.
+import RegistrarVehiculoLicencia from './Registros/RegistrarVehiculoLicencia'; // Vista para el registro de licencia de vehículos.
+import Signup from './Ingreso/Signup'; // Vista para el registro de nuevos usuarios.
 import HomeClient from './HomeClient';
 import HomeDriver from './HomeDriver';
 import HomeAdmin from './HomeAdmin';
@@ -23,11 +23,8 @@ import ActividadConductor from './ActividadConductor';
 import EmergenteCalificarConductor from './EmergenteCalificarConductor';
 import EmergenteCalificarViajeros from './EmergenteCalificarViajeros';
 import PerfilConductor from './PerfilConductor';
-
 import PerfilPrivado from './PerfilPrivado';
-
 import MainTest from './MainTest';
-
 import IntegrantesViaje from './IntegrantesViaje';
 
 // Configura Ionic React para este proyecto.

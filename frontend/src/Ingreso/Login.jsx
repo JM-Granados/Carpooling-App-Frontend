@@ -5,7 +5,7 @@ import axios from 'axios'; // Axios es importado para realizar posibles solicitu
 // Importación de componentes locales.
 import React from 'react';
 import dayjs from 'dayjs';
-import NavBar_Guest from '../src/NavBar/NavBar-Guest'; // Import NavBar_Guest for guest navigation at the top of the page.
+import NavBar_Guest from '../NavBar/NavBar-Guest'; // Import NavBar_Guest for guest navigation at the top of the page.
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider, DateTimePicker } from '@mui/x-date-pickers';
 
