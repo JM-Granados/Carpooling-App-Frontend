@@ -19,6 +19,19 @@
     
 }
 
+.correoElectronico:hover, .space-password:hover {
+    border-color: #F6AB0F !important;
+}
+
+.correoElectronico:focus, .space-password:focus {
+    border-color: #F6AB0F !important;
+}
+
+.PassRec:hover, .Reg:hover {
+    color:#E53F67 !important;
+}
+
+
 .correoElectronico::placeholder, .space-password::placeholder  {
     color: #FDFFFA; 
 }

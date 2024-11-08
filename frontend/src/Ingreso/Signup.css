@@ -1,0 +1,80 @@
+.subfondoSignup {
+    background-color: transparent !important;
+    align-self: center;
+}
+
+.RE {
+    font-size: 4rem !important;
+}
+
+.MensajeRe {
+    font-size: 1rem !important;
+}
+
+.subtituloReg {
+    font-size: 2rem;
+}
+
+.campos {
+    border-color: #E53F67 !important;
+    border-width: 2px !important;
+    height: 3.5rem !important;
+    background-color: transparent !important;
+    color: #FDFFFA !important;
+}
+
+.campos::placeholder  {
+    color: #FDFFFA !important; 
+}
+
+.campos:hover, .campos:focus {
+    border-color: #F6AB0F !important;
+}
+
+.camposSelect {
+    border-color: #E53F67 !important;
+    border-width: 2px !important;
+    height: 3.5rem !important;
+    background-color: transparent !important;
+    color: #FDFFFA !important;
+
+    -webkit-appearance: none; /* Para Chrome y Safari */
+    -moz-appearance: none;    /* Para Firefox */
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill="%23F6AB0F" d="M6 8l4 4 4-4z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right .7em top 50%; /* Ajusta según necesites */
+    background-size: 2.5em auto; /* Ajusta según el tamaño deseado */
+}
+
+.camposSelect::placeholder  {
+    color: #FDFFFA !important; 
+}
+
+.camposSelect:hover, .camposSelect:focus {
+    border-color: #F6AB0F !important;
+}
+
+.opcionesInst {
+    color: #FDFFFA;
+    background-color: #3B4290;
+}
+
+.opcionesInst:disabled {
+    color: #F6AB0F;
+    background-color: #22214D !important;
+}
+
+/* Define las clases para mostrar y ocultar el mensaje con transiciones */
+.alert {
+    transition: opacity 1s ease-in-out; /* Transición de 1 segundo para la opacidad */
+    opacity: 1; /* Inicio con opacidad completa */
+}
+
+.alert.fade-out {
+    opacity: 0; /* Opacidad final es 0, totalmente transparente */
+}
+
+.camposYear {
+    width: 100% !important;
+}

@@ -127,7 +127,7 @@ function Login() {
                         No tienes cuenta?
                     </div>
                     <div className="Reg text-center mb-4" style={{flexGrow: 0.75}}>
-                        <Link to="/" className="Reg d-flex justify-content-center">Registrarse</Link>
+                        <Link to="/Signup" className="Reg d-flex justify-content-center">Registrarse</Link>
                     </div>
                 </div>
 
