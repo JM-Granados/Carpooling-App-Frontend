@@ -217,11 +217,11 @@ function HomeAdmin() {
                     <div className="col-3 container2">
                         <div className='row'>
                             <div className='col'>
-                            <img src={viajes} class="card-img my-5" alt="imageviajes"/>
+                                <img src={viajes} class="card-img my-5" alt="imageviajes" />
                             </div>
                             <div className='col'>
                                 <div className='row'>
-                                <div style={{ fontSize: '20px' }}>Viajes</div>
+                                    <div style={{ fontSize: '20px' }}>Viajes</div>
                                 </div>
                                 <div className='row'>
                                     *Estadistica de viajes propia*
@@ -230,13 +230,13 @@ function HomeAdmin() {
                         </div>
                     </div>
                     <div className="col-3 container2">
-                    <div className='row'>
+                        <div className='row'>
                             <div className='col'>
-                            <img src={viajeros} class="card-img my-5" alt="imageviajeros"/>
+                                <img src={viajeros} class="card-img my-5" alt="imageviajeros" />
                             </div>
                             <div className='col'>
                                 <div className='row'>
-                                <div style={{ fontSize: '20px' }}>Viajeros</div>
+                                    <div style={{ fontSize: '20px' }}>Viajeros</div>
                                 </div>
                                 <div className='row'>
                                     *Estadistica de viajes propia*
@@ -245,13 +245,13 @@ function HomeAdmin() {
                         </div>
                     </div>
                     <div className="col-3 container2">
-                    <div className='row'>
+                        <div className='row'>
                             <div className='col'>
-                            <img src={viajeros} class="card-img my-5" alt="imageconductores"/>
+                                <img src={viajeros} class="card-img my-5" alt="imageconductores" />
                             </div>
                             <div className='col'>
                                 <div className='row'>
-                                <div style={{ fontSize: '20px' }}>Conductores</div>
+                                    <div style={{ fontSize: '20px' }}>Conductores</div>
                                 </div>
                                 <div className='row'>
                                     *Estadistica de viajes propia*
@@ -260,13 +260,13 @@ function HomeAdmin() {
                         </div>
                     </div>
                     <div className="col-3 container2">
-                    <div className='row'>
+                        <div className='row'>
                             <div className='col'>
-                            <img src={viajeros} class="card-img my-5" alt="imageinstituciones"/>
+                                <img src={viajeros} class="card-img my-5" alt="imageinstituciones" />
                             </div>
                             <div className='col'>
                                 <div className='row'>
-                                <div style={{ fontSize: '20px' }}>Instituciones</div>
+                                    <div style={{ fontSize: '20px' }}>Instituciones</div>
                                 </div>
                                 <div className='row'>
                                     *Estadistica de viajes propia*
@@ -274,7 +274,7 @@ function HomeAdmin() {
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
 
 
@@ -367,11 +367,11 @@ function HomeAdmin() {
                     <div className="col-3 container2">
                         <div className='row'>
                             <div className='col'>
-                            <img src={viajeros} class="card-img my-5" alt="imageviajeros"/>
+                                <img src={viajeros} class="card-img my-5" alt="imageviajeros" />
                             </div>
                             <div className='col'>
                                 <div className='row'>
-                                <div style={{ fontSize: '20px' }}>Promedio de precios</div>
+                                    <div style={{ fontSize: '20px' }}>Promedio de precios</div>
                                 </div>
                                 <div className='row'>
                                     *Estadistica de viajes propia*
@@ -380,13 +380,13 @@ function HomeAdmin() {
                         </div>
                     </div>
                     <div className="col-3 container2">
-                    <div className='row'>
+                        <div className='row'>
                             <div className='col'>
-                            <img src={viajeros} class="card-img my-5" alt="imageviajeros"/>
+                                <img src={viajeros} class="card-img my-5" alt="imageviajeros" />
                             </div>
                             <div className='col'>
                                 <div className='row'>
-                                <div style={{ fontSize: '20px' }}>Porcentaje de viajes por genero</div>
+                                    <div style={{ fontSize: '20px' }}>Porcentaje de viajes por genero</div>
                                 </div>
                                 <div className='row'>
                                     *Estadistica de viajes propia*
@@ -395,13 +395,13 @@ function HomeAdmin() {
                         </div>
                     </div>
                     <div className="col-3 container2">
-                    <div className='row'>
+                        <div className='row'>
                             <div className='col'>
-                            <img src={viajeros} class="card-img my-5" alt="imageconductores"/>
+                                <img src={viajeros} class="card-img my-5" alt="imageconductores" />
                             </div>
                             <div className='col'>
                                 <div className='row'>
-                                <div style={{ fontSize: '20px' }}>Porcentaje de viajes completados en la última semana, mes y año</div>
+                                    <div style={{ fontSize: '20px' }}>Porcentaje de viajes completados en la última semana, mes y año</div>
                                 </div>
                                 <div className='row'>
                                     *Estadistica de viajes propia*
@@ -410,13 +410,13 @@ function HomeAdmin() {
                         </div>
                     </div>
                     <div className="col-3 container2">
-                    <div className='row'>
+                        <div className='row'>
                             <div className='col'>
-                            <img src={viajeros} class="card-img my-5" alt="imageinstituciones"/>
+                                <img src={viajeros} class="card-img my-5" alt="imageinstituciones" />
                             </div>
                             <div className='col'>
                                 <div className='row'>
-                                <div style={{ fontSize: '20px' }}>Porcentaje de nuevos usuarios de la última semana, mes y año</div>
+                                    <div style={{ fontSize: '20px' }}>Porcentaje de nuevos usuarios de la última semana, mes y año</div>
                                 </div>
                                 <div className='row'>
                                     *Estadistica de viajes propia*
@@ -424,10 +424,10 @@ function HomeAdmin() {
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
-            
+
         </div>
     );
 }

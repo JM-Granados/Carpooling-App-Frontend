@@ -30,11 +30,11 @@ import Box from '@mui/material/Box';
 import './HomeGuest.css'; // Estilos específicos para el componente HomeGuest.
 
 // Importación de recursos gráficos.
-import Carpool from '../../íconos/Carpool.png'; // Icono gráfico representativo del carpooling.
-import DesdeHasta from '../../íconos/Desde-Hasta.png'; // Iconos para los campos de entrada de origen y destino.
-import Calendar from '../../íconos/Calendar.png'; // Icono de calendario para el campo de fecha.
-import CarpoolImagen from '../../íconos/CarpoolImagen.png' // Imagen sobre carpooling. Hay que arreglarla (mal cortado el borde)
-import Arrow from '../../íconos/Arrow.png'
+import Carpool from '../../../íconos/Carpool.png'; // Icono gráfico representativo del carpooling.
+import DesdeHasta from '../../../íconos/Desde-Hasta.png'; // Iconos para los campos de entrada de origen y destino.
+import Calendar from '../../../íconos/Calendar.png'; // Icono de calendario para el campo de fecha.
+import CarpoolImagen from '../../../íconos/CarpoolImagen.png' // Imagen sobre carpooling. Hay que arreglarla (mal cortado el borde)
+import Arrow from '../../../íconos/Arrow.png'
 
 /**
  * Función HomeGuest que renderiza la vista principal para usuarios no autenticados.

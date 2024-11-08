@@ -1,0 +1,73 @@
+.subfondoLogin {
+    background-color: #2D285E !important;
+    max-width: 800px !important;
+    align-self: center;
+}
+
+.IN {
+    font-size: 4rem;
+}
+
+.MensajeIN {
+    font-size: 1rem;
+}
+
+.correoElectronico {
+    border-color: #E53F67 !important;
+    border-width: 2px;
+    height: 3.5rem;
+    
+}
+
+.correoElectronico::placeholder, .space-password::placeholder  {
+    color: #FDFFFA; 
+}
+
+.space-password {
+    border-color: #E53F67 !important;
+    border-width: 2px;
+    height: 3.5rem;
+    flex-grow: 1; /* Permite que el input crezca y ocupe la mayor parte del contenedor */
+    display: flex;
+    align-items: center; /* Alinea los elementos internos verticalmente */
+}
+
+.password-toogle-icon {
+    position: absolute !important;
+    cursor: pointer !important; /* Cambia el cursor a pointer para indicar que el ícono es clickeable */
+    justify-self: end !important;
+    align-self: center !important;
+    margin-right: 1% !important;
+    color: #E53F67;
+}
+
+.espacioPass {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinea los elementos al inicio del contenedor */
+}
+
+.PassRec {
+    color:#F6AB0F !important;
+    text-decoration: none;
+}
+
+.Reg {
+    color:#F6AB0F !important;
+    text-decoration: none;
+    justify-self: center;
+}
+
+.BotonIniciarSesion {
+    background-color: #E53F67;
+    font-size: 2rem !important;
+}
+
+.BotonIniciarSesion:hover {
+    background-color: #F6AB0F;
+    color:#2D285E;
+}
+
+.mensaje {
+    color:#FDFFFA;
+}

@@ -3,7 +3,7 @@ import { useState } from 'react'; // Importa useState para manejar el estado loc
 import 'bootstrap/dist/css/bootstrap.min.css'; // Importa los estilos CSS de Bootstrap para el diseño y la interfaz de usuario.
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; // Importa los scripts de Bootstrap para funcionalidades interactivas.
 import { StrictMode } from 'react'; // StrictMode es una herramienta para señalar problemas potenciales en una aplicación.
-import { IonApp, setupIonicReact } from '@ionic/react'; // Importa componentes específicos de Ionic para construir aplicaciones híbridas.
+import { IonApp, setupIonicReact, IonRouterOutlet } from '@ionic/react'; // Importa componentes específicos de Ionic para construir aplicaciones híbridas.
 import { IonReactRouter } from '@ionic/react-router'; // Importa el componente de enrutamiento de Ionic adaptado para React.
 import { Route, Redirect, Switch } from 'react-router-dom'; // Importa componentes de React Router para el manejo de rutas.
 
