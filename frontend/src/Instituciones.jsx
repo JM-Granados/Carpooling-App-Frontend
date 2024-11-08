@@ -1,25 +1,8 @@
-/*Falta:
-    1. Arreglar datepicker
-    2. Agregar imagen y "Conductor ->" "Viajero ->"
-
-  Notas para demás desarrolladores:
-    1. Pueden usar exactamente lo mismo que sale aquí. Deben cambiar lo del form hacia abajo
-*/
-
-/**
- * @fileoverview Este archivo contiene el componente HomeGuest, que es la página principal para usuarios no autenticados.
- * Incluye una sección hero con una imagen de fondo y texto de bienvenida, así como un formulario de búsqueda para viajes.
- * Cada botón lleva solo a Login, Signup o Nosotros
- */
-
-// Importaciones de React y otras librerías.
 import * as React from 'react';
 import axios from 'axios'; // Librería para realizar solicitudes HTTP, utilizada potencialmente en futuras operaciones de red.
 
 // Importación de componentes y estilos locales.
-import NavBar_Guest from '../NavBar/NavBar-Guest'; // Componente NavBar_Guest para la barra de navegación de usuarios no autenticados.
-import NavBarAdmin from '../NavBar/NavBarAdmin'; // Componente NavBarAdmin para la barra de navegación de administradores.
-import NavBarAdminXinst from '../NavBar/NavBarAdminXinst'; // Componente NavBarAdminXinst para la barra de navegación de administradores.
+import NavBar_Client from '../src/NavBar/NavBar-Client'; // Componente NavBar_Guest para la barra de navegación de usuarios no autenticados.
 import { Link } from 'react-router-dom'; // Componente Link para navegación SPA (Single Page Application).
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider, DateTimePicker } from '@mui/x-date-pickers';
@@ -27,14 +10,14 @@ import { MobileDateTimePicker } from '@mui/x-date-pickers/MobileDateTimePicker';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { DateTimePickerTabs } from '@mui/x-date-pickers/DateTimePicker';
 import Box from '@mui/material/Box';
-import './HomeGuest.css'; // Estilos específicos para el componente HomeGuest.
+import './HomeClient.css'; // Estilos específicos para el componente HomeGuest.
 
 // Importación de recursos gráficos.
-import DesdeHasta from '../../../íconos/Desde-Hasta.png'; // Iconos para los campos de entrada de origen y destino.
-import Carpool from '../../../íconos/Carpool.png'; // Icono gráfico representativo del carpooling.
-import Calendar from '../../../íconos/Calendar.png'; // Icono de calendario para el campo de fecha.
-import CarpoolImagen from '../../../íconos/CarpoolImagen.png' // Imagen sobre carpooling. Hay que arreglarla (mal cortado el borde)
-import Arrow from '../../../íconos/Arrow.png'
+import Carpool from '../../íconos/Carpool.png'; // Icono gráfico representativo del carpooling.
+import DesdeHasta from '../../íconos/Desde-Hasta.png'; // Iconos para los campos de entrada de origen y destino.
+import Calendar from '../../íconos/Calendar.png'; // Icono de calendario para el campo de fecha.
+import FlechaIngresar from '../../íconos/flecha ingresar.png'; // Icono de flecha para el botón de búsqueda.
+import Arrow from '../../íconos/Arrow.png'
 
 /**
  * Función HomeGuest que renderiza la vista principal para usuarios no autenticados.
@@ -59,11 +42,11 @@ const theme = createTheme({
                     // Estiliza la etiqueta (label) cuando el TextField está en su estado no contraído (no shrink)
                     '& .MuiInputLabel-outlined': {
                         transform: 'translate(12px, 10px) scale(1)',  // Ajusta esto para centrar cuando no está shrink
-                        
+
                     },
                     // Estiliza la raíz del componente cuando está delineado (outlined)
                     '& .MuiOutlinedInput-root': {
-                            borderRadius: '0px',// Elimina el radio del borde para bordes rectos
+                        borderRadius: '0px',// Elimina el radio del borde para bordes rectos
                         // Define estilos para el borde del input cuando se interactúa con él (hover o focus)
                         '&.MuiOutlinedInput-notchedOutline': {
                             borderColor: 'transparent', // Borde transparente en estado normal
@@ -325,95 +308,44 @@ function CustomTabs(props) {
 }
 
 
-function HomeGuest() {
-    // Renderiza el componente HomeGuest con su estructura y contenido.
+
+function Instituciones() {
     return (
         <div>
             {/* Barra de navegación para usuarios no autenticados */}
-            <NavBar_Guest /> 
-
-            {/* Sección principal con imagen de fondo y mensaje de bienvenida */}
-            <div className="hero-image text-center">
-                <div className="content position-absolute mt-5 start-50 translate-middle">
-                    <h1 className="Titulo">Conectando compañeros, reduciendo huellas</h1>
-                </div>
+            <NavBar_Client />
+            <div className="d-flex justify-content-center mt-3">
+                <form className="d-flex" role="search">
+                    <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" style={{ width: '400px' }} />
+                    <button className="btn btn-primary" type="submit" style={{ backgroundColor: '#E53F67', borderColor: '#FDFFFA' }}>Buscar</button>
+                </form>
             </div>
 
-            {/* Contenedor para los campos de entrada de búsqueda de viajes */} 
-            <div className="container text-start mt-3">
-                <div className="row mx-1">
-                    {/* Campo de entrada para especificar el origen del viaje */}
-                    <div className="col-12 col-md-4">
-                        <div className="input-group mb-2 mt-2">
-                            <img src={DesdeHasta} alt="DesdeHasta" className="input-group-text" id="basic-addon1" height={40}/>
-                            <input type="text" className="form-control custom-input-color" placeholder="Desde" aria-label="Desde" aria-describedby="basic-addon1" />
-                            <div class="vr"></div>  {/* Visual divider */}
-                        </div>
-                    </div>
-                    {/* Divisor visual */}
-                    <tbody class="table-group-divider"></tbody>
+            {/* Contenedor principal para las cards y la flecha */}
+            <div className="container mt-4 d-flex align-items-center justify-content-between">
+                {/* Contenedor de las cards */}
+                <div className="row flex-grow-1 justify-content-center">
+                    {[1, 2, 3].map((_, index) => (
+                        <div className="col-12 col-md-4 mb-3" key={index}>
+                            <div className="card trip-card p-3">
+                                <h6 className="text-danger">Nombre: <span>*Nombre*</span></h6>
+                                <p>Administrador: *Nombre*</p>
 
-                    {/* Campo de entrada para especificar el destino del viaje */}
-                    <div className="col-12 col-md-4">
-                        <div className="input-group mb-2 mt-2">
-                            <img src={DesdeHasta} alt="DesdeHasta" className="input-group-text" id="basic-addon1" height={40}/>
-                            <input type="text" className="form-control custom-input-color" placeholder="Hasta" aria-label="Hasta" aria-describedby="basic-addon1" />
-                            <div class="vr"></div>  {/* Visual divider */}
+                                <button className="btn btn-danger w-100 mt-2">Ver Más</button>
+                            </div>
                         </div>
-                    </div>
-                    {/* Divisor visual */}
-                    <tbody class="table-group-divider"></tbody>
-
-                    {/* Campo de entrada para especificar la fecha del viaje */}
-                    <div className="col-12 col-md-4">
-                        <div className="input-group-date mb-2 mt-2">
-                            <ThemeProvider theme={theme}>  {/* Aplica el tema personalizado */}
-                                <LocalizationProvider dateAdapter={AdapterDayjs}>  {/* Proporciona la localización para el picker */}
-                                    <img src={Calendar} alt="Calendar" className="input-group-text" id="basic-addon1" height={40}/>
-                                    <MobileDateTimePicker 
-                                        label="¿Cuándo?"
-                                        slots={{ tabs: CustomTabs }}
-                                        disablePast
-                                    />
-                                </LocalizationProvider>
-                            </ThemeProvider>
-                            <Link to="/Login" className="btn btn-outline-secondary" type="button">Buscar</Link>  {/* Botón para iniciar la búsqueda */}
-                        </div>
-                    </div>
+                    ))}
                 </div>
-            </div>
 
-            <div class="card mt-4 rounded-5">
-                <div class="IniciaSesion row g-0 mx-5">
-                    <div class="col align-self-center">
-                        <div class="card-body">
-                            <h5 class="card-title ">Inicia sesión para buscar o publicar viajes</h5>
-                        </div>
-                    </div>
-                    
-                    <div class="col">
-                        <img src={CarpoolImagen} class="card-img my-5" alt="CarpoolImagen"/>
-                    </div>
+                {/* Imagen de la flecha */}
+                <div className="arrow-container ms-3">
+                    <button className="arrow-button">
+                        <img src={FlechaIngresar} alt="Flecha Ingresar" className="arrow-image" />
+                    </button>
                 </div>
-            </div>
-
-            <div class="BotonesLogin d-flex mx-auto mt-2 mb-5 justify-content-center">
-                <Link to="/Login" type="button" class="Login btn btn-primary mx-2 bg-transparent border-0 border-bottom rounded-0">
-                    Conductor
-
-                    <img src={Arrow} alt="Arrow" className="Arrow"/>
-                </Link>
-
-                <Link to="/Login" type="button" class="Login btn btn-secondary mx-2 bg-transparent border-0 border-bottom rounded-0">
-                    Viajero
-
-                    <img src={Arrow} alt="Arrow" className="Arrow"/>
-                </Link>
             </div>
         </div>
     );
 }
 
-// Exportación del componente HomeGuest para su uso en otras partes de la aplicación.
-export default HomeGuest;
-
+export default Instituciones;
