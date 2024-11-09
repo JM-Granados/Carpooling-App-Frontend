@@ -28,6 +28,8 @@ import MainTest from './MainTest';
 import IntegrantesViaje from './IntegrantesViaje';
 import HomeAdminxInst from './HomeAdminXinst';
 import Instituciones from './Instituciones';
+import RegistrarInstitucion from './RegistrarInstitucion';
+import registrarAdminxInst from './RegistrarAdminxInst';
 
 // Configura Ionic React para este proyecto.
 setupIonicReact();
@@ -57,6 +59,8 @@ function App() {
           <Route exact path="/ActividadCliente" component={ActividadCliente} /> {/* Ruta para la página principal de invitados. */}
           <Route exact path="/ActividadConductor" component={ActividadConductor} /> {/* Ruta para la página principal de invitados. */}
           <Route exact path ="/Instituciones" component={Instituciones} />
+          <Route exact path ="/RegistrarInstitucion" component={RegistrarInstitucion} />
+          <Route exact path ="/registrarAdminxInst" component={registrarAdminxInst} />|
 
           <Route exact path="/PerfilConductor" component={PerfilConductor} /> {/* Ruta para la página de perfil conductor. */}
           <Route exact path="/EmergenteCalificarConductor" component={EmergenteCalificarConductor} /> {/* Ruta para la página de perfil privado. */}   
