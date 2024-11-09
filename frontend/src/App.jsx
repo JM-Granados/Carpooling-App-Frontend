@@ -30,6 +30,8 @@ import HomeAdminxInst from './HomeAdminXinst';
 import Instituciones from './Instituciones';
 import RegistrarInstitucion from './RegistrarInstitucion';
 import registrarAdminxInst from './RegistrarAdminxInst';
+import IntegrantesxInst from './IntegrantesxInst';
+import EstadisticasxInst from './EstadisticasXInst';
 
 // Configura Ionic React para este proyecto.
 setupIonicReact();
@@ -61,6 +63,8 @@ function App() {
           <Route exact path ="/Instituciones" component={Instituciones} />
           <Route exact path ="/RegistrarInstitucion" component={RegistrarInstitucion} />
           <Route exact path ="/registrarAdminxInst" component={registrarAdminxInst} />|
+          <Route exact path ="/IntegrantesxInst" component={IntegrantesxInst} />
+          <Route exact path ="/EstadisticasxInst" component={EstadisticasxInst} />
 
           <Route exact path="/PerfilConductor" component={PerfilConductor} /> {/* Ruta para la página de perfil conductor. */}
           <Route exact path="/EmergenteCalificarConductor" component={EmergenteCalificarConductor} /> {/* Ruta para la página de perfil privado. */}   
