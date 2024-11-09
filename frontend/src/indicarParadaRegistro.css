@@ -1,0 +1,91 @@
+/* Estilo del fondo del modal (overlay) */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  /* Contenedor del modal */
+  .modal-content {
+    background-color: #2a2a5e;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 350px;
+    text-align: center;
+    color: white;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Mensaje de advertencia */
+  .reminder {
+    font-size: 14px;
+    color: #ff9999;
+    margin-bottom: 15px;
+  }
+  
+  /* Estilo del botón de omitir */
+  /* Botón de omitir */
+  /* Botón de omitir */
+  .close-button {
+      background-color: #ff4d4d;
+      border: none;
+      color: white;
+      padding: 4px 10px; /* Tamaño reducido */
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 12px; /* Texto más pequeño */
+      position: absolute;
+      top: 15px;
+      right: 15px; /* Más lejos del borde para mejor apariencia */
+    }
+    
+    
+  
+  /* Estilo de los labels */
+  .label {
+    font-size: 14px;
+    margin-top: 10px;
+    color: #FDFFFA;
+    text-align: left;
+    width: 100%;
+  }
+  
+  /* Estilo de los inputs con subrayado */
+  .input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: none;
+    border-bottom: 2px solid #E53F67; /* Subrayado con el color rojo */
+    background-color: #2a2a5e; /* Fondo oscuro para que coincida */
+    color: #FDFFFA; /* Texto blanco */
+    font-size: 14px;
+  }
+  
+  .input:focus {
+    outline: none; /* Elimina el borde de enfoque por defecto */
+    
+  }
+  
+  /* Botón de confirmar suscripción */
+  .confirm-button {
+      background-color: #ff4d4d;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin-top: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
