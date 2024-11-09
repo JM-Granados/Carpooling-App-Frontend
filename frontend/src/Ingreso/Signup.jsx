@@ -1,7 +1,7 @@
 // Importaciones de React y otras librerías.
-import { useState, useEffect } from "react"; // useState es importado pero no se usa, considera removerlo si no es necesario.
-import axios from "axios"; // Axios es importado para realizar posibles solicitudes HTTP.
-import { Link } from "react-router-dom"; // Importa Link de react-router-dom para la navegación sin recarga.
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
@@ -40,7 +40,7 @@ function Signup() {
   useEffect(() => {
     const fetchInstitutions = async () => {
       try {
-        const response = await axios.get(`${API_URL}/institutions/all-institutions`);
+        const response = await axios.get(`${API_URL}/institutions`);
         setInstitutions(response.data); // Guarda las instituciones en el estado
       } catch (error) {
         console.error("Error al cargar las instituciones:", error);
@@ -348,16 +348,16 @@ function Signup() {
     // Crear el objeto formData con todos los campos requeridos
     const formData = {
       first_name: firstName,
-      second_name: secondName,
       first_surname: firstLastName,
-      second_surname: secondLastName,
       identification: id,
+      second_name: secondName,
+      second_surname: secondLastName,
       institutional_email: email,
       phone_number: number,
       birth_date: birthdate,
       gender_id: parseInt(gender), // Asegúrate de enviar el ID numérico del género
-      institution_id: parseInt(institution), // Asegúrate de enviar el ID numérico de la institución
       user_type_id: 1, // Coloca aquí el ID predeterminado para el tipo de usuario
+      institution_id: parseInt(institution), // Asegúrate de enviar el ID numérico de la institución
       date_registered: new Date().toISOString().split("T")[0], // Fecha de registro actual
       rating: 0, // Valor inicial de rating
       total_ratings: 0, // Total inicial de ratings
@@ -369,7 +369,7 @@ function Signup() {
           "Content-Type": "application/json", // Esta línea es importante para el correcto manejo del FormData
         },
       });
-
+      console.log(response.data)
       // Verifica si la respuesta del servidor indica un registro exitoso.
       if (response.data.message === "User registered successfully") {
         //navigate('/Login'); // O redirige a la pantalla de login, según lo que necesites.
@@ -377,6 +377,7 @@ function Signup() {
         // Si el mensaje no indica éxito, muestra un mensaje de error.
         setErrorMessage(response.data.message);
       }
+      
     } catch (error) {
       // Captura errores de la solicitud y muestra un mensaje de error.
       setErrorMessage(error.response?.data.error || "An error occurred.");
@@ -441,9 +442,10 @@ function Signup() {
                 name="institucionRegistro"
                 aria-describedby="institucionHelp"
                 required
+                value={institution}
                 onChange={(e) => setInstitution(e.target.value)}
               >
-                <option className="opcionesInst" selected disabled value="">
+                <option className="opcionesInst" disabled value="">
                   Selecciona tu institución
                 </option>
                 {institutions.map((institution) => (
@@ -585,7 +587,7 @@ function Signup() {
         <div class="d-grid gap-2 col-6 mx-auto mt-5">
           <button
             class="BotonIniciarSesion btn btn-primary border border-0 fw-bold"
-            type="button"
+            type="submit"
           >
             Registrarse
           </button>
