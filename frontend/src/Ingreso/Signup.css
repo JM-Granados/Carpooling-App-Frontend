@@ -23,11 +23,12 @@
     color: #FDFFFA !important;
 }
 
-.campos::placeholder  {
-    color: #FDFFFA !important; 
+.campos::placeholder {
+    color: #FDFFFA !important;
 }
 
-.campos:hover, .campos:focus {
+.campos:hover,
+.campos:focus {
     border-color: #F6AB0F !important;
 }
 
@@ -38,20 +39,25 @@
     background-color: transparent !important;
     color: #FDFFFA !important;
 
-    -webkit-appearance: none; /* Para Chrome y Safari */
-    -moz-appearance: none;    /* Para Firefox */
+    -webkit-appearance: none;
+    /* Para Chrome y Safari */
+    -moz-appearance: none;
+    /* Para Firefox */
     appearance: none;
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill="%23F6AB0F" d="M6 8l4 4 4-4z"/></svg>');
     background-repeat: no-repeat;
-    background-position: right .7em top 50%; /* Ajusta según necesites */
-    background-size: 2.5em auto; /* Ajusta según el tamaño deseado */
+    background-position: right .7em top 50%;
+    /* Ajusta según necesites */
+    background-size: 2.5em auto;
+    /* Ajusta según el tamaño deseado */
 }
 
-.camposSelect::placeholder  {
-    color: #FDFFFA !important; 
+.camposSelect::placeholder {
+    color: #FDFFFA !important;
 }
 
-.camposSelect:hover, .camposSelect:focus {
+.camposSelect:hover,
+.camposSelect:focus {
     border-color: #F6AB0F !important;
 }
 
@@ -67,14 +73,81 @@
 
 /* Define las clases para mostrar y ocultar el mensaje con transiciones */
 .alert {
-    transition: opacity 1s ease-in-out; /* Transición de 1 segundo para la opacidad */
-    opacity: 1; /* Inicio con opacidad completa */
+    transition: opacity 1s ease-in-out;
+    /* Transición de 1 segundo para la opacidad */
+    opacity: 1;
+    /* Inicio con opacidad completa */
 }
 
 .alert.fade-out {
-    opacity: 0; /* Opacidad final es 0, totalmente transparente */
+    opacity: 0;
+    /* Opacidad final es 0, totalmente transparente */
 }
 
 .camposYear {
     width: 100% !important;
+}
+
+.text-justify {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.NosotrosAcordion {
+    background-color: #3B4290 !important;
+    color: #FDFFFA;
+    border-color: #E53F67;
+    border-width: 0.2rem;
+    border-radius: 8px;
+}
+
+.NosotrosAcordion::not(.collapsed) {
+    color: #FDFFFA !important;
+    background-color: #3B4290 !important;
+}
+
+.NosotrosAcordion.accordion-item:not(:first-of-type) {
+    border-top: 1px solid transparent;
+    box-sizing: border-box;
+    
+}
+
+.NosotrosAcordion .accordion-button.collapsed {
+    background-color: #2D285E !important;
+}
+
+.NosotrosAcordion.accordion-button:not(.collapsed) {
+    color: #F6AB0F !important;
+    background-color: #22214D !important;
+}
+
+.NosotrosAcordLate {
+    background-color: #F6AB0F;
+}
+
+/* Cambiar el color de la flecha en estado colapsado */
+.NosotrosAcordion .accordion-button::after {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill="%23F6AB0F" d="M6 8l4 4 4-4z"/></svg>');
+}
+
+@media (max-width: 768px) {
+    .nosotrosAyudaRow {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .nosotrosAyudaCol {
+        width: 100%;
+    }
+
+    .regRow {
+
+    }
+
+    .ms-4 {
+        margin-left: 0rem !important;
+    }
 }

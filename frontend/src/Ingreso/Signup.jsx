@@ -399,7 +399,7 @@ function Signup() {
       </div>
 
       <form className="form" onSubmit={handleSubmit}>
-        <div class="row">
+        <div class="regRow row">
           <div class="col">
             <div className="subtituloReg form-text-info text-start">Nombre</div>
             <div className="mt-2">
@@ -582,9 +582,9 @@ function Signup() {
           </div>
         </div>
 
-        <div class="d-grid gap-2 col-6 mx-auto mt-5">
+        <div class="d-grid gap-2 col-6 mx-auto mt-5 justify-content-center">
           <button
-            class="BotonIniciarSesion btn btn-primary border border-0 fw-bold"
+            class="BotonIniciarSesion btn btn-primary border border-0 fw-bold justify-content-center"
             type="button"
           >
             Registrarse
