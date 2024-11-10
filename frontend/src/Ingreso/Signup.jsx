@@ -349,27 +349,29 @@ function Signup() {
     const formData = {
       first_name: firstName,
       first_surname: firstLastName,
-      identification: id,
+      identification: parseInt(id), // Asegura que sea un entero
       second_name: secondName,
       second_surname: secondLastName,
       institutional_email: email,
       phone_number: number,
       birth_date: birthdate,
-      gender_id: parseInt(gender), // Asegúrate de enviar el ID numérico del género
-      user_type_id: 1, // Coloca aquí el ID predeterminado para el tipo de usuario
-      institution_id: parseInt(institution), // Asegúrate de enviar el ID numérico de la institución
-      date_registered: new Date().toISOString().split("T")[0], // Fecha de registro actual
-      rating: 0, // Valor inicial de rating
-      total_ratings: 0, // Total inicial de ratings
+      gender_id: parseInt(gender),
+      user_type_id: 1,
+      institution_id: parseInt(institution),
+      date_registered: new Date().toISOString().split("T")[0],
+      rating: 0.0,
+      total_ratings: 0,
     };
+    
 
+    console.log(formData);
     try {
       const response = await axios.post(endpoint, formData, {
         headers: {
           "Content-Type": "application/json", // Esta línea es importante para el correcto manejo del FormData
         },
       });
-      console.log(response.data)
+      
       // Verifica si la respuesta del servidor indica un registro exitoso.
       if (response.data.message === "User registered successfully") {
         //navigate('/Login'); // O redirige a la pantalla de login, según lo que necesites.
@@ -377,7 +379,7 @@ function Signup() {
         // Si el mensaje no indica éxito, muestra un mensaje de error.
         setErrorMessage(response.data.message);
       }
-      
+      console.log(response.data)
     } catch (error) {
       // Captura errores de la solicitud y muestra un mensaje de error.
       setErrorMessage(error.response?.data.error || "An error occurred.");
@@ -539,7 +541,7 @@ function Signup() {
               />
             </div>
           </div>
-          <div class="col">
+          <div className="col">
             <div className="subtituloReg form-text-info text-start ms-4">
               Fecha de nacimiento
             </div>
@@ -549,7 +551,7 @@ function Signup() {
                   <DatePicker
                     className="campos ms-4"
                     label="Selecciona tu fecha de nacimiento"
-                    onChange={setBirthdate} // Actualiza el estado cuando cambia la fecha
+                    onChange={(date) => setBirthdate(date?.format("YYYY-MM-DD"))} // Formatea a "YYYY-MM-DD"
                     renderInput={(params) => <TextField {...params} required />}
                     required
                     maxDate={minAgeDate}
@@ -558,6 +560,7 @@ function Signup() {
               </ThemeProvider>
             </div>
           </div>
+
         </div>
         <div class="row">
           <div class="col-8">
