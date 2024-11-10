@@ -1,7 +1,7 @@
 // Importaciones de React y otras librerías.
 import { useState, useEffect } from "react"; // useState es importado pero no se usa, considera removerlo si no es necesario.
 import axios from "axios"; // Axios es importado para realizar posibles solicitudes HTTP.
-import { Link } from "react-router-dom"; // Importa Link de react-router-dom para la navegación sin recarga.
+import { Link, useHistory } from "react-router-dom"; // Importa Link de react-router-dom para la navegación sin recarga.
 
 //Backend
 const API_URL = import.meta.env.VITE_API_URL; // Para Vite
@@ -31,6 +31,7 @@ const getNavBarComponent = (role) => {
 
 // Definición del componente funcional HomeGuest.
 function Nosotros() {
+    const history = useHistory();
     const user = JSON.parse(localStorage.getItem('user'));
 
     // Renderiza el componente HomeGuest.
@@ -180,14 +181,13 @@ function Nosotros() {
                 </div>
             </div>
             <div class="d-grid gap-2 col-6 mx-auto mt-5 justify-content-center">
-                <a href="#" onClick={(e) => { e.preventDefault(); navigate(-1); }}>
-                    <button
-                        class="BotonIniciarSesion btn btn-primary border border-0 fw-bold justify-content-center mb-5"
-                        type="button"
-                    >
-                        Regresar
-                    </button>
-                </a>
+                <button
+                    className="BotonIniciarSesion btn btn-primary border border-0 fw-bold justify-content-center mb-5"
+                    type="button"
+                    onClick={() => history.goBack()}
+                >
+                    Regresar
+                </button>
             </div>
         </div>
     );

@@ -8,12 +8,39 @@ import { DatePicker } from '@mui/x-date-pickers';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import dayjs from 'dayjs';
 
+//Backend
+const API_URL = import.meta.env.VITE_API_URL; // Para Vite
+
 // Importación de componentes locales.
+// Importación de componentes locales.
+import NavBar_Guest from '../NavBar/NavBar-Guest'; // Importa el componente NavBar_Guest, la barra de navegación para usuarios no autenticados.
+import NavBar_Client from '../NavBar/NavBar-Client'; // Importa el componente NavBar_Guest, la barra de navegación para usuarios no autenticados.
+import NavBar_Driver from '../NavBar/NavBar-Driver'; // Importa el componente NavBar_Guest, la barra de navegación para usuarios no autenticados.
+import NavBar_Admin from '../NavBar/NavBarAdmin'; // Importa el componente NavBar_Guest, la barra de navegación para usuarios no autenticados.
+import NavBar_AdminXinst from '../NavBar/NavBarAdminXinst'; // Importa el componente NavBar_Guest, la barra de navegación para usuarios no autenticados.
+
+
+const navBarComponents = {
+    0: NavBar_Guest,
+    1: NavBar_Client,
+    4: NavBar_Driver,
+    2: NavBar_Admin,
+    3: NavBar_AdminXinst
+};
+
+const getNavBarComponent = (role) => {
+    const Component = navBarComponents[role] || NavBar_Guest; // Retorna NavBarGuest como default si el rol no coincide
+    return <Component />;
+};
+
 import '../Ingreso/Signup.css';
 
 // Definición del componente funcional HomeGuest.
 function RegistrarVehiculo() {
+    const user = JSON.parse(localStorage.getItem('user'));
     const minAgeDate = dayjs().subtract(17, 'year'); // Resta 16 años al año actual
+    const [brands, setBrands] = useState([]);
+    const [types, setTypes] = useState([]);
 
     // Declaración de estados para email y password usando el hook useState de React.
     const [Placa, setPlaca] = useState("");
@@ -27,6 +54,38 @@ function RegistrarVehiculo() {
     // Estado para manejar mensajes de error.
     const [errorMessage, setErrorMessage] = useState('');
     const [fade, setFade] = useState(false);
+
+    useEffect(() => {
+        const fetchInstitutions = async () => {
+            try {
+                const response = await axios.get(`${API_URL}/brands`);
+                setBrands(response.data); // Guarda las instituciones en el estado
+            } catch (error) {
+                console.error("Error al cargar las marcas de vehículo:", error);
+                setErrorMessage(
+                    "Error al cargar las marcas de vehículo. Inténtalo de nuevo."
+                );
+            }
+        };
+
+        fetchInstitutions();
+    }, []);
+
+    useEffect(() => {
+        const fetchInstitutions = async () => {
+            try {
+                const response = await axios.get(`${API_URL}/vehicle_types`);
+                setTypes(response.data); // Guarda las instituciones en el estado
+            } catch (error) {
+                console.error("Error al cargar los modelos de vehículo:", error);
+                setErrorMessage(
+                    "Error al cargar los modelos de vehículo. Inténtalo de nuevo."
+                );
+            }
+        };
+
+        fetchInstitutions();
+    }, []);
 
     useEffect(() => {
         if (errorMessage && !fade) {
@@ -341,6 +400,7 @@ function RegistrarVehiculo() {
     // Renderiza el componente HomeGuest.
     return (
         <div className="subfondoSignup text-start align-center mx-5">
+            {user ? getNavBarComponent(user.user_type.id) : <NavBar_Guest />} {/* Inserta la barra de navegación para invitados en la parte superior de la página. */}
             <div className="CampoRE">
                 <h1 className="RE">Registro de vehículo</h1>
             </div>
@@ -397,10 +457,14 @@ function RegistrarVehiculo() {
                                 required
                                 onChange={(e) => setMarca(e.target.value)}
                             >
-                                <option className="opcionesInst" selected disabled value="">Selecciona tu marca de vehículo</option>
-                                <option className="opcionesInst">Toyota</option>
-                                <option className="opcionesInst">Nissan</option>
-                                <option className="opcionesInst">Tesla</option>
+                                <option className="opcionesInst" selected disabled value="">
+                                    Selecciona tu marca de vehículo
+                                </option>
+                                {brands.map((brand) => (
+                                    <option className="opcionesInst" key={brand.id} value={brand.id}>
+                                        {brand.name}
+                                    </option>
+                                ))}
                             </select>
                         </div>
                     </div>
@@ -416,10 +480,14 @@ function RegistrarVehiculo() {
                                 required
                                 onChange={(e) => setModelo(e.target.value)}
                             >
-                                <option className="opcionesInst" selected disabled value="">Selecciona tu modelo de vehículo</option>
-                                <option className="opcionesInst">Toyota</option>
-                                <option className="opcionesInst">Nissan</option>
-                                <option className="opcionesInst">Tesla</option>
+                                <option className="opcionesInst" selected disabled value="">
+                                    Selecciona tu modelo de vehículo
+                                </option>
+                                {types.map((type) => (
+                                    <option className="opcionesInst" key={type.id} value={type.id}>
+                                        {type.name}
+                                    </option>
+                                ))}
                             </select>
                         </div>
                     </div>
@@ -468,7 +536,7 @@ function RegistrarVehiculo() {
                                         onChange={setLicencia} // Actualiza el estado cuando cambia la fecha
                                         renderInput={(params) => <TextField {...params} required />}
                                         required
-                                        maxDate={minAgeDate}
+                                        minDate={dayjs().add(0, 'year')}
                                     />
                                 </LocalizationProvider>
                             </ThemeProvider>

@@ -88,9 +88,9 @@ function Signup() {
                 borderColor: "#E53F67", // Borde transparente en estado normal
               },
               "&:hover .MuiOutlinedInput-notchedOutline, &:focus-within .MuiOutlinedInput-notchedOutline":
-                {
-                  borderColor: "#F6AB0F", // Cambia el color del borde a blanco en hover y focus
-                },
+              {
+                borderColor: "#F6AB0F", // Cambia el color del borde a blanco en hover y focus
+              },
             },
             // Oculta la etiqueta cuando el TextField está en su estado contraído (shrink)
             "& .MuiInputLabel-shrink": {
@@ -119,18 +119,18 @@ function Signup() {
             borderColor: "#E53F67",
             // Cuando el componente es enfocado o en hover, muestra el borde
             "&:hover .MuiOutlinedInput-notchedOutline, &:focus-within .MuiOutlinedInput-notchedOutline":
-              {
-                borderColor: "#E53F67", // Define el color del borde en hover o focus.
-              },
+            {
+              borderColor: "#E53F67", // Define el color del borde en hover o focus.
+            },
           },
           notchedOutline: {
             "&.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline": {
               borderColor: "#F6AB0F",
             },
             "&.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-              {
-                borderColor: "#F6AB0F",
-              },
+            {
+              borderColor: "#F6AB0F",
+            },
             borderColor: "#E53F67",
             borderWidth: "2px",
             borderRadius: "0.375rem",
@@ -362,7 +362,7 @@ function Signup() {
       rating: 0.0,
       total_ratings: 0,
     };
-    
+
 
     console.log(formData);
     try {
@@ -371,18 +371,23 @@ function Signup() {
           "Content-Type": "application/json", // Esta línea es importante para el correcto manejo del FormData
         },
       });
-      
+
       // Verifica si la respuesta del servidor indica un registro exitoso.
-      if (response.data.message === "User registered successfully") {
-        //navigate('/Login'); // O redirige a la pantalla de login, según lo que necesites.
-      } else {
-        // Si el mensaje no indica éxito, muestra un mensaje de error.
-        setErrorMessage(response.data.message);
+      if (response.status === 201) {
+        // Si el status es 201, se maneja el éxito
+        // Aquí podrías redirigir al usuario o limpiar el formulario, etc.
+        // Por ejemplo: navigate('/login');
+      } else if (response.data && response.data.detail) {
+        // Si el servidor devuelve un código que no es 201 pero incluye un 'detail'
+        setErrorMessage(response.data.detail);
       }
-      console.log(response.data)
     } catch (error) {
-      // Captura errores de la solicitud y muestra un mensaje de error.
-      setErrorMessage(error.response?.data.error || "An error occurred.");
+      // El bloque 'catch' solo se usa para errores de red o problemas no capturados por las respuestas normales del servidor
+      if (error.response && error.response.data && error.response.data.detail) {
+        setErrorMessage(error.response.data.detail);
+      } else {
+        setErrorMessage("An error occurred. Please try again.");
+      }
     }
   };
 
@@ -427,7 +432,6 @@ function Signup() {
                 className="campos form-control bg-transparent rounded-2 text-white"
                 id="Registro"
                 aria-describedby="nameHelp"
-                required
                 placeholder="Segundo nombre"
                 onChange={(e) => setSecondName(e.target.value)}
               />
@@ -447,7 +451,7 @@ function Signup() {
                 value={institution}
                 onChange={(e) => setInstitution(e.target.value)}
               >
-                <option className="opcionesInst" disabled value="">
+                <option className="opcionesInst" selected disabled value="">
                   Selecciona tu institución
                 </option>
                 {institutions.map((institution) => (
@@ -611,9 +615,8 @@ function Signup() {
 
         {errorMessage && (
           <div
-            className={`alert alert-danger text-white bg-danger text-center ${
-              fade ? "fade-out" : ""
-            }`}
+            className={`alert alert-danger text-white bg-danger text-center ${fade ? "fade-out" : ""
+              }`}
           >
             {errorMessage}
           </div>

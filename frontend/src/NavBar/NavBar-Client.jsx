@@ -117,7 +117,7 @@ const NavComponent = () => {
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="/RegistrarVehiculo" className="btn btn">
+                            <Link to="/RegistrarVehiculoLicencia" className="btn btn">
                                 <a className="nav-link" aria-current="page">Convertirme en conductor</a>
                             </Link>
                         </li>
