@@ -2,7 +2,7 @@ import * as React from 'react';
 import axios from 'axios'; // Librería para realizar solicitudes HTTP, utilizada potencialmente en futuras operaciones de red.
 
 // Importación de componentes y estilos locales.
-import NavBar_Client from '../src/NavBar/NavBar-Client'; // Componente NavBar_Guest para la barra de navegación de usuarios no autenticados.
+import NavBarAdmin from '../NavBar/NavBarAdmin'; // Componente NavBar_Guest para la barra de navegación de usuarios no autenticados.
 import { Link } from 'react-router-dom'; // Componente Link para navegación SPA (Single Page Application).
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider, DateTimePicker } from '@mui/x-date-pickers';
@@ -10,14 +10,12 @@ import { MobileDateTimePicker } from '@mui/x-date-pickers/MobileDateTimePicker';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { DateTimePickerTabs } from '@mui/x-date-pickers/DateTimePicker';
 import Box from '@mui/material/Box';
-import './HomeClient.css'; // Estilos específicos para el componente HomeGuest.
+import '../Home/HomeAdmin.css'; // Estilos específicos para el componente HomeAdmin.
 
 // Importación de recursos gráficos.
-import Carpool from '../../íconos/Carpool.png'; // Icono gráfico representativo del carpooling.
-import DesdeHasta from '../../íconos/Desde-Hasta.png'; // Iconos para los campos de entrada de origen y destino.
-import Calendar from '../../íconos/Calendar.png'; // Icono de calendario para el campo de fecha.
-import FlechaIngresar from '../../íconos/flecha ingresar.png'; // Icono de flecha para el botón de búsqueda.
-import Arrow from '../../íconos/Arrow.png'
+
+import viajes from '../../../íconos/viajes.png'
+import viajeros from '../../../íconos/viajero.png'
 
 /**
  * Función HomeGuest que renderiza la vista principal para usuarios no autenticados.
@@ -183,116 +181,8 @@ const theme = createTheme({
                 }
             }
         },
-
-        // Personalización de la apariencia del calendario de fechas.
-        MuiDateCalendar: {
-            styleOverrides: {
-                root: {
-                    // Establece el color de fondo y texto del calendario para mejorar la legibilidad y coherencia visual.
-                    backgroundColor: '#3B4290',
-                    color: '#FDFFFA',
-                }
-            }
-        },
-
-        // Ajustes para los labels de los días de la semana dentro del calendario.
-        MuiDayCalendar: {
-            styleOverrides: {
-                weekDayLabel: {
-                    // Asegura que el color de los labels de los días de la semana sea blanco para destacar sobre el fondo oscuro.
-                    color: '#FDFFFA !important',
-                }
-            }
-        },
-
-        // Configuración de estilos para los días dentro de los componentes de selección de fecha.
-        MuiPickersDay: {
-            styleOverrides: {
-                dayWithMargin: {
-                    // Define el color de texto para los días con margen, asegurando que sean legibles.
-                    color: '#FDFFFA'
-                },
-                root: {
-                    // Estilos aplicados a todos los días en el componente picker.
-                    '&.Mui-selected': {
-                        // Estilo para los días seleccionados, utilizando un color de fondo rojo para resaltar la selección.
-                        backgroundColor: '#E53F67',
-                        '&:hover': {
-                            // Color de fondo cuando se pasa el ratón por encima de un día seleccionado, haciendo que sea más oscuro.
-                            backgroundColor: '#A73548',
-                        }
-                    },
-                    '&:not(.Mui-selected)': {
-                        // Define el color de borde para días no seleccionados para mantener la coherencia visual.
-                        borderColor: '#F6AB0F',
-                        '&:hover': {
-                            // Establece un color de fondo al pasar el ratón por encima de días no seleccionados, para un feedback visual claro.
-                            backgroundColor: '#353B82',
-                        }
-                    }
-                }
-            }
-        },
-        // Configuración para las acciones de los diálogos, usualmente botones en la parte inferior.
-        MuiDialogActions: {
-            styleOverrides: {
-                root: {
-                    // Establece un color de fondo consistente para las acciones dentro de los diálogos, coherente con el tema general.
-                    backgroundColor: '#3B4290',
-                }
-            }
-        },
-
-        // Personalización para todos los botones dentro de la aplicación.
-        MuiButton: {
-            styleOverrides: {
-                root: {
-                    // Color del texto de los botones para garantizar visibilidad.
-                    color: '#F6AB0F',
-                    '&:hover': {
-                        // Define un cambio de color de fondo al pasar el ratón por encima para una retroalimentación visual intuitiva.
-                        backgroundColor: '#353B82',
-                    }
-                }
-            }
-        },
-
-        // Estilos para el reloj utilizado en los pickers de tiempo.
-        MuiTimeClock: {
-            styleOverrides: {
-                root: {
-                    // Asegura que el reloj se muestre con un fondo que se integra con el resto de la interfaz.
-                    backgroundColor: '#3B4290',
-                }
-            }
-        },
-
-        // Ajustes para el componente de reloj.
-        MuiClock: {
-            styleOverrides: {
-                squareMask: {
-                    // Fondo para la máscara del reloj, garantizando que contraste con los elementos que se sobreponen.
-                    backgroundColor: '#FDFFFA'
-                }
-            }
-        },
-
-        // Estilos para los switchers de flecha en los componentes de selección de fechas y tiempo.
-        MuiPickersArrowSwitcher: {
-            styleOverrides: {
-                button: {
-                    // Fondo transparente para los botones con flechas, manteniendo la interfaz limpia y minimalista.
-                    backgroundColor: 'transparent',
-                    '&:hover': {
-                        // Cambio de color de fondo al pasar el ratón por encima para mejorar la interactividad.
-                        backgroundColor: '#353B82',
-                    }
-                }
-            }
-        }
     }
 });
-
 function CustomTabs(props) {
     return (
         // React.Fragment permite agrupar una lista de hijos sin agregar nodos extra al DOM.
@@ -306,51 +196,174 @@ function CustomTabs(props) {
         </React.Fragment>
     );
 }
-
-
-
-function IntegrantesxInst() {
+function EstadisticasxInst() {
     return (
         <div>
-            {/* Barra de navegación para usuarios no autenticados */}
-            <NavBar_Client />
-            <div style={{ fontSize: '30px' }}>Integrantes X *institución*</div>
-            <div className="d-flex justify-content-center mt-3">
-                <form className="d-flex" role="search">
-                    <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" style={{ width: '400px' }} />
-                    <button className="btn btn-primary" type="submit" style={{ backgroundColor: '#E53F67', borderColor: '#FDFFFA' }}>Buscar</button>
-                </form>
-            </div>
-
-            {/* Contenedor principal para las cards y la flecha */}
-            <div className="container mt-4 d-flex align-items-center justify-content-between">
-                {/* Contenedor de las cards */}
-                <div className="row flex-grow-1 justify-content-center">
-                    {[1, 2, 3].map((_, index) => (
-                        <div className="col-12 col-md-4 mb-3" key={index}>
-                            <div className="card trip-card p-3">
-                                <h6 className="text-danger">Nombre: <span>*Nombre*</span></h6>
-                                <p>Administrador: *Nombre*</p>
-                                <p>Correo: *Correo*</p>
-                                <p>Genero: *Genero*</p>
-
-                                <button className="btn btn-danger w-100 mt-2">Eliminar</button>
-                            </div>
-                        </div>
-                    ))}
+          {/* Barra de navegación para administradores */}
+          <NavBarAdmin />
+          <div style={{ fontSize: '30px' }}>Estadisticas X *institución*</div>
+    
+          {/* Contenedor principal para las tarjetas */}
+          <div className="container4">
+            {/* Fila de tarjetas principales */}
+            <div className="row container3">
+              <div className="col-12 col-sm-6 col-md-3 container2">
+                <div className="row">
+                  <div className="col-4">
+                    <img src={viajes} className="card-img my-5" alt="imageviajes" />
+                  </div>
+                  <div className="col-8">
+                    <div className="row">
+                      <div style={{ fontSize: '20px' }}>Viajes totales</div>
+                    </div>
+                    <div className="row">*Estadística de viajes en la institución*</div>
+                  </div>
                 </div>
-                
-                
-
-                {/* Imagen de la flecha */}
-                <div className="arrow-container ms-3">
-                    <button className="arrow-button">
-                        <img src={FlechaIngresar} alt="Flecha Ingresar" className="arrow-image" />
-                    </button>
+              </div>
+              <div className="col-12 col-sm-6 col-md-3 container2">
+                <div className="row">
+                  <div className="col-4">
+                    <img src={viajeros} className="card-img my-5" alt="imageviajeros" />
+                  </div>
+                  <div className="col-8">
+                    <div className="row">
+                      <div style={{ fontSize: '20px' }}>Viajeros totales</div>
+                    </div>
+                    <div className="row">*Estadística de viajeros en la institución*</div>
+                  </div>
                 </div>
+              </div>
+              <div className="col-12 col-sm-6 col-md-3 container2">
+                <div className="row">
+                  <div className="col-4">
+                    <img src={viajeros} className="card-img my-5" alt="imageconductores" />
+                  </div>
+                  <div className="col-8">
+                    <div className="row">
+                      <div style={{ fontSize: '20px' }}>Conductores totales</div>
+                    </div>
+                    <div className="row">*Estadística de conductores en la institución*</div>
+                  </div>
+                </div>
+              </div>
+              <div className="col-12 col-sm-6 col-md-3 container2">
+                <div className="row">
+                  <div className="col-4">
+                    <img src={viajeros} className="card-img my-5" alt="imageinstituciones" />
+                  </div>
+                  <div className="col-8">
+                    <div className="row">
+                      <div style={{ fontSize: '20px' }}>Conductores por institución</div>
+                    </div>
+                    <div className="row">*Estadística de Conductores por institución*</div>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
+    
+          {/* Secciones de estadísticas detalladas */}
+          <div className="container4">
+            <div className="row container3">
+              <div className="col-12 col-md-6 container2">
+                <h4>Top 5 usuarios con más viajes (conductor) por institución(lista en orden de objetos)</h4>
+                <div className="row">
+                  <div className="col-12 col-sm-4">*gráfico*</div>
+                  <div className="col-12 col-sm-8">*estadística*</div>
+                </div>
+              </div>
+              <div className="col-12 col-md-6 container2">
+                <h4>Top 5 usuarios con más viajes (viajero) por institución (lista en orden de objetos)</h4>
+                <div className="row">
+                  <div className="col-12 col-sm-4">*gráfico*</div>
+                  <div className="col-12 col-sm-8">*estadística*</div>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+          
+    
+          <div className="container4">
+            <div className="row container3">
+              <div className="col-12 col-sm-6 col-md-3 container2">
+                <div className="row">
+                  <div className="col-4">
+                    <img src={viajeros} className="card-img my-5" alt="imageviajeros" />
+                  </div>
+                  <div className="col-8">
+                    <div className="row">
+                      <div style={{ fontSize: '20px' }}>Promedio de precios por institución</div>
+                    </div>
+                    <div className="row">*Estadística de precios propia*</div>
+                  </div>
+                </div>
+              </div>
+              <div className="col-12 col-sm-6 col-md-3 container2">
+                <div className="row">
+                  <div className="col-4">
+                    <img src={viajeros} className="card-img my-5" alt="imageviajeros" />
+                  </div>
+                  <div className="col-8">
+                    <div className="row">
+                      <div style={{ fontSize: '20px' }}>Porcentaje de viajes por género </div>
+                    </div>
+                    <div className="row">*Estadística de género propia(circulo)*</div>
+                  </div>
+                </div>
+              </div>
+              <div className="col-12 col-sm-6 col-md-3 container2">
+                <div className="row">
+                  <div className="col-4">
+                    <img src={viajeros} className="card-img my-5" alt="imageconductores" />
+                  </div>
+                  <div className="col-8">
+                    <div className="row">
+                      <div style={{ fontSize: '20px' }}>
+                      Porcentaje de viajes por institución
+                      </div>
+                    </div>
+                    <div className="row">*Porcentaje de viajes por institución(lista)*</div>
+                  </div>
+                </div>
+              </div>
+              <div className="col-12 col-sm-6 col-md-3 container2">
+                <div className="row">
+                  <div className="col-4">
+                    <img src={viajeros} className="card-img my-5" alt="imageinstituciones" />
+                  </div>
+                  <div className="col-8">
+                    <div className="row">
+                      <div style={{ fontSize: '20px' }}>
+                      Porcentaje de viajes completados en la última semana, mes y año
+                      </div>
+                    </div>
+                    <div className="row">*Porcentaje de viajes completados en la última semana, mes y año por institución(array de ints en orden por rango)*</div>
+                  </div>
+                  
+                </div>
+              </div>
+              <div className="col-12 col-sm-6 col-md-3 container2">
+                <div className="row">
+                  <div className="col-4">
+                    <img src={viajeros} className="card-img my-5" alt="imageinstituciones" />
+                  </div>
+                  <div className="col-8">
+                    <div className="row">
+                      <div style={{ fontSize: '20px' }}>
+                      Porcentaje de usuarios nuevos en la última semana, mes y año
+                      </div>
+                    </div>
+                    <div className="row">*Porcentaje de usuarios nuevos en la última semana, mes y año por institución(array de ints en orden por rango)*</div>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-    );
-}
+      );
+    }
+    
 
-export default IntegrantesxInst;
+export default EstadisticasxInst;

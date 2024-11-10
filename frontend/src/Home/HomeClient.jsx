@@ -17,7 +17,7 @@ import * as React from 'react';
 import axios from 'axios'; // Librería para realizar solicitudes HTTP, utilizada potencialmente en futuras operaciones de red.
 
 // Importación de componentes y estilos locales.
-import NavBar_Client from '../src/NavBar/NavBar-Driver'; // Componente NavBar_Guest para la barra de navegación de usuarios no autenticados.
+import NavBar_Client from '../NavBar/NavBar-Client'; // Componente NavBar_Guest para la barra de navegación de usuarios no autenticados.
 import { Link } from 'react-router-dom'; // Componente Link para navegación SPA (Single Page Application).
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider, DateTimePicker } from '@mui/x-date-pickers';
@@ -25,14 +25,16 @@ import { MobileDateTimePicker } from '@mui/x-date-pickers/MobileDateTimePicker';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { DateTimePickerTabs } from '@mui/x-date-pickers/DateTimePicker';
 import Box from '@mui/material/Box';
-import './HomeDriver.css'; // Estilos específicos para el componente HomeGuest.
+import './HomeClient.css'; // Estilos específicos para el componente HomeGuest.
 
 // Importación de recursos gráficos.
-import Carpool from '../../íconos/Carpool.png'; // Icono gráfico representativo del carpooling.
-import DesdeHasta from '../../íconos/Desde-Hasta.png'; // Iconos para los campos de entrada de origen y destino.
-import Calendar from '../../íconos/Calendar.png'; // Icono de calendario para el campo de fecha.
-import CarpoolImagen from '../../íconos/CarpoolImagen.png' // Imagen sobre carpooling. Hay que arreglarla (mal cortado el borde)
-import Arrow from '../../íconos/Arrow.png'
+import Carpool from '../../../íconos/Carpool.png'; // Icono gráfico representativo del carpooling.
+import DesdeHasta from '../../../íconos/Desde-Hasta.png'; // Iconos para los campos de entrada de origen y destino.
+import Calendar from '../../../íconos/Calendar.png'; // Icono de calendario para el campo de fecha.
+import CarpoolImagen from '../../../íconos/CarpoolImagen.png' // Imagen sobre carpooling. Hay que arreglarla (mal cortado el borde)
+import Arrow from '../../../íconos/Arrow.png'
+import FlechaIngresar from '../../../íconos/Flecha Ingresar.png'; // Icono de flecha para indicar la dirección de la acción.
+
 
 /**
  * Función HomeGuest que renderiza la vista principal para usuarios no autenticados.
@@ -323,95 +325,77 @@ function CustomTabs(props) {
 }
 
 
-function HomeDriver() {
+
+function HomeClient() {
     return (
         <div>
             {/* Barra de navegación para usuarios no autenticados */}
             <NavBar_Client />
 
-            {/* Sección principal con imagen de fondo y mensaje de bienvenida */}
-            <div className="hero-image text-center">
-                <div className="content position-absolute mt-5 start-50 translate-middle">
-                    <h1 className="Titulo">Conectando compañeros, reduciendo huellas</h1>
-                </div>
-            </div>
-
-
-             {/* Título "Publicar Viaje" */}
-             <div className="text-center mt-3">
-                <h1 className="titulo-publicar">Publicar Viaje</h1>
-            </div>
-
-            {/* Contenedor para los campos de entrada */}
+            {/* Contenedor para los campos de entrada de búsqueda de viajes */}
             <div className="container text-start mt-3">
-                {/* Primera Fila: 4 Columnas */}
                 <div className="row mx-1">
-                    <div className="col-12 col-md-3 mb-3">
-                        <div className="input-group">
+                    <div className="col-12 col-md-4">
+                        <div className="input-group mb-2 mt-2">
                             <img src={DesdeHasta} alt="DesdeHasta" className="input-group-text" height={40} />
-                            <input type="text" className="form-control custom-input-color" placeholder="De" />
+                            <input type="text" className="form-control custom-input-color" placeholder="Desde" />
+                            <div className="vr"></div>
                         </div>
                     </div>
 
-                    <div className="col-12 col-md-3 mb-3">
-                        <div className="input-group">
+                    <div className="col-12 col-md-4">
+                        <div className="input-group mb-2 mt-2">
                             <img src={DesdeHasta} alt="DesdeHasta" className="input-group-text" height={40} />
                             <input type="text" className="form-control custom-input-color" placeholder="Hasta" />
+                            <div className="vr"></div>
                         </div>
                     </div>
 
-                    <div className="col-12 col-md-3 mb-3">
-                        <div className="input-group-date">
+                    <div className="col-12 col-md-4">
+                        <div className="input-group-date mb-2 mt-2">
                             <ThemeProvider theme={theme}>
                                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                                     <img src={Calendar} alt="Calendar" className="input-group-text" height={40} />
                                     <MobileDateTimePicker label="¿Cuándo?" disablePast />
                                 </LocalizationProvider>
                             </ThemeProvider>
-                        </div>
-                    </div>
-
-                    <div className="col-12 col-md-3 mb-3">
-                        <div className="input-group">
-                            <img src={DesdeHasta} alt="DesdeHasta" className="input-group-text" height={40} />
-                            <input type="text" className="form-control custom-input-color" placeholder="Ruta" />
+                            <Link to="/Login" className="btn btn-outline-secondary">Buscar</Link>
                         </div>
                     </div>
                 </div>
-
-                {/* Segunda Fila: 3 Columnas */}
-                <div className="row mx-1">
-                    <div className="col-12 col-md-4 mb-3">
-                        <div className="input-group">
-                            <img src={DesdeHasta} alt="DesdeHasta" className="input-group-text" height={40} />
-                            <input type="text" className="form-control custom-input-color" placeholder="Auto" />
-                        </div>
-                    </div>
-
-                    <div className="col-12 col-md-4 mb-3">
-                        <div className="input-group">
-                            <img src={DesdeHasta} alt="DesdeHasta" className="input-group-text" height={40} />
-                            <input type="text" className="form-control custom-input-color" placeholder="Precio" />
-                        </div>
-                    </div>
-
-                    <div className="col-12 col-md-4 mb-3">
-                        <div className="input-group">
-                            <img src={DesdeHasta} alt="DesdeHasta" className="input-group-text" height={40} />
-                            <input type="text" className="form-control custom-input-color" placeholder="Cupos" />
-                        </div>
-                    </div>
-                </div>
-
-                
             </div>
-            {/* Botón para publicar */}
-            <div className="col-12 mt-4 text-center">
-                    <button className="btn btn-danger w-100">Publicar</button>
+
+            {/* Contenedor principal para las cards y la flecha */}
+            <div className="container mt-4 d-flex align-items-center justify-content-between">
+                {/* Contenedor de las cards */}
+                <div className="row flex-grow-1 justify-content-center">
+                    {[1, 2, 3].map((_, index) => (
+                        <div className="col-12 col-md-4 mb-3" key={index}>
+                            <div className="card trip-card p-3">
+                                <h6 className="text-danger">Conductor: <span>Daniel Muñoz</span></h6>
+                                <p>Vehículo: Toyota Yaris - BFT111</p>
+                                <p>Inicio: Curridabat</p>
+                                <p>Final: Instituto Tecnológico San José</p>
+                                <p>Cupos: 2</p>
+                                <p>Fecha: 30-09-24</p>
+                                <p>Precio: 1000 colones</p>
+                                <button className="btn btn-danger w-100 mt-2">Ver Viaje</button>
+                            </div>
+                        </div>
+                    ))}
                 </div>
+
+                {/* Imagen de la flecha */}
+                <div className="arrow-container ms-3">
+                    <button className="arrow-button">
+                        <img src={FlechaIngresar} alt="Flecha Ingresar" className="arrow-image" />
+                    </button>
+                </div>
+            </div>
         </div>
     );
 }
 
-export default HomeDriver;
+export default HomeClient;
+
 

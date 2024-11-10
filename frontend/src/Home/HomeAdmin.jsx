@@ -2,7 +2,7 @@ import * as React from 'react';
 import axios from 'axios'; // Librería para realizar solicitudes HTTP.
 
 // Importación de componentes y estilos locales.
-import NavBarAdmin from '../src/NavBar/NavBarAdmin';
+import NavBarAdmin from '../NavBar/NavBarAdmin';
 import { Link } from 'react-router-dom';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider, DateTimePicker } from '@mui/x-date-pickers';
@@ -13,13 +13,13 @@ import Box from '@mui/material/Box';
 import './HomeAdmin.css';
 
 // Importación de recursos gráficos.
-import Carpool from '../../íconos/Carpool.png';
-import DesdeHasta from '../../íconos/Desde-Hasta.png';
-import Calendar from '../../íconos/Calendar.png';
-import FlechaIngresar from '../../íconos/flecha ingresar.png';
-import Arrow from '../../íconos/Arrow.png';
-import viajes from '../../íconos/viajes.png';
-import viajeros from '../../íconos/viajero.png';
+import Carpool from '../../../íconos/Carpool.png';
+import DesdeHasta from '../../../íconos/Desde-Hasta.png';
+import Calendar from '../../../íconos/Calendar.png';
+import FlechaIngresar from '../../../íconos/flecha ingresar.png';
+import Arrow from '../../../íconos/Arrow.png';
+import viajes from '../../../íconos/viajes.png';
+import viajeros from '../../../íconos/viajero.png';
 
 /**
  * Función HomeAdmin que renderiza la vista principal para administradores.

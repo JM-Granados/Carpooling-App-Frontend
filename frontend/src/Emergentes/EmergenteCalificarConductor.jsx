@@ -3,8 +3,8 @@ import { useState } from 'react';
 import axios from 'axios';
  
 // Importación de componentes y estilos locales.
-import NavBarDriver from '../src/NavBar/NavBar-Driver'; // Componente NavBar_Guest para la barra de navegación de usuarios no autenticados.
-import './EmergenteCalificarViajeros.css'; // Estilos específicos para el componente Perfil Conductor.
+import NavBarDriver from '../NavBar/NavBar-Driver'; // Componente NavBar_Guest para la barra de navegación de usuarios no autenticados.
+import './EmergenteCalificarConductor.css'; // Estilos específicos para el componente Perfil Conductor.
 
 // Importación de recursos gráficos.
 
@@ -61,7 +61,7 @@ const Rating = ({ rating = 0, onRatingChange, onClose }) => {
 
 
 
-function EmergenteCalificarViajeros({ nombre, viajesRealizados, correo, telefono, stars, avatar }) {
+function EmergenteCalificarConductor({ nombre, viajesRealizados, correo, telefono, stars, avatar }) {
   
   //Esto permite que la pantalla emergente se muestre y que cuando se califique se cierre la app
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -78,7 +78,7 @@ function EmergenteCalificarViajeros({ nombre, viajesRealizados, correo, telefono
     <div>
       <NavBarDriver />
       <button onClick={openModal} style={{ margin: '20px', padding: '10px' }}>
-        Calificar Viajeros
+        Calificar Conductor
       </button>
 
       {isModalOpen && (
@@ -88,7 +88,7 @@ function EmergenteCalificarViajeros({ nombre, viajesRealizados, correo, telefono
 
             <h2>Resumen Viaje</h2>
 
-            
+            <img src={avatar} alt="Foto del conductor" className="profile-image" />
 
             <div className="info-container">
               <p><strong>Nombre:</strong> {nombre}</p>
@@ -113,4 +113,4 @@ function EmergenteCalificarViajeros({ nombre, viajesRealizados, correo, telefono
 }
 
 
-export default EmergenteCalificarViajeros;
+export default EmergenteCalificarConductor;

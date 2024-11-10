@@ -15,25 +15,26 @@ import PerfilViajero from './Perfil/PerfilViajero'; // Vista del perfil de un vi
 import RegistrarVehiculo from './Registros/RegistrarVehiculo'; // Vista para el registro de vehículos.
 import RegistrarVehiculoLicencia from './Registros/RegistrarVehiculoLicencia'; // Vista para el registro de licencia de vehículos.
 import Signup from './Ingreso/Signup'; // Vista para el registro de nuevos usuarios.
-import HomeClient from './HomeClient';
-import HomeDriver from './HomeDriver';
-import HomeAdmin from './HomeAdmin';
+import PassRecovery from './Ingreso/PassRecovery'
+import HomeClient from './Home/HomeClient';
+import HomeDriver from './Home/HomeDriver';
+import HomeAdmin from './Home/HomeAdmin';
 import ActividadCliente from './ActividadCliente';
 import ActividadConductor from './ActividadConductor';
-import EmergenteCalificarConductor from './EmergenteCalificarConductor';
-import EmergenteCalificarViajeros from './EmergenteCalificarViajeros';
+import EmergenteCalificarConductor from './Emergentes/EmergenteCalificarConductor';
+import EmergenteCalificarViajeros from './Emergentes/EmergenteCalificarViajeros';
 import PerfilConductor from './PerfilConductor';
 import PerfilPrivado from './PerfilPrivado';
 import MainTest from './MainTest';
 import IntegrantesViaje from './IntegrantesViaje';
-import HomeAdminxInst from './HomeAdminXinst';
-import Instituciones from './Instituciones';
-import RegistrarInstitucion from './RegistrarInstitucion';
-import registrarAdminxInst from './RegistrarAdminxInst';
-import IntegrantesxInst from './IntegrantesxInst';
-import EstadisticasxInst from './EstadisticasXInst';
-import EmergenteViajeNoConfirmadoConductor from './EmergenteViajeNoConfirmadoConductor';
-import IndicarParadaRegistro from './indicarParadaRegistro';
+import HomeAdminxInst from './Home/HomeAdminXinst';
+import Instituciones from './Instituciones/Instituciones';
+import RegistrarInstitucion from './Registros/RegistrarInstitucion';
+import registrarAdminxInst from './Registros/RegistrarAdminxInst';
+import IntegrantesxInst from './Estadisticas/IntegrantesxInst';
+import EstadisticasxInst from './Estadisticas/EstadisticasXInst';
+import EmergenteViajeNoConfirmadoConductor from './Emergentes/EmergenteViajeNoConfirmadoConductor';
+import IndicarParadaRegistro from './Registros/indicarParadaRegistro';
 
 // Configura Ionic React para este proyecto.
 setupIonicReact();
@@ -50,12 +51,13 @@ function App() {
       <IonReactRouter>
         <Switch>
           <Route exact path="/" component={HomeGuest} /> {/* Ruta para la página principal de invitados. */}
-          <Route path="/Login" component={Login} /> {/* Ruta para la página de inicio de sesión. */}
-          <Route path="/Nosotros" component={Nosotros} /> {/* Ruta para la página sobre nosotros. */}
-          <Route path="/PerfilViajero" component={PerfilViajero} /> {/* Ruta para la página del perfil del viajero. */}
-          <Route path="/RegistrarVehiculo" component={RegistrarVehiculo} /> {/* Ruta para la página de registro de vehículos. */}
-          <Route path="/RegistrarVehiculoLicencia" component={RegistrarVehiculoLicencia} /> {/* Ruta para la página de registro de licencia de vehículos. */}
-          <Route path="/Signup" component={Signup} /> {/* Ruta para la página de registro de nuevos usuarios. */}
+          <Route exact path="/Login" component={Login} /> {/* Ruta para la página de inicio de sesión. */}
+          <Route exact path="/Nosotros" component={Nosotros} /> {/* Ruta para la página sobre nosotros. */}
+          <Route exact path="/PerfilViajero" component={PerfilViajero} /> {/* Ruta para la página del perfil del viajero. */}
+          <Route exact path="/RegistrarVehiculo" component={RegistrarVehiculo} /> {/* Ruta para la página de registro de vehículos. */}
+          <Route exact path="/RegistrarVehiculoLicencia" component={RegistrarVehiculoLicencia} /> {/* Ruta para la página de registro de licencia de vehículos. */}
+          <Route exact path="/Signup" component={Signup} /> {/* Ruta para la página de registro de nuevos usuarios. */}
+          <Route exact path="/PassRecovery" component={PassRecovery} /> {/* Ruta para la página de registro de nuevos usuarios. */}
           <Route exact path="/HomeClient" component={HomeClient} /> {/* Ruta para la página principal de invitados. */}
           <Route exact path="/HomeDriver" component={HomeDriver} /> {/* Ruta para la página principal de invitados. */}
           <Route exact path="/HomeAdmin" component={HomeAdmin} /> {/* Ruta para la página principal de invitados. */}

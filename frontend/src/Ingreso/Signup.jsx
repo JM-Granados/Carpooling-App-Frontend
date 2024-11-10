@@ -451,7 +451,7 @@ function Signup() {
                   Selecciona tu institución
                 </option>
                 {institutions.map((institution) => (
-                  <option key={institution.id} value={institution.id}>
+                  <option className="opcionesInst" key={institution.id} value={institution.id}>
                     {institution.name}
                   </option>
                 ))}
@@ -579,15 +579,15 @@ function Signup() {
                 <option className="opcionesInst" selected disabled value="">
                   Selecciona tu género
                 </option>
-                <option value="1">Hombre</option>
-                <option value="2">Mujer</option>
-                <option value="3">Otro...</option>
+                <option className="opcionesInst" value="1">Hombre</option>
+                <option className="opcionesInst" value="2">Mujer</option>
+                <option className="opcionesInst" value="3">Otro...</option>
               </select>
             </div>
           </div>
         </div>
 
-        <div class="d-grid gap-2 col-6 mx-auto mt-5 justify-content-center">
+        <div class="d-grid gap-2 mt-5 justify-content-center">
           <button
             class="BotonIniciarSesion btn btn-primary border border-0 fw-bold"
             type="submit"
@@ -595,13 +595,13 @@ function Signup() {
             Registrarse
           </button>
           <div
-            className="form-text text-start mt-2 d-flex mb-5"
+            className="form-text text-start mt-2 d-flex mb-3"
             id="basic-addon4"
           >
             <div className="mensaje form-text-info text-start">
               No tienes cuenta?
             </div>
-            <div className="Reg text-center mb-4" style={{ flexGrow: 0.78 }}>
+            <div className="Reg text-center" style={{ flexGrow: 0.78 }}>
               <Link to="/Login" className="Reg d-flex justify-content-center">
                 Iniciar sesión
               </Link>
@@ -611,7 +611,7 @@ function Signup() {
 
         {errorMessage && (
           <div
-            className={`alert alert-danger text-white bg-danger mt-5 text-center ${
+            className={`alert alert-danger text-white bg-danger text-center ${
               fade ? "fade-out" : ""
             }`}
           >
