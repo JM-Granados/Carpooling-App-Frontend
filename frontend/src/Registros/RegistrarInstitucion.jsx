@@ -9,22 +9,18 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import dayjs from 'dayjs';
 
 // Importación de componentes locales.
-import '../src/Ingreso/Signup.css'; // Importa los estilos CSS locales para el componente Signup.
+import '../Ingreso/Signup.css'; // Importa los estilos CSS locales para el componente Signup.
 
-function registrarAdminxInst() {
+// Definición del componente funcional HomeGuest.
+function RegistrarInstitucion() {
     const minAgeDate = dayjs().subtract(16, 'year'); // Resta 16 años al año actual
 
     // Declaración de estados para email y password usando el hook useState de React.
-    const [firstName, setFirstName] = useState("");
-    const [secondName, setSecondName] = useState("");
-    const [firstLastName, setFirstLastName] = useState("");
-    const [secondLastName, setSecondLastName] = useState("");
-    const [institution, setInstitution] = useState("");
-    const [id, setId] = useState("");
-    const [number, setNumber] = useState("");
-    const [email, setEmail] = useState("");
-    const [birthdate, setBirthdate] = useState("");
-    const [gender, setGender] = useState("");
+    const [nombreInst, setName] = useState("");
+    const [acronimoinst, setAcronym] = useState("");
+    const [descripcion, setDescription] = useState("");
+    const [direccion, setDirection] = useState("");
+  
 
     // Estado para manejar mensajes de error.
     const [errorMessage, setErrorMessage] = useState('');
@@ -344,11 +340,11 @@ function registrarAdminxInst() {
     return (
         <div className="subfondoSignup text-start align-center mx-5">
             <div className="CampoRE">
-                <h1 className="RE">Registro Admin a institución</h1>
+                <h1 className="RE">Registro de Institución</h1>
             </div>
 
             <div className="CampoMensajeRe">
-                <h1 className="MensajeRe fw-light mt-3">Por favor introduce tus datos para registrate.</h1>
+                <h1 className="MensajeRe fw-light mt-3">Por favor introduce tus datos para registr la institución. </h1>
             </div>
 
             <form className="form" onSubmit={handleSubmit}>
@@ -365,8 +361,8 @@ function registrarAdminxInst() {
                                 className="campos form-control bg-transparent rounded-2 text-white"
                                 aria-describedby="nameHelp"
                                 required
-                                placeholder="Primer nombre"
-                                onChange={(e) => setFirstName(e.target.value)}
+                                placeholder="Nombre institución"
+                                onChange={(e) => setName(e.target.value)}
                             />
                         </div>
                     </div>
@@ -380,31 +376,12 @@ function registrarAdminxInst() {
                                 id="Registro"
                                 aria-describedby="nameHelp"
                                 required
-                                placeholder="Segundo nombre"
-                                onChange={(e) => setSecondName(e.target.value)}
+                                placeholder="acrónimo"
+                                onChange={(e) => setAcronym(e.target.value)}
                             />
                         </div>
                     </div>
-                    <div class="col">
-                        <div className="subtituloReg form-text-info text-start ms-4">
-                            Institución
-                        </div>
-                        <div className="mt-2 ms-4">
-                            {/* Input para correo electrónico con estilos específicos. */}
-                            <select
-                                className="camposSelect form-select"
-                                name="institucionRegistro"
-                                aria-describedby="institucionHelp"
-                                required
-                                onChange={(e) => setInstitution(e.target.value)}
-                            >
-                                <option className="opcionesInst" selected disabled value="">Selecciona tu institución</option>
-                                <option className="opcionesInst">TEC</option>
-                                <option className="opcionesInst">TEC</option>
-                                <option className="opcionesInst">TEC</option>
-                            </select>
-                        </div>
-                    </div>
+                    
                 </div>
                 <div class="row">
                     <div class="col-4">
@@ -416,8 +393,8 @@ function registrarAdminxInst() {
                                 className="campos form-control bg-transparent rounded-2 text-white"
                                 aria-describedby="fLNameHelp"
                                 required
-                                placeholder="Primer apellido"
-                                onChange={(e) => setFirstLastName(e.target.value)}
+                                placeholder="Descripción"
+                                onChange={(e) => setDescription(e.target.value)}
                             />
                         </div>
                     </div>
@@ -431,109 +408,18 @@ function registrarAdminxInst() {
                                 id="EmailLogin"
                                 aria-describedby="sLNameHelp"
                                 required
-                                placeholder="Segundo apellido"
-                                onChange={(e) => setSecondLastName(e.target.value)}
+                                placeholder="Dirección"
+                                onChange={(e) => setDirection(e.target.value)}
                             />
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-8">
-                        <div className="mt-4 mb-3">
-                            {/* Input para correo electrónico con estilos específicos. */}
-                            <input
-                                type="number"
-                                name="idRegistro"
-                                className="campos form-control bg-transparent rounded-2 text-white"
-                                aria-describedby="idHelp"
-                                required
-                                placeholder="Cédula"
-                                onChange={(e) => setId(e.target.value)}
-                                min="0"
-                            />
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <div className="subtituloReg form-text-info text-start">
-                            Contacto
-                        </div>
-                        <div className="mt-2">
-                            {/* Input para correo electrónico con estilos específicos. */}
-                            <input
-                                type="number"
-                                name="celularRegistro"
-                                className="campos form-control bg-transparent rounded-2 text-white"
-                                aria-describedby="celularHelp"
-                                required
-                                placeholder="Número de teléfono"
-                                onChange={(e) => setNumber(e.target.value)}
-                                min="0"
-                            />
-                        </div>
-                    </div>
-                    <div class="col mt-2">
-                        <div className="mt-5">
-                            {/* Input para correo electrónico con estilos específicos. */}
-                            <input
-                                type="email"
-                                name="emailRegistro"
-                                className="campos form-control bg-transparent rounded-2 text-white"
-                                id="EmailLogin"
-                                aria-describedby="emailHelp"
-                                required
-                                placeholder="Correo electrónico"
-                                onChange={(e) => setEmail(e.target.value)}
-                            />
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div className="subtituloReg form-text-info text-start ms-4">
-                            Fecha de nacimiento
-                        </div>
-                        <div className="mt-2">
-                            <ThemeProvider theme={theme}>
-                                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                                    <DatePicker
-                                        className="campos ms-4"
-                                        label="Selecciona tu fecha de nacimiento"
-                                        onChange={setBirthdate} // Actualiza el estado cuando cambia la fecha
-                                        renderInput={(params) => <TextField {...params} required />}
-                                        required
-                                        maxDate={minAgeDate}
-                                    />
-                                </LocalizationProvider>
-                            </ThemeProvider>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-8">
-                        <div className="subtituloReg form-text-info text-start mt-3">
-                            Género
-                        </div>
-                        <div className="mt-2">
-                            {/* Input para correo electrónico con estilos específicos. */}
-                            <select
-                                className="camposSelect form-select"
-                                name="institucionRegistro"
-                                aria-describedby="institucionHelp"
-                                required
-                                onChange={(e) => setGender(e.target.value)}
-                            >
-                                <option className="opcionesInst" selected disabled value="">Selecciona tu género</option>
-                                <option className="opcionesInst">Hombre</option>
-                                <option className="opcionesInst">Mujer</option>
-                                <option className="opcionesInst">Otro...</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
+                
 
                 <div class="d-grid gap-2 col-6 mx-auto mt-5">
-                    <button class="BotonIniciarSesion btn btn-primary border border-0 fw-bold" type="button">Registrar Institución</button>
+                    <button class="BotonIniciarSesion btn btn-primary border border-0 fw-bold" type="button">Siguiente</button>
                     <div className="form-text text-start mt-2 d-flex mb-5" id="basic-addon4">
+                        
                         
                     </div>
                 </div>
@@ -545,4 +431,4 @@ function registrarAdminxInst() {
 }
 
 // Exportación del componente HomeGuest para ser usado en otras partes de la aplicación.
-export default registrarAdminxInst;
+export default RegistrarInstitucion;

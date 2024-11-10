@@ -2,7 +2,7 @@ import * as React from 'react';
 import axios from 'axios'; // Librería para realizar solicitudes HTTP, utilizada potencialmente en futuras operaciones de red.
 
 // Importación de componentes y estilos locales.
-import NavBarAdmin from './NavBar/NavBarAdmin'; // Componente NavBar_Guest para la barra de navegación de usuarios no autenticados.
+import NavBarAdmin from '../NavBar/NavBarAdmin'; // Componente NavBar_Guest para la barra de navegación de usuarios no autenticados.
 import { Link } from 'react-router-dom'; // Componente Link para navegación SPA (Single Page Application).
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider, DateTimePicker } from '@mui/x-date-pickers';
@@ -14,8 +14,8 @@ import './HomeAdmin.css'; // Estilos específicos para el componente HomeAdmin.
 
 // Importación de recursos gráficos.
 
-import viajes from '../../íconos/viajes.png'
-import viajeros from '../../íconos/viajero.png'
+import viajes from '../../../íconos/viajes.png'
+import viajeros from '../../../íconos/viajero.png'
 
 /**
  * Función HomeGuest que renderiza la vista principal para usuarios no autenticados.
@@ -196,12 +196,12 @@ function CustomTabs(props) {
         </React.Fragment>
     );
 }
-function EstadisticasxInst() {
+function HomeAdminxInst() {
     return (
         <div>
           {/* Barra de navegación para administradores */}
           <NavBarAdmin />
-          <div style={{ fontSize: '30px' }}>Estadisticas X *institución*</div>
+          <div style={{ fontSize: '30px' }}>Estadísticas de *institución*</div>
     
           {/* Contenedor principal para las tarjetas */}
           <div className="container4">
@@ -214,9 +214,9 @@ function EstadisticasxInst() {
                   </div>
                   <div className="col-8">
                     <div className="row">
-                      <div style={{ fontSize: '20px' }}>Viajes totales</div>
+                      <div style={{ fontSize: '20px' }}>Viajes</div>
                     </div>
-                    <div className="row">*Estadística de viajes en la institución*</div>
+                    <div className="row">*Estadística de viajes propia*</div>
                   </div>
                 </div>
               </div>
@@ -227,9 +227,9 @@ function EstadisticasxInst() {
                   </div>
                   <div className="col-8">
                     <div className="row">
-                      <div style={{ fontSize: '20px' }}>Viajeros totales</div>
+                      <div style={{ fontSize: '20px' }}>Viajeros</div>
                     </div>
-                    <div className="row">*Estadística de viajeros en la institución*</div>
+                    <div className="row">*Estadística de viajeros propia*</div>
                   </div>
                 </div>
               </div>
@@ -240,9 +240,9 @@ function EstadisticasxInst() {
                   </div>
                   <div className="col-8">
                     <div className="row">
-                      <div style={{ fontSize: '20px' }}>Conductores totales</div>
+                      <div style={{ fontSize: '20px' }}>Conductores</div>
                     </div>
-                    <div className="row">*Estadística de conductores en la institución*</div>
+                    <div className="row">*Estadística de conductores propia*</div>
                   </div>
                 </div>
               </div>
@@ -366,4 +366,4 @@ function EstadisticasxInst() {
     }
     
 
-export default EstadisticasxInst;
+export default HomeAdminxInst;
