@@ -10,7 +10,7 @@ import { MobileDateTimePicker } from '@mui/x-date-pickers/MobileDateTimePicker';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { DateTimePickerTabs } from '@mui/x-date-pickers/DateTimePicker';
 import Box from '@mui/material/Box';
-import './HomeClient.css'; // Estilos específicos para el componente HomeGuest.
+import '../src/Home/HomeClient.css'; // Estilos específicos para el componente HomeGuest.
 
 // Importación de recursos gráficos.
 import Carpool from '../../íconos/Carpool.png'; // Icono gráfico representativo del carpooling.

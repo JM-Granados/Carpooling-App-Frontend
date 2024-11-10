@@ -15,13 +15,13 @@ import PerfilViajero from './Perfil/PerfilViajero'; // Vista del perfil de un vi
 import RegistrarVehiculo from './Registros/RegistrarVehiculo'; // Vista para el registro de vehículos.
 import RegistrarVehiculoLicencia from './Registros/RegistrarVehiculoLicencia'; // Vista para el registro de licencia de vehículos.
 import Signup from './Ingreso/Signup'; // Vista para el registro de nuevos usuarios.
-import HomeClient from './HomeClient';
-import HomeDriver from './HomeDriver';
+import HomeClient from './Home/HomeClient';
+import HomeDriver from './Home/HomeDriver';
 import HomeAdmin from './HomeAdmin';
 import ActividadCliente from './ActividadCliente';
 import ActividadConductor from './ActividadConductor';
-import EmergenteCalificarConductor from './EmergenteCalificarConductor';
-import EmergenteCalificarViajeros from './EmergenteCalificarViajeros';
+import EmergenteCalificarConductor from './Emergentes/EmergenteCalificarConductor';
+import EmergenteCalificarViajeros from './Emergentes/EmergenteCalificarViajeros';
 import PerfilConductor from './PerfilConductor';
 import PerfilPrivado from './PerfilPrivado';
 import MainTest from './MainTest';
@@ -32,8 +32,8 @@ import RegistrarInstitucion from './RegistrarInstitucion';
 import registrarAdminxInst from './RegistrarAdminxInst';
 import IntegrantesxInst from './IntegrantesxInst';
 import EstadisticasxInst from './EstadisticasXInst';
-import EmergenteViajeNoConfirmadoConductor from './EmergenteViajeNoConfirmadoConductor';
-import IndicarParadaRegistro from './indicarParadaRegistro';
+import EmergenteViajeNoConfirmadoConductor from './Emergentes/EmergenteViajeNoConfirmadoConductor';
+import IndicarParadaRegistro from './Registros/indicarParadaRegistro';
 
 // Configura Ionic React para este proyecto.
 setupIonicReact();
