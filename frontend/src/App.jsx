@@ -17,7 +17,7 @@ import RegistrarVehiculoLicencia from './Registros/RegistrarVehiculoLicencia'; /
 import Signup from './Ingreso/Signup'; // Vista para el registro de nuevos usuarios.
 import HomeClient from './HomeClient';
 import HomeDriver from './HomeDriver';
-import HomeAdmin from './HomeAdmin';
+import HomeAdmin from './Home/HomeAdmin';
 import ActividadCliente from './ActividadCliente';
 import ActividadConductor from './ActividadConductor';
 import EmergenteCalificarConductor from './EmergenteCalificarConductor';
@@ -26,12 +26,12 @@ import PerfilConductor from './PerfilConductor';
 import PerfilPrivado from './PerfilPrivado';
 import MainTest from './MainTest';
 import IntegrantesViaje from './IntegrantesViaje';
-import HomeAdminxInst from './HomeAdminXinst';
-import Instituciones from './Instituciones';
-import RegistrarInstitucion from './RegistrarInstitucion';
-import registrarAdminxInst from './RegistrarAdminxInst';
-import IntegrantesxInst from './IntegrantesxInst';
-import EstadisticasxInst from './EstadisticasXInst';
+import HomeAdminxInst from './Home/HomeAdminXinst';
+import Instituciones from './Instituciones/Instituciones';
+import RegistrarInstitucion from './Registros/RegistrarInstitucion';
+import registrarAdminxInst from './Registros/RegistrarAdminxInst';
+import IntegrantesxInst from './Estadisticas/IntegrantesxInst';
+import EstadisticasxInst from './Estadisticas/EstadisticasXInst';
 import EmergenteViajeNoConfirmadoConductor from './EmergenteViajeNoConfirmadoConductor';
 import IndicarParadaRegistro from './indicarParadaRegistro';
 
