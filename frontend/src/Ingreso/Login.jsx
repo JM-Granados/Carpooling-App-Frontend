@@ -115,7 +115,7 @@ function Login() {
                 </div>
 
                 <div className="PassRec form-text text-start mt-3 mx-5" id="basic-addon4">
-                    <Link to="/" className="PassRec">Olvidé mi contraseña.</Link>
+                    <Link to="/PassRecovery" className="PassRec">Olvidé mi contraseña.</Link>
                 </div>
 
                 <div class="d-grid gap-2 mt-4 mx-5">
