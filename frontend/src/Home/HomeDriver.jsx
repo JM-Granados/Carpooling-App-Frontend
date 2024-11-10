@@ -33,7 +33,10 @@ import Calendar from '../../../íconos/Calendar.png'; // Icono de calendario par
 import CarpoolImagen from '../../../íconos/CarpoolImagen.png' // Imagen sobre carpooling. Hay que arreglarla (mal cortado el borde)
 import Arrow from '../../../íconos/Arrow.png'
 import FlechaIngresar from '../../../íconos/Flecha Ingresar.png'; // Icono de flecha para indicar la dirección de la acción.
-
+import Logo from '../../../íconos/Logo.png'; // Logo de Carpooling para la barra de navegación.
+import Mas from '../../../íconos/más.png'; // Icono de más para indicar la dirección de la acción.
+import Viajes from '../../../íconos/viajes.png'; // Icono de viajes para el campo de ruta.
+import Money from '../../../íconos/money3.png'; // Icono de dinero para el campo de precio.
 /**
  * Función HomeGuest que renderiza la vista principal para usuarios no autenticados.
  * Esta función componente devuelve JSX que incluye una sección hero, campos de entrada para búsqueda de viajes, y una barra de navegación.
@@ -373,45 +376,52 @@ function HomeDriver() {
 
                     <div className="col-12 col-md-3 mb-3">
                         <div className="input-group">
-                            <img src={DesdeHasta} alt="DesdeHasta" className="input-group-text" height={40} />
+                            <img src={Viajes} alt="viajes" className="input-group-text" height={40} />
                             <input type="text" className="form-control custom-input-color" placeholder="Ruta" />
                         </div>
                     </div>
                 </div>
 
                 {/* Segunda Fila: 3 Columnas */}
-                <div className="row mx-1">
-                    <div className="col-12 col-md-4 mb-3">
-                        <div className="input-group">
-                            <img src={DesdeHasta} alt="DesdeHasta" className="input-group-text" height={40} />
-                            <input type="text" className="form-control custom-input-color" placeholder="Auto" />
+                    {/* Segunda Fila: 3 Columnas */}
+                    <div className="row mx-1">
+                        <div className="col-12 col-md-4 mb-3">
+                            <div className="input-group">
+                                <img src={Logo} alt="Logo" className="input-group-text" height={40} />
+                                <select className="form-control custom-input-color">
+                                    <option value="" disabled selected>Selecciona un auto</option>
+                                    {/* Las opciones se agregan de la base de datos */}
+                                </select>
+                            </div>
                         </div>
-                    </div>
+                    
 
-                    <div className="col-12 col-md-4 mb-3">
-                        <div className="input-group">
-                            <img src={DesdeHasta} alt="DesdeHasta" className="input-group-text" height={40} />
-                            <input type="text" className="form-control custom-input-color" placeholder="Precio" />
+                        <div className="col-12 col-md-4 mb-3">
+                            <div className="input-group">
+                                <img src={Money} alt="money" className="input-group-text" height={40} />
+                                <input type="text" className="form-control custom-input-color" placeholder="Precio" />
+                            </div>
                         </div>
-                    </div>
 
-                    <div className="col-12 col-md-4 mb-3">
-                        <div className="input-group">
-                            <img src={DesdeHasta} alt="DesdeHasta" className="input-group-text" height={40} />
-                            <input type="text" className="form-control custom-input-color" placeholder="Cupos" />
+                        <div className="col-12 col-md-4 mb-3">
+                            <div className="input-group">
+                                <img src={Mas} alt="más" className="input-group-text" height={40} />
+                                <select className="form-control custom-input-color">
+                                    <option value="" disabled selected>Selecciona un auto</option>
+                                    {/* Las opciones se agregan de la base de datos */}
+                                </select>
+                            </div>
                         </div>
                     </div>
-                </div>
 
                 
             </div>
             {/* Botón para publicar */}
             <div className="col-12 mt-4 text-center">
-                    <button className="btn btn-danger w-100">Publicar</button>
-                </div>
+                <button className="btn btn-danger w-auto">Publicar</button>
+            </div>
         </div>
     );
 }
 
 export default HomeDriver;
-
