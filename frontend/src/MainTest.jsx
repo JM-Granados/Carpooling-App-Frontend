@@ -51,11 +51,11 @@ const driverProfiles = [
       parada: '../../íconos/perfil3.png'
   },
   {
-    nombre: "Carlos Martinez",
+    nombre: "cuarta carta",
     viajesRealizados: 20,
     correo: "carlos.martinez@correo.com",
     telefono: "12348765",
-    stars: 5,
+    stars: 2,
     parada: '../../íconos/perfil3.png'
 }
 
