@@ -17,7 +17,7 @@ import * as React from 'react';
 import axios from 'axios'; // Librería para realizar solicitudes HTTP, utilizada potencialmente en futuras operaciones de red.
 
 // Importación de componentes y estilos locales.
-import NavBar_Client from '../NavBar/NavBar-Driver'; // Componente NavBar_Guest para la barra de navegación de usuarios no autenticados.
+import NavBar_Driver from '../NavBar/NavBar-Driver'; // Componente NavBar_Guest para la barra de navegación de usuarios no autenticados.
 import { Link } from 'react-router-dom'; // Componente Link para navegación SPA (Single Page Application).
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider, DateTimePicker } from '@mui/x-date-pickers';
@@ -330,7 +330,7 @@ function HomeDriver() {
     return (
         <div>
             {/* Barra de navegación para usuarios no autenticados */}
-            <NavBar_Client />
+            <NavBar_Driver />
 
             {/* Sección principal con imagen de fondo y mensaje de bienvenida */}
             <div className="hero-image text-center">

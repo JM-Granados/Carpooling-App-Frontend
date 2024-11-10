@@ -25,19 +25,37 @@ const navBarComponents = {
 };
 
 const getNavBarComponent = (role) => {
-    const Component = navBarComponents[role] || NavBar_Guest; // Retorna NavBarGuest como default si el rol no coincide
+    const Component = navBarComponents[role] || NavBar_Guest;
     return <Component />;
 };
 
-// Definición del componente funcional HomeGuest.
 function Nosotros() {
     const history = useHistory();
-    const user = JSON.parse(localStorage.getItem('user'));
+    const [userRole, setUserRole] = useState(null);
+
+    useEffect(() => {
+        // Obtener el usuario de localStorage
+        const user = JSON.parse(localStorage.getItem('user'));
+        console.log("Datos del usuario desde localStorage:", user); // Log para ver los datos del usuario en la consola
+        
+        if (user) {
+            console.log("Tipo de usuario:", user.user_type.id); // Log para verificar el tipo de usuario
+            setUserRole(user.user_type.id);
+        } else {
+            console.log("No se encontró usuario, mostrando vista de invitado.");
+            setUserRole(0); // 0 representa `NavBar_Guest`
+        }
+    }, []);
+
+    if (userRole === null) {
+        return <div>Loading...</div>; // Muestra un mensaje de carga mientras se obtiene el rol
+    }
+
 
     // Renderiza el componente HomeGuest.
     return (
         <div className="subfondoSignup text-start align-center mx-5">
-            {user ? getNavBarComponent(user.user_type.id) : <NavBar_Guest />} {/* Inserta la barra de navegación para invitados en la parte superior de la página. */}
+            {getNavBarComponent(userRole)}
             <div className="CampoRE">
                 <h1 className="RE mt-5">Nosotros y ayuda</h1>
             </div>
@@ -180,7 +198,7 @@ function Nosotros() {
                     </div>
                 </div>
             </div>
-            <div class="d-grid gap-2 col-6 mx-auto mt-5 justify-content-center">
+            <div className="d-grid gap-2 col-6 mx-auto mt-5 justify-content-center">
                 <button
                     className="BotonIniciarSesion btn btn-primary border border-0 fw-bold justify-content-center mb-5"
                     type="button"

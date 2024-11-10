@@ -112,26 +112,28 @@ const NavComponent = () => {
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         {/* Elementos individuales de la lista, representan diferentes páginas o secciones del sitio. */}
                         <li className="nav-item">
-                            <Link to="/Login" className="btn btn">
-                                <a className="nav-link active" aria-current="page">Publicar Viaje</a>
+                            <Link to="/HomeDriver" className="nav-link active" aria-current="page">
+                                Publicar Viaje
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="/RegistrarVehiculo" className="btn btn">
-                                <a className="nav-link" aria-current="page">Viaje Actual</a>
+                            <Link to="/RegistrarVehiculo" className="nav-link" aria-current="page">
+                                Viaje Actual
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="/Nosotros" className="btn btn">
-                                <a className="nav-link" aria-current="page">Nosotros</a>
+                            <Link to="/Nosotros" className="nav-link" aria-current="page">
+                                Nosotros
                             </Link>
                         </li>
+
+                        
                     </ul>
                     {/* Lista adicional para botones o acciones específicas como registro o ingreso. */}
                     <ul className="navbar-nav mb-2 mb-lg-0">
                         <li className="nav-item">
                             {/* Botón para 'Ingresar', con estilos Bootstrap para botones. */}
-                            <Link to="/Login" className="btn btn-primary">
+                            <Link to="/HomeClient" className="btn btn-primary">
                                 Solicitar Viaje
                                 {/* Imagen usada como icono dentro del botón, con rotación para efecto visual. */}
                                 <img src={flecha} alt="flecha" className="flecha" height={20} style={{marginLeft: '11px', transform: 'rotate(180deg)'}}/>
@@ -145,11 +147,11 @@ const NavComponent = () => {
                             </a>
                             {/* Elementos del menú desplegable para acciones adicionales del usuario. */}
                             <ul className="dropdown-menu shadow-lg">
-                                <li><a className="dropdown-item" href="/Login">Perfil</a></li>
-                                <li><a className="dropdown-item" href="/Login">Mis vehículos</a></li>
-                                <li><a className="dropdown-item" href="/Login">Actividad</a></li>
+                                <li><a className="dropdown-item" href="/PerfilPrivado">Perfil</a></li> 
+                                <li><a className="dropdown-item" href="/Login">Mis vehículos</a></li> {/*Esperar a añadirla*/}
+                                <li><a className="dropdown-item" href="/ActividadConductor">Actividad</a></li> 
                                 <li><a className="dropdown-item" href="/Nosotros">Nosotros</a></li>
-                                <li><a className="dropdown-item" href="/Login">Configuración</a></li>
+                                <li><a className="dropdown-item" href="/Login">Configuración</a></li> {/*Esperar a añadirla*/}
                                 <li><hr className="dropdown-divider"></hr></li>
                                 <li><a className="dropdown-item" href="/">Salir</a></li>
                             </ul>

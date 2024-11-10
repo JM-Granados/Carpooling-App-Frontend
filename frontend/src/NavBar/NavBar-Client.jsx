@@ -85,8 +85,9 @@ const NavComponent = () => {
                         <li>
                             <Link to="/Login" className="dropdown-item">Publicar viaje</Link>    
                         </li>
+                        
                         <li>
-                            <Link to="/Login" className="dropdown-item">Perfil</Link>    
+                            <Link to="/PerfilViajero" className="dropdown-item">Perfil</Link>    
                         </li>
                         <li>
                             <Link to="/Login" className="dropdown-item">Mis vehículos</Link>    
@@ -113,7 +114,7 @@ const NavComponent = () => {
                         {/* Elementos individuales de la lista, representan diferentes páginas o secciones del sitio. */}
                         <li className="nav-item">
                             <Link to="/Login" className="btn btn">
-                                <a className="nav-link active" aria-current="page">Viaje Actual</a>
+                                <a className="nav-link active" aria-current="page">Viaje Actual</a> {/*Falta la ventana para ir ahí*/}  
                             </Link>
                         </li>
                         <li className="nav-item">
@@ -131,7 +132,7 @@ const NavComponent = () => {
                     <ul className="navbar-nav mb-2 mb-lg-0">
                         <li className="nav-item">
                             {/* Botón para 'Ingresar', con estilos Bootstrap para botones. */}
-                            <Link to="/Login" className="btn btn-primary">
+                            <Link to="/HomeClient" className="btn btn-primary">
                                 Solicitud de Viaje
                                 {/* Imagen usada como icono dentro del botón, con rotación para efecto visual. */}
                                 <img src={flecha} alt="flecha" className="flecha" height={20} style={{marginLeft: '11px', transform: 'rotate(180deg)'}}/>
@@ -145,11 +146,11 @@ const NavComponent = () => {
                             </a>
                             {/* Elementos del menú desplegable para acciones adicionales del usuario. */}
                             <ul className="dropdown-menu shadow-lg">
-                                <li><a className="dropdown-item" href="/Login">Perfil</a></li>
-                                <li><a className="dropdown-item" href="/Login">Mis vehículos</a></li>
-                                <li><a className="dropdown-item" href="/Login">Actividad</a></li>
-                                <li><a className="dropdown-item" href="/Nosotros">Nosotros</a></li>
-                                <li><a className="dropdown-item" href="/Login">Configuración</a></li>
+                                <li><a className="dropdown-item" href="/PerfilPrivado">Perfil</a></li>
+                        
+                                <li><a className="dropdown-item" href="/ActividadCliente">Actividad</a></li>
+                               
+                                <li><a className="dropdown-item" href="/Login">Configuración</a></li> {/*Esperando a qué esté la ventana de configuración*/}
                                 <li><hr className="dropdown-divider"></hr></li>
                                 <li><a className="dropdown-item" href="/">Salir</a></li>
                             </ul>
