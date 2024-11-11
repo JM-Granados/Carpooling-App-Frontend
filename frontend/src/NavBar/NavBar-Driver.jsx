@@ -147,7 +147,7 @@ const NavComponent = () => {
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="/RegistrarVehiculo" className={`nav-link ${isActive('/RegistrarVehiculo') ? 'active' : ''}`} aria-current="page">
+                            <Link to="/EmergenteDetallesConductor" className={`nav-link ${isActive('/RegistrarVehiculo') ? 'active' : ''}`} aria-current="page">
                                 Viaje Actual
                             </Link>
                         </li>

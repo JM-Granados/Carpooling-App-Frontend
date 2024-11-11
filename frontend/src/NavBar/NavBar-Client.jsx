@@ -143,8 +143,8 @@ const NavComponent = () => {
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         {/* Elementos individuales de la lista, representan diferentes páginas o secciones del sitio. */}
                         <li className="nav-item">
-                            <Link to="/Nosotros" className={`btn nav-link ${isActive('/Nosotros') ? 'active' : ''}`}>
-                                Viaje Actual {/*Falta la ventana para ir ahí*/}
+                            <Link to="/EmergenteDetallesViaje" className={`btn nav-link ${isActive('/Nosotros') ? 'active' : ''}`}>
+                                Viaje Actual
                             </Link>
                         </li>
                         <li className="nav-item">
