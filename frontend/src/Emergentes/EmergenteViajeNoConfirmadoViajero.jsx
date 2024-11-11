@@ -14,6 +14,10 @@ const EmergenteViajeNoConfirmadoConductor = ({ onClose }) => {
       history.push('/indicarParadaRegistro');
   };
 
+  const handleRedirect = () => {    
+    history.push('/PerfilConductor');
+  };
+
   return (
     <div className="modal-overlay">
       <div className="modal-content">
@@ -28,7 +32,7 @@ const EmergenteViajeNoConfirmadoConductor = ({ onClose }) => {
         </div>
 
         <div className="info-container">
-          <p>Nombre del conductor:</p>
+          <button className="btn btn-link p-0" onClick={handleRedirect}>Nombre del conductor:</button>
           <p><strong>Vehículo:</strong> <span className="empty">[Vehículo]</span></p>
           <p><strong>Inicio:</strong> <span className="empty">[Inicio]</span></p>
           <p><strong>Final:</strong> <span className="empty">[Final]</span></p>
