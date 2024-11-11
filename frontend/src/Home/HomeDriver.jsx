@@ -327,6 +327,8 @@ function CustomTabs(props) {
 
 
 function HomeDriver() {
+    const user = JSON.parse(localStorage.getItem('user')); 
+    
     return (
         <div>
             {/* Barra de navegación para usuarios no autenticados */}

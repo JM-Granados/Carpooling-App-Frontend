@@ -9,7 +9,7 @@ import { useState } from 'react'; // Importamos useState para manejar el estado 
 import axios from 'axios'; // Librería para solicitudes HTTP
 
 import NavBar_Client from '../NavBar/NavBar-Client'; // Componente NavBar_Client
-import '../Actividad/ActividadCliente'; // Estilos específicos para el componente
+import '../Actividad/ActividadReciente.css'; // Estilos específicos para el componente
 import FlechaIngresar from '../../../íconos/flecha ingresar.png'; // Icono de flecha
 import FlechaIngresar_atras from '../../../íconos/flecha ingresar_atras.png'; // Icono de flecha
 

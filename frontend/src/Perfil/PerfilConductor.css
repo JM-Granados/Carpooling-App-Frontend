@@ -15,7 +15,7 @@ body {
 
 /* Estiliza la imagen de fondo para la sección hero. */
 .hero-image {
-    background-image: url('../../íconos/Carpool.png'); /* Asegura que la ruta de la imagen sea la correcta para su correcta visualización. */
+    background-image: url('../../../íconos/Carpool.png'); /* Asegura que la ruta de la imagen sea la correcta para su correcta visualización. */
     height: 300px; /* Altura fija de la imagen, considerar ajustar al 100% de la altura de la ventana si es necesario. */
     background-size: cover; /* Cubre completamente el espacio del contenedor, sin distorsión. */
     background-position: center; /* Centra la imagen en el contenedor para una visualización óptima. */

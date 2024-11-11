@@ -34,10 +34,8 @@ import registrarAdminxInst from './Registros/RegistrarAdminxInst';
 import IntegrantesxInst from './Estadisticas/IntegrantesxInst';
 import EstadisticasxInst from './Estadisticas/EstadisticasXInst';
 import EmergenteViajeNoConfirmadoConductor from './Emergentes/EmergenteViajeNoConfirmadoConductor';
+import EmergenteViajeNoConfirmadoViajero from './Emergentes/EmergenteViajeNoConfirmadoViajero';
 import IndicarParadaRegistro from './Registros/indicarParadaRegistro';
-
-import EmergenteViajeNoConfirmadoViajero from './Emergentes/EmergenteViajeNoConfirmadoViajero'; 
-
 import EmergenteDetalle from './Emergentes/EmergenteDetallesViaje';
 
 // Configura Ionic React para este proyecto.
