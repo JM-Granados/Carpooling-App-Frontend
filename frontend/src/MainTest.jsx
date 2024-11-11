@@ -2,7 +2,7 @@ import React from 'react';
 import PerfilDriver from './Perfil/PerfilConductor';
 import avatarP from '../../íconos/perfil.png';
 
-import Integrantes from './IntegrantesViaje';
+import Integrantes from './Integrantes/IntegrantesViaje';
 
 
 // Simulando datos de una base de datos
