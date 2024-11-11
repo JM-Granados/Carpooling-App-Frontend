@@ -17,7 +17,6 @@ import * as React from 'react';
 import axios from 'axios'; // Librería para realizar solicitudes HTTP, utilizada potencialmente en futuras operaciones de red.
 
 // Importación de componentes y estilos locales.
-import NavBar_Client from '../NavBar/NavBar-Client'; // Componente NavBar_Guest para la barra de navegación de usuarios no autenticados.
 import { Link } from 'react-router-dom'; // Componente Link para navegación SPA (Single Page Application).
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider, DateTimePicker } from '@mui/x-date-pickers';
@@ -46,6 +45,27 @@ import { useState, useEffect } from 'react'; // Importación de useState para ma
 
 //Backend
 const API_URL = import.meta.env.VITE_API_URL; // Para Vite
+
+// Importación de componentes locales.
+import NavBar_Guest from '../NavBar/NavBar-Guest'; // Importa el componente NavBar_Guest, la barra de navegación para usuarios no autenticados.
+import NavBar_Client from '../NavBar/NavBar-Client'; // Importa el componente NavBar_Guest, la barra de navegación para usuarios no autenticados.
+import NavBar_Driver from '../NavBar/NavBar-Driver'; // Importa el componente NavBar_Guest, la barra de navegación para usuarios no autenticados.
+import NavBar_Admin from '../NavBar/NavBarAdmin'; // Importa el componente NavBar_Guest, la barra de navegación para usuarios no autenticados.
+import NavBar_AdminXinst from '../NavBar/NavBarAdminXinst'; // Importa el componente NavBar_Guest, la barra de navegación para usuarios no autenticados.
+
+
+const navBarComponents = {
+    0: NavBar_Guest,
+    1: NavBar_Client,
+    4: NavBar_Driver,
+    2: NavBar_Admin,
+    3: NavBar_AdminXinst
+};
+
+const getNavBarComponent = (role) => {
+    const Component = navBarComponents[role] || NavBar_Guest; // Retorna NavBarGuest como default si el rol no coincide
+    return <Component />;
+};
 
 
 // Configura un tema global utilizando el método `createTheme` de MUI. Este es utilizado para personalizar los colores y formas del dateTimePicker
@@ -329,6 +349,8 @@ function CustomTabs(props) {
 }
 
 const HomeClient = () => {
+    const user = JSON.parse(localStorage.getItem('user'));
+
     const [startingPoint, setStartingPoint] = useState("");
     const [finishingPoint, setFinishingPoint] = useState("");
     const [departureDate, setDepartureDate] = useState(new Date());
@@ -394,9 +416,9 @@ const HomeClient = () => {
         const params = {};
         if (startingPoint) params.starting_point = startingPoint;
         if (finishingPoint) params.finishing_point = finishingPoint;
-        
+
         console.log("Parámetros enviados:", params); // Para verificar qué se está enviando exactamente
-    
+
         try {
             const response = await axios.get(`${API_URL}/trips/search`, { params });
             setFilteredTrips(response.data);
@@ -409,8 +431,8 @@ const HomeClient = () => {
             setErrorMessage("Error al buscar viajes. Inténtalo de nuevo.");
         }
         setIsFiltering(false); // Desactiva el modo filtrado
-    };    
-    
+    };
+
     const handleSubmit = (event) => {
         event.preventDefault();
         searchTrips();
@@ -420,7 +442,7 @@ const HomeClient = () => {
         return (
             <div>
                 {/* Barra de navegación para usuarios no autenticados */}
-                <NavBar_Client />
+                {user ? getNavBarComponent(user.user_type.id) : <NavBar_Guest />} {/* Inserta la barra de navegación para invitados en la parte superior de la página. */}
 
                 {/* Sección principal con imagen de fondo y mensaje de bienvenida */}
                 <div className="hero-image text-center">
