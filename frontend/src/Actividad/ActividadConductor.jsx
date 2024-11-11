@@ -9,7 +9,7 @@ import * as React from 'react';
 import axios from 'axios'; // Librería para realizar solicitudes HTTP, utilizada potencialmente en futuras operaciones de red.
 
 // Importación de componentes y estilos locales.
-import NavBar_Client from '../src/NavBar/NavBar-Client'; // Componente NavBar_Guest para la barra de navegación de usuarios no autenticados.
+import NavBar_Client from '../NavBar/NavBar-Client'; // Componente NavBar_Guest para la barra de navegación de usuarios no autenticados.
 import { Link } from 'react-router-dom'; // Componente Link para navegación SPA (Single Page Application).
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider, DateTimePicker } from '@mui/x-date-pickers';
@@ -316,7 +316,7 @@ function CustomTabs(props) {
 
 
 
-function ActividadCliente() {
+function ActividadConductor() {
     return (
         <div>
             {/* Barra de navegación para usuarios no autenticados */}
@@ -331,8 +331,7 @@ function ActividadCliente() {
                     {[1, 2, 3].map((_, index) => (
                         <div className="col-12 col-md-4 mb-3" key={index}>
                             <div className="card trip-card p-3">
-                            <div style={{ fontSize: '20px' }}>Conductor:</div>
-                            <div style={{ fontSize: '15px' }}>*nombre conductor*</div>
+                            
                             <div style={{ fontSize: '20px' }}>Vehículo:</div>
                             <div style={{ fontSize: '15px' }}>*datos vehiculo*</div>
                             <div style={{ fontSize: '20px' }}>Inicio:</div>
@@ -342,7 +341,7 @@ function ActividadCliente() {
                             <div style={{ fontSize: '20px' }}>Cupos:</div>
                             <div style={{ fontSize: '15px' }}>*cantidad cupos*</div>
                             <div style={{ fontSize: '20px' }}>Fecha:</div>
-                            <div style={{ fontSize: '15px' }}>*nformato fecha*</div>{/*creo que esto me toca*/}
+                            <div style={{ fontSize: '15px' }}>*informato fecha*</div>{/*creo que esto me toca*/}
                             <div style={{ fontSize: '20px' }}>Precio:</div>
                             <div style={{ fontSize: '15px' }}>*Precio Viaje*</div>
                                 <button className="btn btn-danger w-100 mt-2">Ver Viaje</button>
@@ -362,4 +361,4 @@ function ActividadCliente() {
     );
 }
 
-export default ActividadCliente;
+export default ActividadConductor;
