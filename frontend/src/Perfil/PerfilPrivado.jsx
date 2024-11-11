@@ -7,11 +7,11 @@ import axios from 'axios';
 import NavBarDriver from '../NavBar/NavBar-Driver'; // Componente NavBar_Guest para la barra de navegación de usuarios no autenticados.
 import NavBarClient from '../NavBar/NavBar-Client'; // Componente NavBar_Guest para la barra de navegación de usuarios no autenticados.
 
-import './Perfil/PerfilConductor.css'; // Estilos específicos para el componente Perfil Conductor.
-import './ActividadReciente.css'; // Estilos específicos para el componente Perfil Conductor.
+import './PerfilConductor.css'; // Estilos específicos para el componente Perfil Conductor.
+import '../Actividad/ActividadReciente.css'; // Estilos específicos para el componente Perfil Conductor.
 
 // Importación de recursos gráficos.
-import avatar from '../../íconos/perfil.png'
+import avatar from '../../../íconos/perfil.png'
 /**
  * Función HomeGuest que renderiza la vista principal para usuarios no autenticados.
  * Esta función componente devuelve JSX que incluye una sección hero, campos de entrada para búsqueda de viajes, y una barra de navegación.

@@ -19,14 +19,14 @@ import PassRecovery from './Ingreso/PassRecovery'
 import HomeClient from './Home/HomeClient';
 import HomeDriver from './Home/HomeDriver';
 import HomeAdmin from './Home/HomeAdmin';
-import ActividadCliente from './ActividadCliente';
-import ActividadConductor from './ActividadConductor';
+import ActividadCliente from './Actividad/ActividadCliente';
+import ActividadConductor from './Actividad/ActividadConductor';
 import EmergenteCalificarConductor from './Emergentes/EmergenteCalificarConductor';
 import EmergenteCalificarViajeros from './Emergentes/EmergenteCalificarViajeros';
 import PerfilConductor from './Perfil/PerfilConductor';
-import PerfilPrivado from './PerfilPrivado';
+import PerfilPrivado from './Perfil/PerfilPrivado';
 import MainTest from './MainTest';
-import IntegrantesViaje from './IntegrantesViaje';
+import IntegrantesViaje from './Integrantes/IntegrantesViaje';
 import HomeAdminxInst from './Home/HomeAdminXinst';
 import Instituciones from './Instituciones/Instituciones';
 import RegistrarInstitucion from './Registros/RegistrarInstitucion';
@@ -34,12 +34,10 @@ import registrarAdminxInst from './Registros/RegistrarAdminxInst';
 import IntegrantesxInst from './Estadisticas/IntegrantesxInst';
 import EstadisticasxInst from './Estadisticas/EstadisticasXInst';
 import EmergenteViajeNoConfirmadoConductor from './Emergentes/EmergenteViajeNoConfirmadoConductor';
+import EmergenteViajeNoConfirmadoViajero from './Emergentes/EmergenteViajeNoConfirmadoViajero';
 import IndicarParadaRegistro from './Registros/indicarParadaRegistro';
-<<<<<<< Updated upstream
-import EmergenteViajeNoConfirmadoViajero from './Emergentes/EmergenteViajeNoConfirmadoViajero'; 
-=======
 import EmergenteDetalle from './Emergentes/EmergenteDetallesViaje';
->>>>>>> Stashed changes
+
 // Configura Ionic React para este proyecto.
 setupIonicReact();
 

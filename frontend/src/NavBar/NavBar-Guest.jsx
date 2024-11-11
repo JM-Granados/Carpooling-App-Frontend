@@ -44,14 +44,11 @@ import './NavBar.css'; // Estilos específicos para la barra de navegación.
  * Incluye manejo de estado para controlar la visibilidad del menú desplegable en dispositivos móviles.
  */
 const NavComponent = () => {
-
     // Estado para controlar la visibilidad del menú desplegable.
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     // Función para alternar la visibilidad del menú desplegable.
     const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
-
-
     /**
      * Renderiza el componente de barra de navegación usando clases de Bootstrap para el diseño.
      * Incluye enlaces de navegación y un menú desplegable para perfiles de usuario.
@@ -64,48 +61,48 @@ const NavComponent = () => {
                 {/* Área del logo o nombre de la empresa en la barra de navegación, actúa como enlace a la página de inicio. */}
                 <a className="navbar-brand" href="#">
                     {/* Imagen del logo, especificando una clase para estilos adicionales y fijando la altura a 40 píxeles. */}
-                    <img src={Icon} alt="Logo" className="navbar-logo" height={40}/>
+                    <img src={Icon} alt="Logo" className="navbar-logo" height={40} />
                 </a>
                 {/* Botón de alternancia para dispositivos con pantallas pequeñas, controla la visibilidad del menú colapsable. */}
                 <button className="navbar-toggler"
-                        type="button"
-                        onClick={toggleDropdown}
-                        aria-expanded={isDropdownOpen}
-                        aria-label="Toggle navigation">
-                    <img src={User_icon} alt="User_icon" className='User_icon' height={30}/>
+                    type="button"
+                    onClick={toggleDropdown}
+                    aria-expanded={isDropdownOpen}
+                    aria-label="Toggle navigation">
+                    <img src={User_icon} alt="User_icon" className='User_icon' height={30} />
                 </button>
-                <div className={`dropdown-menu${isDropdownOpen ? ' show' : ''} shadow-lg` } aria-expanded={isDropdownOpen}>
-                <li><Link to="/Login" className="dropdown-item">Ingresar</Link>                            </li>
-                        <li>
-                            <Link to="/Signup" className="dropdown-item">Registrarme</Link>    
-                        </li>
-                        <li>
-                            <Link to="/Login" className="dropdown-item">Solicitar viaje</Link>    
-                        </li>
-                        <li>
-                            <Link to="/Login" className="dropdown-item">Publicar viaje</Link>    
-                        </li>
-                        <li>
-                            <Link to="/Login" className="dropdown-item">Perfil</Link>    
-                        </li>
-                        <li>
-                            <Link to="/Login" className="dropdown-item">Mis vehículos</Link>    
-                        </li>
-                        <li>
-                            <Link to="/Login" className="dropdown-item">Actividad</Link>    
-                        </li>
-                        <li>
-                            <Link to="/Nosotros" className="dropdown-item">Nosotros</Link>    
-                        </li>
-                        <li>
-                            <Link to="/Login" className="dropdown-item">Configuración</Link>    
-                        </li>
-                        <li><hr className="dropdown-divider"></hr></li>
-                        <li>
-                            <Link to="/" className="dropdown-item">Salir</Link>
-                        </li>
-                </div>              
-    
+                <div className={`dropdown-menu${isDropdownOpen ? ' show' : ''} shadow-lg`} aria-expanded={isDropdownOpen}>
+                    <li><Link to="/Login" className="dropdown-item">Ingresar</Link>                            </li>
+                    <li>
+                        <Link to="/Signup" className="dropdown-item">Registrarme</Link>
+                    </li>
+                    <li>
+                        <Link to="/Login" className="dropdown-item">Solicitar viaje</Link>
+                    </li>
+                    <li>
+                        <Link to="/Login" className="dropdown-item">Publicar viaje</Link>
+                    </li>
+                    <li>
+                        <Link to="/Login" className="dropdown-item">Perfil</Link>
+                    </li>
+                    <li>
+                        <Link to="/Login" className="dropdown-item">Mis vehículos</Link>
+                    </li>
+                    <li>
+                        <Link to="/Login" className="dropdown-item">Actividad</Link>
+                    </li>
+                    <li>
+                        <Link to="/Nosotros" className="dropdown-item">Nosotros</Link>
+                    </li>
+                    <li>
+                        <Link to="/Login" className="dropdown-item">Configuración</Link>
+                    </li>
+                    <li><hr className="dropdown-divider"></hr></li>
+                    <li>
+                        <Link to="/" className="dropdown-item">Salir</Link>
+                    </li>
+                </div>
+
                 {/* Div contenedor para los elementos del menú que se mostrarán u ocultarán dependiendo del estado de 'collapse'. */}
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     {/* Lista de enlaces de navegación, 'me-auto' mueve los elementos hacia la izquierda y los margenes aseguran espacio adecuado. */}
@@ -134,7 +131,7 @@ const NavComponent = () => {
                             <Link to="/Login" className="btn btn-primary">
                                 Ingresar
                                 {/* Imagen usada como icono dentro del botón, con rotación para efecto visual. */}
-                                <img src={flecha} alt="flecha" className="flecha" height={20} style={{marginLeft: '11px', transform: 'rotate(180deg)'}}/>
+                                <img src={flecha} alt="flecha" className="flecha" height={20} style={{ marginLeft: '11px', transform: 'rotate(180deg)' }} />
                             </Link>
                         </li>
                         <li className="nav-item">
@@ -155,8 +152,6 @@ const NavComponent = () => {
                                 <li><a className="dropdown-item" href="/Login">Actividad</a></li>
                                 <li><a className="dropdown-item" href="/Nosotros">Nosotros</a></li>
                                 <li><a className="dropdown-item" href="/Login">Configuración</a></li>
-                                <li><hr className="dropdown-divider"></hr></li>
-                                <li><a className="dropdown-item" href="/">Salir</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -164,7 +159,7 @@ const NavComponent = () => {
             </div>
         </nav>
     );
-    
+
 }
 
 // Exporta el componente para que pueda ser usado en otros lugares de la aplicación.
