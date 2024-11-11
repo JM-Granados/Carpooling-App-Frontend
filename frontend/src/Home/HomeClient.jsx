@@ -376,6 +376,7 @@ const HomeClient = () => {
 
     const handleConductorClick = (trip) => {
         // Guardar los datos del viaje en localStorage
+        localStorage.setItem('selectedDriver', JSON.stringify(trip.driver));
         localStorage.setItem('selectedTrip', JSON.stringify(trip));
     };
 
@@ -585,7 +586,9 @@ const HomeClient = () => {
                                 <p>Cupos: {trip.passenger_count}</p>
                                 <p>Fecha: {trip.departure_date}</p>
                                 <p>Precio: {trip.fare_per_person}</p>
-                                <Link to="/EmergenteViajeNoConfirmadoViajero" className="btn btn-danger w-auto">Ver Viaje</Link>
+                                <Link to="/EmergenteViajeNoConfirmadoViajero" className="btn btn-danger w-auto" onClick={() => handleConductorClick(trip)}>
+                                    Ver Viaje
+                                </Link>
                             </div>
                         </div>
                     ))}
