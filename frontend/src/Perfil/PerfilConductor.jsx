@@ -8,7 +8,7 @@ import NavBarClient from '../NavBar/NavBar-Client'; // Componente NavBar_Guest p
 
 import NavBarDriver from '../NavBar/NavBar-Driver'; // Componente NavBar_Guest para la barra de navegación de usuarios no autenticados.
 import './PerfilConductor.css'; // Estilos específicos para el componente Perfil Conductor.
-
+import avatarP from '../../../íconos/perfil.png';
 
 // Importación de recursos gráficos.
 
@@ -49,7 +49,7 @@ const Rating = ({ rating }) => {
 
 
 
-function PerfilDriver({ nombre, viajesRealizados, correo, telefono, stars, avatar }) {
+function PerfilDriver({ nombre, viajesRealizados, correo, telefono, stars }) {
     return (
         <div>
             {/* Barra de navegación de conductores */}
@@ -59,7 +59,7 @@ function PerfilDriver({ nombre, viajesRealizados, correo, telefono, stars, avata
             {/* Se hace la imagen del perfil de manera responsive*/}
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: 'auto', padding: '20px' }}>
                 <img 
-                    src={avatar} 
+                    src={avatarP} 
                     alt="Foto del Conductor" 
                     style={{ 
                         width: '150px',  /* Ancho fijo de la imagen */
