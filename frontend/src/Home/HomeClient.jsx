@@ -332,6 +332,7 @@ const HomeClient = () => {
     const [startingPoint, setStartingPoint] = useState("");
     const [finishingPoint, setFinishingPoint] = useState("");
     const [departureDate, setDepartureDate] = useState(new Date());
+    const departureDateISO = departureDate.toISOString();
     const [filteredTrips, setFilteredTrips] = useState([]);
     const [isFiltering, setIsFiltering] = useState(false);
 
@@ -396,7 +397,7 @@ const HomeClient = () => {
         if (finishingPoint) params.finishing_point = finishingPoint;
         if (departureDate) {
             // Formatear la fecha para coincidir con el formato de la base de datos
-            params.departure_date = dayjs(departureDate).format('YYYY-MM-DD HH:mm:ss');
+            params.departure_date = departureDateISO;
         }
         console.log(params);
         try {
