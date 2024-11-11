@@ -2,29 +2,24 @@ import React from 'react';
 import './EmergenteDetalles.css';
 import { Link, useHistory } from 'react-router-dom'; // Importa useHistory en lugar de useNavigate
 
-const EmergenteDetalle = ({ onClose, onCancel }) => {
-  const history = useHistory(); // Inicializa el hook useHistory
-  const handleCancel = () => {
-    const confirmacion = window.confirm('¿Estás seguro de que deseas cancelar este viaje?');
-    if (confirmacion) {
-      history.push('/HomeClient');
+const EmergenteDetalleConductor = ({ onClose, onCancel }) => {
+    const history = useHistory(); // Inicializa el hook useHistory
 
-    } else {
-      onCancel(); // Ejecuta la lógica para cancelar el viaje
-      onClose(); // Cierra el modal si el usuario cancela
-    }
-  };
+    const handleCancel = () => {
+        const confirmacion = window.confirm('¿Estás seguro de que deseas cancelar este viaje?');
+        if (confirmacion) {
+            history.push('/HomeDriver');
+          
+        } else {
+            onCancel(); // Ejecuta la lógica para cancelar el viaje
+            onClose(); // Cierra el modal si el usuario cancela
+        }
+      };
 
   return (
     <div className="modal-overlay">
       <div className="modal-content">
-        <button
-          className="BotonIniciarSesion btn btn-primary border border-0 fw-bold justify-content-center mb-5"
-          type="button"
-          onClick={() => history.goBack()}
-        >
-          Volver
-        </button>
+        <button className="close-button" onClick={onClose}>Volver</button>
 
         <h2>Detalles del Viaje</h2>
 
@@ -36,35 +31,33 @@ const EmergenteDetalle = ({ onClose, onCancel }) => {
         </div>
 
         <div className="info-container">
-          {/* Usa Link para redirigir al perfil del conductor */}
-          <Link to="/PerfilConductor" className="btn btn-link p-0">Nombre del conductor</Link>
-
           <p><strong>Vehículo:</strong></p>
           <ul className="vehicle-details">
             <p><strong>Marca:</strong> <span className="empty">[Marca]</span></p>
             <p><strong>Modelo:</strong> <span className="empty">[Modelo]</span></p>
             <p><strong>Placa:</strong> <span className="empty">[Placa]</span></p>
           </ul>
+
+          <Link to="/MainTest" className="btn btn-link p-0">Integrantes del viaje</Link>
           <p><strong>Inicio:</strong> <span className="empty">[Inicio]</span></p>
           <p><strong>Final:</strong> <span className="empty">[Final]</span></p>
           <p><strong>Máx. pasajeros:</strong> <span className="empty">[Cantidad]</span></p>
-          <p><strong>Cuando:</strong></p>
+            
           <ul className="vehicle-details">
+            <p><strong>Cuando:</strong></p>
             <p><strong>Fecha:</strong> <span className="empty">[Fecha]</span></p>
             <p><strong>Hora:</strong> <span className="empty">[Hora]</span></p>
+          
+            <p><strong>Precio:</strong> <span className="empty">[Precio]</span></p>
           </ul>
-          <p><strong>Precio:</strong> <span className="empty">[Precio]</span></p>
         </div>
-        <button
-          className="BotonIniciarSesion btn btn-primary border border-0 fw-bold justify-content-center mb-5"
-          type="button"
-          onClick={handleCancel}
-        >
-          Cancelar Viaje
-        </button>
+        <div className="buttons-container">
+          <button className="confirm-button">Confirmar Viaje</button>
+          <button className="cancel-button" onClick={handleCancel}>Cancelar Viaje</button>
+        </div>
       </div>
     </div>
   );
 };
 
-export default EmergenteDetalle;
+export default EmergenteDetalleConductor;
