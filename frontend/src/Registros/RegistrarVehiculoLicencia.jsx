@@ -1,7 +1,7 @@
 // Importaciones de React y otras librerías.
 import { useState, useEffect } from "react"; // useState es importado pero no se usa, considera removerlo si no es necesario.
 import axios from 'axios'; // Axios es importado para realizar posibles solicitudes HTTP.
-import { Link } from 'react-router-dom'; // Importa Link de react-router-dom para la navegación sin recarga.
+import { Link, useHistory } from 'react-router-dom'; // Importa Link de react-router-dom para la navegación sin recarga.
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers';
@@ -37,19 +37,19 @@ import '../Ingreso/Signup.css';
 
 // Definición del componente funcional HomeGuest.
 function RegistrarVehiculo() {
+    const history = useHistory();
     const user = JSON.parse(localStorage.getItem('user'));
-    const minAgeDate = dayjs().subtract(17, 'year'); // Resta 16 años al año actual
     const [brands, setBrands] = useState([]);
     const [types, setTypes] = useState([]);
 
     // Declaración de estados para email y password usando el hook useState de React.
     const [Placa, setPlaca] = useState("");
-    const [year, setYear] = useState("");
-    const [marca, setMarca] = useState("");
-    const [modelo, setModelo] = useState("");
-    const [capacidad, setCapacidad] = useState("");
+    const [year, setYear] = useState(null);
+    const [marca, setMarca] = useState();
+    const [modelo, setModelo] = useState();
+    const [capacidad, setCapacidad] = useState();
     const [descrip, setDescrip] = useState("");
-    const [licencia, setLicencia] = useState("");
+    const [licencia, setLicencia] = useState(null);
 
     // Estado para manejar mensajes de error.
     const [errorMessage, setErrorMessage] = useState('');
@@ -375,25 +375,42 @@ function RegistrarVehiculo() {
         e.preventDefault();
         setErrorMessage(''); // Limpia el mensaje de error
 
-        const endpoint = ``;  // URL del endpoint de signup.
+        // Datos para la creación del vehículo
+        const vehicleData = {
+            license_plate: Placa,
+            year: year,
+            max_capacity: capacidad,
+            description: descrip,
+            owner_id: user.id,  // Asumiendo que tienes el ID del usuario disponible aquí
+            vehicle_type_id: modelo,
+            brand_id: marca
+        };
+
 
         try {
-            const response = await axios.post(endpoint, formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'  // Esta línea es importante para el correcto manejo del FormData
-                }
-            });
+            // Primera solicitud para crear el vehículo
+            const vehicleResponse = await axios.post(`${API_URL}/vehicles`, vehicleData);
+            if (vehicleResponse.status === 201) {
+                // Si el vehículo se crea exitosamente, procede a actualizar la licencia
+                const licenseResponse = await axios.post(`${API_URL}/users/${user.id}/license`, {
+                    expiration_date: licencia
+                });
 
-            // Verifica si la respuesta del servidor indica un registro exitoso.
-            if (response.data.message === "User registered successfully") {
-                //navigate('/Login'); // O redirige a la pantalla de login, según lo que necesites.
+                if (licenseResponse.status === 200) {
+                    alert('Vehículo registrado y fecha de licencia actualizada correctamente.');
+                    localStorage.setItem('user', JSON.stringify(licenseResponse.data));
+                    console.log(licenseResponse.data)
+                    history.push('/HomeDriver');
+                } else {
+                    setErrorMessage('Error al actualizar la fecha de la licencia.');
+                }
             } else {
-                // Si el mensaje no indica éxito, muestra un mensaje de error.
-                setErrorMessage(response.data.message);
+                setErrorMessage('Error al registrar el vehículo.');
             }
         } catch (error) {
-            // Captura errores de la solicitud y muestra un mensaje de error.
-            setErrorMessage(error.response?.data.error || 'An error occurred.');
+            console.error('Failed to register vehicle:', error);
+            const errorMessage = error.response?.data?.detail || "Something went wrong, unable to register vehicle.";
+            setErrorMessage('Error in the registration process: ' + errorMessage);
         }
     }
 
@@ -402,7 +419,7 @@ function RegistrarVehiculo() {
         <div className="subfondoSignup text-start align-center mx-5">
             {user ? getNavBarComponent(user.user_type.id) : <NavBar_Guest />} {/* Inserta la barra de navegación para invitados en la parte superior de la página. */}
             <div className="CampoRE">
-                <h1 className="RE">Registro de vehículo</h1>
+                <h1 className="RE">Registro de vehículo y licencia</h1>
             </div>
 
             <div className="CampoMensajeRe">
@@ -418,14 +435,13 @@ function RegistrarVehiculo() {
                         <div className="mt-2">
                             {/* Input para correo electrónico con estilos específicos. */}
                             <input
-                                type="number"
+                                type="text"
                                 name="placaRegistro"
                                 className="campos form-control bg-transparent rounded-2 text-white"
                                 aria-describedby="PlacaHelp"
                                 required
                                 placeholder="Placa"
                                 onChange={(e) => setPlaca(e.target.value)}
-                                min={0}
                             />
                         </div>
                     </div>
@@ -439,9 +455,11 @@ function RegistrarVehiculo() {
                                         views={['year']}
                                         label="Selecciona un año"
                                         required
-                                        onChange={setYear}
+                                        onChange={(newValue) => {
+                                            setYear(newValue ? newValue.year() : null);
+                                        }}
                                         renderInput={(params) => <TextField {...params} />}
-                                        maxDate={dayjs().add(1, 'year')}  // Configura el máximo como el próximo año
+                                        maxDate={dayjs().add(1, 'year')}
                                     />
                                 </LocalizationProvider>
                             </ThemeProvider>
@@ -455,7 +473,8 @@ function RegistrarVehiculo() {
                                 name="marcaRegistro"
                                 aria-describedby="marcaHelp"
                                 required
-                                onChange={(e) => setMarca(e.target.value)}
+                                onChange={(e) => setMarca(parseInt(e.target.value))}
+
                             >
                                 <option className="opcionesInst" selected disabled value="">
                                     Selecciona tu marca de vehículo
@@ -478,7 +497,7 @@ function RegistrarVehiculo() {
                                 name="modeloRegistro"
                                 aria-describedby="modeloHelp"
                                 required
-                                onChange={(e) => setModelo(e.target.value)}
+                                onChange={(e) => setModelo(parseInt(e.target.value))}
                             >
                                 <option className="opcionesInst" selected disabled value="">
                                     Selecciona tu modelo de vehículo
@@ -515,7 +534,7 @@ function RegistrarVehiculo() {
                                 aria-describedby="CapacidadHelp"
                                 required
                                 placeholder="Capacidad"
-                                onChange={(e) => setCapacidad(e.target.value)}
+                                onChange={(e) => setCapacidad(parseInt(e.target.value))}
                                 min={2}
                             />
                         </div>
@@ -532,8 +551,9 @@ function RegistrarVehiculo() {
                                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                                     <DatePicker
                                         className="campos"
-                                        label="Selecciona tu fecha de nacimiento"
-                                        onChange={setLicencia} // Actualiza el estado cuando cambia la fecha
+                                        label="Selecciona tu fecha de vencimiento"
+                                        value={licencia ? dayjs(licencia) : null}
+                                        onChange={(date) => setLicencia(date?.format("YYYY-MM-DD"))}  // Ajusta directamente con el nuevo valor de fecha
                                         renderInput={(params) => <TextField {...params} required />}
                                         required
                                         minDate={dayjs().add(0, 'year')}
@@ -545,7 +565,7 @@ function RegistrarVehiculo() {
                 </div>
 
                 <div class="d-grid gap-2 col-6 mx-auto mt-5">
-                    <button class="BotonIniciarSesion btn btn-primary border border-0 fw-bold" type="button">Registrar</button>
+                    <button class="BotonIniciarSesion btn btn-primary border border-0 fw-bold" type="submit">Registrar</button>
                 </div>
 
                 {errorMessage && <div className={`alert alert-danger text-white bg-danger mt-5 text-center ${fade ? 'fade-out' : ''}`} >{errorMessage}</div>}
