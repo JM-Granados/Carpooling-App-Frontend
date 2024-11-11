@@ -35,7 +35,7 @@ import IntegrantesxInst from './Estadisticas/IntegrantesxInst';
 import EstadisticasxInst from './Estadisticas/EstadisticasXInst';
 import EmergenteViajeNoConfirmadoConductor from './Emergentes/EmergenteViajeNoConfirmadoConductor';
 import IndicarParadaRegistro from './Registros/indicarParadaRegistro';
-
+import EmergenteViajeNoConfirmadoViajero from './Emergentes/EmergenteViajeNoConfirmadoViajero'; 
 // Configura Ionic React para este proyecto.
 setupIonicReact();
 
@@ -76,6 +76,7 @@ function App() {
           <Route path="/PerfilPrivado" component={PerfilPrivado} /> {/* Ruta para la página de perfil privado. */}
           <Route exact path="/EmergenteViajeNoConfirmadoConductor" component={EmergenteViajeNoConfirmadoConductor} /> {/* Ruta para la página de emergente de viaje no confirmado. */}
           <Route exact path="/IndicarParadaRegistro" component={IndicarParadaRegistro} /> {/* Ruta para la página de emergente de viaje no confirmado. */}
+          <Route exact path="/EmergenteViajeNoConfirmadoViajero" component={EmergenteViajeNoConfirmadoViajero} /> {/* Ruta para la página de emergente de viaje no confirmado. */}
           <Route exact path="/IntegrantesViaje" component={IntegrantesViaje} /> {/* Ruta para la página de Integrantes de Viaje. */}
           <Route exact path="/MainTest" component={MainTest} /> {/* Ruta para la página de test. */}
           <Redirect to="/" /> {/* Redirige cualquier ruta no definida a la página principal. */}

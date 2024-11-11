@@ -407,7 +407,7 @@ function HomeDriver() {
                             <div className="input-group">
                                 <img src={Mas} alt="más" className="input-group-text" height={40} />
                                 <select className="form-control custom-input-color">
-                                    <option value="" disabled selected>Selecciona un auto</option>
+                                    <option value="" disabled selected>Selecciona Cantidad de Pasajeros</option>
                                     {/* Las opciones se agregan de la base de datos */}
                                 </select>
                             </div>
@@ -418,7 +418,7 @@ function HomeDriver() {
             </div>
             {/* Botón para publicar */}
             <div className="col-12 mt-4 text-center">
-                <button className="btn btn-danger w-auto">Publicar</button>
+                <Link to="/EmergenteViajeNoConfirmadoConductor" className="btn btn-danger w-auto">Publicar</Link>
             </div>
         </div>
     );

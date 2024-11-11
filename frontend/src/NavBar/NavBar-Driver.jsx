@@ -150,7 +150,7 @@ const NavComponent = () => {
                                 <li><a className="dropdown-item" href="/PerfilPrivado">Perfil</a></li> 
                                 <li><a className="dropdown-item" href="/Login">Mis vehículos</a></li> {/*Esperar a añadirla*/}
                                 <li><a className="dropdown-item" href="/ActividadConductor">Actividad</a></li> 
-                                <li><a className="dropdown-item" href="/Nosotros">Nosotros</a></li>
+                                
                                 <li><a className="dropdown-item" href="/Login">Configuración</a></li> {/*Esperar a añadirla*/}
                                 <li><hr className="dropdown-divider"></hr></li>
                                 <li><a className="dropdown-item" href="/">Salir</a></li>

@@ -392,7 +392,7 @@ const HomeClient = () => {
                                 <p>Cupos: 2</p>
                                 <p>Fecha: 30-09-24</p>
                                 <p>Precio: 1000 colones</p>
-                                <button className="btn btn-danger w-100 mt-2">Ver Viaje</button>
+                                <Link to="/EmergenteViajeNoConfirmadoViajero" className="btn btn-danger w-auto">Ver Viaje</Link>
                             </div>
                         </div>
                     ))}

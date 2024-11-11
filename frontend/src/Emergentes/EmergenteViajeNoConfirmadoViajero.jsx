@@ -7,19 +7,18 @@ const EmergenteViajeNoConfirmadoConductor = ({ onClose }) => {
   const history = useHistory();
 
   const handleCancel = () => {
-      history.push('/HomeDriver');
+      history.push('/HomeClient');
   };
 
   const handleConfirm = () => {
-      history.push('/HomeDriver');
+      history.push('/indicarParadaRegistro');
   };
 
   return (
     <div className="modal-overlay">
       <div className="modal-content">
-         <button className="close-button" onClick={handleCancel}>Cancelar</button>
-
-        <h2>Viaje</h2>
+      <button className="btn btn-secondary close-button1" onClick={handleCancel}>Buscar otro viaje</button>
+        <h2>¿Desea confirmar este viaje?</h2>
 
         <div className="profile-icon">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="64px" height="64px">
@@ -29,19 +28,17 @@ const EmergenteViajeNoConfirmadoConductor = ({ onClose }) => {
         </div>
 
         <div className="info-container">
-          <p><strong>Nombre:</strong> <span className="empty">[Nombre]</span></p>
+          <p>Nombre del conductor:</p>
           <p><strong>Vehículo:</strong> <span className="empty">[Vehículo]</span></p>
           <p><strong>Inicio:</strong> <span className="empty">[Inicio]</span></p>
           <p><strong>Final:</strong> <span className="empty">[Final]</span></p>
-          <p><strong>Cuantos:</strong> <span className="empty">[Cantidad]</span></p>
-          <p><strong>Cuando:</strong> <span className="empty">[Fecha y Hora]</span></p>
           <p><strong>Precio:</strong> <span className="empty">[Precio]</span></p>
-          <p><strong>Ruta:</strong> <span className="empty">[Ruta]</span></p>
+          
            
           
         </div>
-
-        <button className="confirm-button" onClick={handleConfirm}>Confirmar Viaje</button>
+        
+        <button className="confirm-button" onClick={handleConfirm}>Confirmar e Indicar Mi parada </button>
       </div>
     </div>
   );

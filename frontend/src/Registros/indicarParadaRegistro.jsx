@@ -1,15 +1,25 @@
 import React, { useState } from 'react';
 import './IndicarParadaRegistro.css';
+import { useHistory } from 'react-router-dom';
 
 const IndicarParadaRegistro = ({ onClose }) => {
   const [lugar, setLugar] = useState("");
   const [descripcion, setDescripcion] = useState("");
+  const history = useHistory();
 
   const handleConfirm = () => {
     console.log("Lugar:", lugar);
     console.log("Descripción:", descripcion);
     onClose(); // Cierra el modal después de confirmar
   };
+
+  const handleCancel = () => {
+    history.push('/EmergenteViajeNoConfirmadoViajero');
+};
+
+const handleRedirect = () => {
+    history.push('/HomeClient');
+};
 
   return (
     <div className="modal-overlay">
@@ -40,11 +50,12 @@ const IndicarParadaRegistro = ({ onClose }) => {
           />
         </div>
 
-        <button className="confirm-button" onClick={handleConfirm}>
+        <button className="confirm-button" onClick={handleRedirect}>
           Confirmar suscripción al viaje
         </button>
         
-        <button className="close-button" onClick={onClose}>Volver</button>
+        
+        <button className="close-button" onClick={handleCancel}>Volver</button>
       </div>
     </div>
   );
