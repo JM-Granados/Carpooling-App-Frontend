@@ -17,6 +17,13 @@ const EmergenteDetalle = ({ onClose, onCancel }) => {
     }
   };
 
+
+  const storedTripString  = localStorage.getItem('selectedTrip');
+  const storedTrip = storedTripString ? JSON.parse(storedTripString) : null;
+  console.log(storedTrip);
+
+
+
   return (
     <div className="modal-overlay">
       <div className="modal-content">
@@ -39,23 +46,23 @@ const EmergenteDetalle = ({ onClose, onCancel }) => {
 
         <div className="info-container">
           {/* Usa Link para redirigir al perfil del conductor */}
-          <Link to="/PerfilConductor" className="btn btn-link p-0">Nombre del conductor</Link>
+          <Link to="/PerfilConductor" className="btn btn-link p-0"> {storedTrip.driver.name}</Link>
 
           <p><strong>Vehículo:</strong></p>
           <ul className="vehicle-details">
-            <p><strong>Marca:</strong> <span className="empty">[Marca]</span></p>
-            <p><strong>Modelo:</strong> <span className="empty">[Modelo]</span></p>
-            <p><strong>Placa:</strong> <span className="empty">[Placa]</span></p>
+            <p><strong>Marca:</strong> <span className="empty">{storedTrip.vehicle.brand}</span></p>
+            
+            <p><strong>Placa:</strong> <span className="empty">{storedTrip.vehicle.license_plate}</span></p>
           </ul>
-          <p><strong>Inicio:</strong> <span className="empty">[Inicio]</span></p>
-          <p><strong>Final:</strong> <span className="empty">[Final]</span></p>
-          <p><strong>Máx. pasajeros:</strong> <span className="empty">[Cantidad]</span></p>
+          <p><strong>Inicio:</strong> <span className="empty">{storedTrip.starting_point.name}</span></p>
+          <p><strong>Final:</strong> <span className="empty">{storedTrip.finishing_point.name}</span></p>
+          <p><strong>Máx. pasajeros:</strong> <span className="empty">{storedTrip.passenger_limit}</span></p>
           <p><strong>Cuando:</strong></p>
           <ul className="vehicle-details">
-            <p><strong>Fecha:</strong> <span className="empty">[Fecha]</span></p>
-            <p><strong>Hora:</strong> <span className="empty">[Hora]</span></p>
+            <p><strong>Fecha:</strong> <span className="empty">{storedTrip.departure_date}</span></p>
+            <p><strong>Hora:</strong> <span className="empty">{storedTrip.departure_time}</span></p>
           </ul>
-          <p><strong>Precio:</strong> <span className="empty">[Precio]</span></p>
+          <p><strong>Precio:</strong> <span className="empty">{storedTrip.fare_per_person}</span></p>
         </div>
 
         <button
