@@ -332,7 +332,6 @@ const HomeClient = () => {
     const [startingPoint, setStartingPoint] = useState("");
     const [finishingPoint, setFinishingPoint] = useState("");
     const [departureDate, setDepartureDate] = useState(new Date());
-    const departureDateISO = departureDate.toISOString();
     const [filteredTrips, setFilteredTrips] = useState([]);
     const [isFiltering, setIsFiltering] = useState(false);
 
@@ -396,8 +395,8 @@ const HomeClient = () => {
         if (startingPoint) params.starting_point = startingPoint;
         if (finishingPoint) params.finishing_point = finishingPoint;
         if (departureDate) {
-            // Formatear la fecha para coincidir con el formato de la base de datos
-            params.departure_date = departureDateISO;
+            // Asegura que la fecha esté en formato ISO 8601
+            params.departure_date = dayjs(departureDate).toISOString();
         }
         console.log(params);
         try {
@@ -413,6 +412,7 @@ const HomeClient = () => {
         }
         setIsFiltering(false); // Desactiva el modo filtrado
     };
+    
 
     const handleSubmit = (event) => {
         event.preventDefault();
