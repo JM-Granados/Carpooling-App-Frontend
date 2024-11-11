@@ -19,8 +19,8 @@ import PassRecovery from './Ingreso/PassRecovery'
 import HomeClient from './Home/HomeClient';
 import HomeDriver from './Home/HomeDriver';
 import HomeAdmin from './Home/HomeAdmin';
-import ActividadCliente from './Actividad/Actividad/ActividadCliente';
-import ActividadConductor from './Actividad/Actividad/ActividadConductor';
+import ActividadCliente from './Actividad/ActividadCliente';
+import ActividadConductor from './Actividad/ActividadConductor';
 import EmergenteCalificarConductor from './Emergentes/EmergenteCalificarConductor';
 import EmergenteCalificarViajeros from './Emergentes/EmergenteCalificarViajeros';
 import PerfilConductor from './Perfil/PerfilConductor';
@@ -36,9 +36,6 @@ import EstadisticasxInst from './Estadisticas/EstadisticasXInst';
 import EmergenteViajeNoConfirmadoConductor from './Emergentes/EmergenteViajeNoConfirmadoConductor';
 import EmergenteViajeNoConfirmadoViajero from './Emergentes/EmergenteViajeNoConfirmadoViajero';
 import IndicarParadaRegistro from './Registros/indicarParadaRegistro';
-
-import EmergenteViajeNoConfirmadoViajero from './Emergentes/EmergenteViajeNoConfirmadoViajero'; 
-
 import EmergenteDetalle from './Emergentes/EmergenteDetallesViaje';
 
 // Configura Ionic React para este proyecto.
