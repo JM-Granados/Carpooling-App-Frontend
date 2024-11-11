@@ -394,15 +394,13 @@ const HomeClient = () => {
         const params = {};
         if (startingPoint) params.starting_point = startingPoint;
         if (finishingPoint) params.finishing_point = finishingPoint;
-        if (departureDate) {
-            // Asegura que la fecha esté en formato ISO 8601
-            params.departure_date = dayjs(departureDate).toISOString();
-        }
-        console.log(params);
+        
+        console.log("Parámetros enviados:", params); // Para verificar qué se está enviando exactamente
+    
         try {
             const response = await axios.get(`${API_URL}/trips/search`, { params });
             setFilteredTrips(response.data);
-            console.log('Trips found:', response.data);
+            console.log('Viajes encontrados:', response.data);
             if (response.data.length === 0) {
                 setErrorMessage("No se encontraron viajes con los criterios especificados.");
             }
@@ -411,9 +409,8 @@ const HomeClient = () => {
             setErrorMessage("Error al buscar viajes. Inténtalo de nuevo.");
         }
         setIsFiltering(false); // Desactiva el modo filtrado
-    };
+    };    
     
-
     const handleSubmit = (event) => {
         event.preventDefault();
         searchTrips();
