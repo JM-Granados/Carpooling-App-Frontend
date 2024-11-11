@@ -63,9 +63,15 @@ function Integrantes({ usuarios }) {
         }
     };
 
-    const deletePasajero = () =>{
-      
-    }
+    // Función para eliminar un pasajero con confirmación
+    const eliminarPasajero = (nombre) => {
+        const confirmacion = window.confirm(`¿Estás seguro de que quieres eliminar al viajero ${nombre}?`);
+        if (confirmacion) {
+            // Aquí puedes agregar la lógica para eliminar el pasajero, por ejemplo:
+            // hacer una solicitud HTTP para eliminar el pasajero del servidor o actualizar el estado local
+            console.log(`Viajero ${nombre} eliminado.`);
+        }
+    };
 
     return (
         <div>
@@ -75,8 +81,8 @@ function Integrantes({ usuarios }) {
 
             <div className="container mt-4 d-flex align-items-center justify-content-between">
 
-              {/* Botón de flecha para retroceder */}
-              <div className="arrow-container me-3">
+                {/* Botón de flecha para retroceder */}
+                <div className="arrow-container me-3">
                     <button className="arrow-button" onClick={retrocederPagina}>
                         <img src={FlechaIngresar_atras} alt="Flecha Ingresar_atras" className="arrow-image" />
                     </button>
@@ -98,12 +104,13 @@ function Integrantes({ usuarios }) {
                                 <div style={{ fontSize: '20px', fontWeight: 'bold' }}>Clasificación:</div>
                                 <Rating rating={usuario.stars} />
                                 <div style={{ fontSize: '20px', fontWeight: 'bold' }}>Parada:</div>
-                                <div style={{ fontSize: '15px' }}>{usuario.parada}</div>
-                                <button className="btn btn-danger w-100 mt-2">Eliminar Viajero
-
-                              
+                                <div style={{ fontSize: '15px' }}>Inicio: {usuario.inicio}</div>
+                                <div style={{ fontSize: '15px' }}>Fin: {usuario.fin}</div>
+                                
+                                {/* Botón de eliminar con confirmación */}
+                                <button className="btn btn-danger w-100 mt-2" onClick={() => eliminarPasajero(usuario.nombre)}>
+                                    Eliminar Viajero
                                 </button>
-
                             </div>
                         </div>
                     ))}
@@ -120,6 +127,8 @@ function Integrantes({ usuarios }) {
         </div>
     );
 }
+
+
 
 export default Integrantes;
 

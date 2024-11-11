@@ -23,7 +23,7 @@ import ActividadCliente from './ActividadCliente';
 import ActividadConductor from './ActividadConductor';
 import EmergenteCalificarConductor from './Emergentes/EmergenteCalificarConductor';
 import EmergenteCalificarViajeros from './Emergentes/EmergenteCalificarViajeros';
-import PerfilConductor from './PerfilConductor';
+import PerfilConductor from './Perfil/PerfilConductor';
 import PerfilPrivado from './PerfilPrivado';
 import MainTest from './MainTest';
 import IntegrantesViaje from './IntegrantesViaje';
@@ -35,7 +35,11 @@ import IntegrantesxInst from './Estadisticas/IntegrantesxInst';
 import EstadisticasxInst from './Estadisticas/EstadisticasXInst';
 import EmergenteViajeNoConfirmadoConductor from './Emergentes/EmergenteViajeNoConfirmadoConductor';
 import IndicarParadaRegistro from './Registros/indicarParadaRegistro';
+<<<<<<< Updated upstream
 import EmergenteViajeNoConfirmadoViajero from './Emergentes/EmergenteViajeNoConfirmadoViajero'; 
+=======
+import EmergenteDetalle from './Emergentes/EmergenteDetallesViaje';
+>>>>>>> Stashed changes
 // Configura Ionic React para este proyecto.
 setupIonicReact();
 
@@ -79,6 +83,7 @@ function App() {
           <Route exact path="/EmergenteViajeNoConfirmadoViajero" component={EmergenteViajeNoConfirmadoViajero} /> {/* Ruta para la página de emergente de viaje no confirmado. */}
           <Route exact path="/IntegrantesViaje" component={IntegrantesViaje} /> {/* Ruta para la página de Integrantes de Viaje. */}
           <Route exact path="/MainTest" component={MainTest} /> {/* Ruta para la página de test. */}
+          <Route exact path="/EmergenteDetalles" component={EmergenteDetalle} /> {/* Ruta para la página de perfil privado. */} 
           <Redirect to="/" /> {/* Redirige cualquier ruta no definida a la página principal. */}
         </Switch>
       </IonReactRouter>

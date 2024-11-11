@@ -1,5 +1,5 @@
 import React from 'react';
-import PerfilDriver from './PerfilConductor';
+import PerfilDriver from './Perfil/PerfilConductor';
 import avatarP from '../../íconos/perfil.png';
 
 import Integrantes from './IntegrantesViaje';
@@ -32,7 +32,8 @@ const driverProfiles = [
       correo: "juan.perez@correo.com",
       telefono: "12345678",
       stars: 5,
-      parada: '../../íconos/perfil.png'
+      inicio: "San José",
+      fin: "Cartago" 
   },
   {
       nombre: "Maria Gomez",
@@ -40,7 +41,8 @@ const driverProfiles = [
       correo: "maria.gomez@correo.com",
       telefono: "87654321",
       stars: 4,
-      parada: '../../íconos/perfil2.png'
+      inicio: "San José",
+      fin: "Cartago" 
   },
   {
       nombre: "Carlos Martinez",
@@ -48,7 +50,8 @@ const driverProfiles = [
       correo: "carlos.martinez@correo.com",
       telefono: "12348765",
       stars: 5,
-      parada: '../../íconos/perfil3.png'
+      inicio: "San José",
+      fin: "Cartago" 
   },
   {
     nombre: "cuarta carta",
@@ -56,7 +59,8 @@ const driverProfiles = [
     correo: "carlos.martinez@correo.com",
     telefono: "12348765",
     stars: 2,
-    parada: '../../íconos/perfil3.png'
+    inicio: "San José",
+    fin: "Cartago" 
 }
 
 ];
