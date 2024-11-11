@@ -4,6 +4,10 @@ import { useHistory } from 'react-router-dom';
 
 const EmergenteViajeNoConfirmadoConductor = ({ onClose }) => {
 
+  const storedTripString = localStorage.getItem('selectedTrip');
+  const storedTrip = storedTripString ? JSON.parse(storedTripString) : null;
+  console.log(storedTrip);
+
   const history = useHistory();
 
   const handleCancel = () => {
@@ -32,13 +36,13 @@ const EmergenteViajeNoConfirmadoConductor = ({ onClose }) => {
         </div>
 
         <div className="info-container">
-          <button className="btn btn-link p-0" onClick={handleRedirect}>Nombre del conductor:</button>
-          <p><strong>Vehículo:</strong> <span className="empty">[Vehículo]</span></p>
-          <p><strong>Inicio:</strong> <span className="empty">[Inicio]</span></p>
-          <p><strong>Final:</strong> <span className="empty">[Final]</span></p>
-          <p><strong>Precio:</strong> <span className="empty">[Precio]</span></p>
-          
-           
+          <p>Nombre del conductor: {storedTrip.driver.name}</p>
+          <p><strong>Vehículo:</strong> <span className="empty">{storedTrip.vehicle.brand} - {storedTrip.vehicle.license_plate}</span></p>
+          <p><strong>Inicio:</strong> <span className="empty">{storedTrip.starting_point.name}</span></p>
+          <p><strong>Final:</strong> <span className="empty">{storedTrip.finishing_point.name}</span></p>
+          <p><strong>Precio:</strong> <span className="empty">{storedTrip.fare_per_person} colones</span></p>
+          <p><strong>Fecha:</strong> <span className="empty">{storedTrip.departure_date} a las {storedTrip.departure_time}</span></p>
+        
           
         </div>
         

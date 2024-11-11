@@ -1,9 +1,4 @@
-/*Falta:
-    1. Cambiar el estado activo de los item según esté en esa ventana
-    2. Permitir la navegación cuando copien y peguen. Es decir, que si vaya a las pestañas que tiene que ir 
-        Faltan ventanas que no están creadas "#".
-
-Notas para demás desarrolladores:
+/*Notas para demás desarrolladores:
     1. Pueden usar exactamente lo mismo que sale aquí pero deben cambiar los items
     2. Dejé "Salir" para que puedan copiar y pegar. Pero se debe de quitar, ya no hay un salir más allá de la vista de invitado
     3. Recuerden también cambiar los permisos, es decir, quién puede ver qué navbar. El más importante es el adminXinst y el cliente
@@ -30,7 +25,7 @@ Notas para demás desarrolladores:
  * Importaciones de React y otras librerías.
  */
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useLocation  } from 'react-router-dom';
 import axios from 'axios'; // Utilizado para realizar solicitudes HTTP.
 import 'bootstrap/dist/css/bootstrap.min.css'; // Estilos de Bootstrap para diseño y respuesta.
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; // Funcionalidades de JavaScript de Bootstrap.
@@ -44,17 +39,47 @@ import './NavBar.css'; // Estilos específicos para la barra de navegación.
  * Incluye manejo de estado para controlar la visibilidad del menú desplegable en dispositivos móviles.
  */
 const NavComponent = () => {
+    const location = useLocation();
     const history = useHistory();
     // Estado para controlar la visibilidad del menú desplegable.
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     // Función para alternar la visibilidad del menú desplegable.
     const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
+
+    const isActive = (path) => {
+        return location.pathname === path;
+    }
+    
     const handleLogout = (e) => {
         e.preventDefault();
         localStorage.removeItem('user'); // Ajusta esto según lo que necesites limpiar
         // localStorage.clear(); // Descomenta si necesitas limpiar todo el localStorage
         history.push('/'); // Redirige a la página de inicio o login
+    };
+
+    const navigateToHome = () => {
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (user) {
+            switch (user.user_type.id) {
+                case 1: // Cliente
+                    history.push('/HomeClient');
+                    break;
+                case 4: // Conductor
+                    history.push('/HomeDriver');
+                    break;
+                case 2: // Administrador
+                    history.push('/HomeAdmin');
+                    break;
+                case 3: // Admin Institucional
+                    history.push('/HomeAdminXinst');
+                    break;
+                default:
+                    history.push('/'); // Página de inicio para invitados o roles no definidos
+            }
+        } else {
+            history.push('/'); // Redirecciona a la página de inicio para invitados si no hay usuario
+        }
     };
 
     /**
@@ -67,7 +92,7 @@ const NavComponent = () => {
             {/* 'container-fluid' permite que el contenido de la navbar se extienda de borde a borde, ocupando todo el ancho disponible. */}
             <div className="container-fluid">
                 {/* Área del logo o nombre de la empresa en la barra de navegación, actúa como enlace a la página de inicio. */}
-                <a className="navbar-brand" href="#">
+                <a className="navbar-brand" href="#" onClick={navigateToHome}>
                     {/* Imagen del logo, especificando una clase para estilos adicionales y fijando la altura a 40 píxeles. */}
                     <img src={Icon} alt="Logo" className="navbar-logo" height={40} />
                 </a>
@@ -117,17 +142,17 @@ const NavComponent = () => {
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         {/* Elementos individuales de la lista, representan diferentes páginas o secciones del sitio. */}
                         <li className="nav-item">
-                            <Link to="/HomeDriver" className="nav-link active" aria-current="page">
+                            <Link to="/HomeDriver" className={`nav-link ${isActive('/HomeDriver') ? 'active' : ''}`} aria-current="page">
                                 Publicar Viaje
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="/RegistrarVehiculo" className="nav-link" aria-current="page">
+                            <Link to="/RegistrarVehiculo" className={`nav-link ${isActive('/RegistrarVehiculo') ? 'active' : ''}`} aria-current="page">
                                 Viaje Actual
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="/Nosotros" className="nav-link" aria-current="page">
+                            <Link to="/Nosotros" className={`nav-link ${isActive('/Nosotros') ? 'active' : ''}`} aria-current="page">
                                 Nosotros
                             </Link>
                         </li>
@@ -138,7 +163,7 @@ const NavComponent = () => {
                     <ul className="navbar-nav mb-2 mb-lg-0">
                         <li className="nav-item">
                             {/* Botón para 'Ingresar', con estilos Bootstrap para botones. */}
-                            <Link to="/HomeClient" className="btn btn-primary">
+                            <Link to="/HomeClient" className={`btn btn-primary ${isActive('/HomeClient') ? 'active' : ''}`}>
                                 Solicitar Viaje
                                 {/* Imagen usada como icono dentro del botón, con rotación para efecto visual. */}
                                 <img src={flecha} alt="flecha" className="flecha" height={20} style={{ marginLeft: '11px', transform: 'rotate(180deg)' }} />

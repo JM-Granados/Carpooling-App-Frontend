@@ -30,13 +30,13 @@ const handleRedirect = () => {
           Recuerda que el lugar de parada debe estar en la misma ruta que va a tomar el conductor o cercana
         </p>
 
-        <div className="info-container">
+        <div className="info-container text-white">
           <label className="label">Lugar:</label>
           <input
             type="text"
             value={lugar}
             onChange={(e) => setLugar(e.target.value)}
-            className="input"
+            className="input text-white"
             placeholder="Indica el lugar de la parada"
           />
 
@@ -44,7 +44,7 @@ const handleRedirect = () => {
           <textarea
             value={descripcion}
             onChange={(e) => setDescripcion(e.target.value)}
-            className="input"
+            className="input text-white"
             placeholder="Agrega una descripción del lugar"
             rows="3"
           />

@@ -11,13 +11,19 @@ const EmergenteViajeNoConfirmadoConductor = ({ onClose }) => {
   };
 
   const handleConfirm = () => {
-      history.push('/HomeDriver');
+      history.push('/EmergenteDetallesViaje');
   };
 
   return (
     <div className="modal-overlay">
       <div className="modal-content">
-         <button className="close-button" onClick={handleCancel}>Cancelar</button>
+      <button
+          className="BotonIniciarSesion btn btn-primary border border-0 fw-bold justify-content-center mb-5"
+          type="button"
+          onClick={handleCancel}
+        >
+          Cancelar Viaje
+        </button>
 
         <h2>Viaje</h2>
 
@@ -41,7 +47,13 @@ const EmergenteViajeNoConfirmadoConductor = ({ onClose }) => {
           
         </div>
 
-        <button className="confirm-button" onClick={handleConfirm}>Confirmar Viaje</button>
+        <button
+          className="BotonIniciarSesion btn btn-primary border border-0 fw-bold justify-content-center mb-5"
+          type="button"
+          onClick={handleConfirm}
+        >
+          Confirmar Viaje
+        </button>
       </div>
     </div>
   );
