@@ -49,13 +49,13 @@ function Login() {
         try {
             // Intento de inicio de sesión usando axios para enviar una solicitud POST al servidor.
             const response = await axios.post(endpoint, { email, password });
-
+            console.log(response)
             // Verifica si la respuesta del servidor indica un inicio de sesión exitoso.
-            if (response.data.message === "Login successful") {
+            if (response.data) {
                 // Guarda los datos del usuario en el almacenamiento local y redirige a la página Home.
-                localStorage.setItem('user', JSON.stringify(response.data.user));
-                console.log(response.data.user)
-                switch(response.data.user.user_type.id) {
+                localStorage.setItem('user', JSON.stringify(response.data));
+                console.log(response.data)
+                switch(response.data.user_type.id) {
                     case 1:
                         history.push('/HomeClient');
                         break;

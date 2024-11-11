@@ -34,7 +34,7 @@ import Calendar from '../../../íconos/Calendar.png'; // Icono de calendario par
 import CarpoolImagen from '../../../íconos/CarpoolImagen.png' // Imagen sobre carpooling. Hay que arreglarla (mal cortado el borde)
 import Arrow from '../../../íconos/Arrow.png'
 import FlechaIngresar from '../../../íconos/Flecha Ingresar.png'; // Icono de flecha para indicar la dirección de la acción.
-import { useState } from 'react'; // Importación de useState para manejar el estado local del componente.
+import { useState, useEffect } from 'react'; // Importación de useState para manejar el estado local del componente.
 
 /**
  * Función HomeGuest que renderiza la vista principal para usuarios no autenticados.
@@ -42,6 +42,9 @@ import { useState } from 'react'; // Importación de useState para manejar el es
  * 
  * @returns {JSX.Element} Elemento JSX que representa la página principal para usuarios no autenticados.
  */
+
+//Backend
+const API_URL = import.meta.env.VITE_API_URL; // Para Vite
 
 
 // Configura un tema global utilizando el método `createTheme` de MUI. Este es utilizado para personalizar los colores y formas del dateTimePicker
@@ -59,11 +62,11 @@ const theme = createTheme({
                     // Estiliza la etiqueta (label) cuando el TextField está en su estado no contraído (no shrink)
                     '& .MuiInputLabel-outlined': {
                         transform: 'translate(12px, 10px) scale(1)',  // Ajusta esto para centrar cuando no está shrink
-                        
+
                     },
                     // Estiliza la raíz del componente cuando está delineado (outlined)
                     '& .MuiOutlinedInput-root': {
-                            borderRadius: '0px',// Elimina el radio del borde para bordes rectos
+                        borderRadius: '0px',// Elimina el radio del borde para bordes rectos
                         // Define estilos para el borde del input cuando se interactúa con él (hover o focus)
                         '&.MuiOutlinedInput-notchedOutline': {
                             borderColor: 'transparent', // Borde transparente en estado normal
@@ -327,11 +330,113 @@ function CustomTabs(props) {
 
 
 const HomeClient = () => {
-    const [containers, setContainers] = useState([1, 2, 3]); // Inicialmente tres contenedores
+    // Estado para manejar mensajes de error.
+    const [errorMessage, setErrorMessage] = useState("");
+    const [fade, setFade] = useState(false);
 
-    const addContainer = () => {
-        setContainers([...containers, containers.length + 1]);
-    };
+    useEffect(() => {
+        if (errorMessage && !fade) {
+            setTimeout(() => {
+                setFade(true); // Inicia la transición de difuminado
+                setTimeout(() => {
+                    setErrorMessage(""); // Limpia el mensaje después de que la transición termine
+                    setFade(false); // Restablece el estado de fade para el próximo error
+                }, 1000); // Este timeout debe coincidir con la duración de la transición CSS
+            }, 5000); // Tiempo visible antes de comenzar a difuminar
+        }
+    }, [errorMessage, fade]);
+
+    // Declaracion de instituciones
+    const [containers, setContainers] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchContainers = async () => {
+            setLoading(true); // Iniciar la carga
+            try {
+                const response = await axios.get(`${API_URL}/trips`);
+                console.log(response)
+                setContainers(response.data); // Guarda las instituciones en el estado
+            } catch (error) {
+                console.error("Error al cargar los viajes:", error);
+                setErrorMessage(
+                    "Error al cargar los viajes. Inténtalo de nuevo."
+                );
+            }
+            setLoading(false); // Finalizar la carga
+        };
+
+        fetchContainers();
+    }, []);
+
+    if (loading) {
+        return (
+            <div>
+                {/* Barra de navegación para usuarios no autenticados */}
+                <NavBar_Client />
+
+                {/* Sección principal con imagen de fondo y mensaje de bienvenida */}
+                <div className="hero-image text-center">
+                    <div className="content position-absolute mt-5 start-50 translate-middle">
+                        <h1 className="Titulo">Conectando compañeros, reduciendo huellas</h1>
+                    </div>
+                </div>
+
+                {/* Contenedor para los campos de entrada de búsqueda de viajes */}
+                <div className="container text-start mt-3">
+                    <div className="row mx-1">
+                        <div className="col-12 col-md-4">
+                            <div className="input-group mb-2 mt-2">
+                                <img src={DesdeHasta} alt="DesdeHasta" className="input-group-text" height={40} />
+                                <input type="text" className="form-control custom-input-color" placeholder="Desde" />
+                                <div className="vr"></div>
+                            </div>
+                        </div>
+
+                        <div className="col-12 col-md-4">
+                            <div className="input-group mb-2 mt-2">
+                                <img src={DesdeHasta} alt="DesdeHasta" className="input-group-text" height={40} />
+                                <input type="text" className="form-control custom-input-color" placeholder="Hasta" />
+                                <div className="vr"></div>
+                            </div>
+                        </div>
+
+                        <div className="col-12 col-md-4">
+                            <div className="input-group-date mb-2 mt-2">
+                                <ThemeProvider theme={theme}>
+                                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                        <img src={Calendar} alt="Calendar" className="input-group-text" height={40} />
+                                        <MobileDateTimePicker label="¿Cuándo?" disablePast />
+                                    </LocalizationProvider>
+                                </ThemeProvider>
+                                <div className="btn btn-outline-secondary">Buscar</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="container mt-4">
+                    <div className="row justify-content-center mt-3">
+                        {Array.from({ length: 3 }).map((_, index) => ( // Genera 3 placeholders
+                            <div className="col-12 col-md-4 mb-3 mt-3" key={index}>
+                                <div className="card trip-card p-3">
+                                    <h5 className="card-title placeholder-glow">
+                                        <span className="placeholder col-6"></span>
+                                    </h5>
+                                    <p className="card-text placeholder-glow">
+                                        <span className="placeholder col-7"></span>
+                                        <span className="placeholder col-4"></span>
+                                        <span className="placeholder col-4"></span>
+                                        <span className="placeholder col-6"></span>
+                                        <span className="placeholder col-8"></span>
+                                    </p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div>
@@ -381,31 +486,24 @@ const HomeClient = () => {
             {/* Contenedor principal para las cards y la flecha */}
             <div className="container mt-4 d-flex align-items-center justify-content-between">
                 {/* Contenedor de las cards */}
-                <div className="row flex-grow-1 justify-content-center">
-                    {containers.map((_, index) => (
+                <div className="row justify-content-center mt-3">
+                    {containers.map((container, index) => (
                         <div className="col-12 col-md-4 mb-3" key={index}>
                             <div className="card trip-card p-3">
-                            <Link to="/PerfilConductor" className="btn btn-link text-danger p-0">Conductor: <span>Daniel Muñoz</span></Link>
-                                <p>Vehículo: Toyota Yaris - BFT111</p>
-                                <p>Inicio: Curridabat</p>
-                                <p>Final: Instituto Tecnológico San José</p>
-                                <p>Cupos: 2</p>
-                                <p>Fecha: 30-09-24</p>
-                                <p>Precio: 1000 colones</p>
+                                {container.name}
+                                <Link to="/PerfilConductor" className="btn btn-link text-danger p-0">Conductor: <span>{container.driver.name}</span></Link>
+                                <p>Vehículo: {container.vehicle.brand} - {container.vehicle.license_plate}</p>
+                                <p>Inicio: {container.starting_point.name}</p>
+                                <p>Final: {container.finishing_point.name}</p>
+                                <p>Cupos: {container.passenger_count}</p>
+                                <p>Fecha: {container.departure_date}</p>
+                                <p>Precio: {container.fare_per_person}</p>
                                 <Link to="/EmergenteViajeNoConfirmadoViajero" className="btn btn-danger w-auto">Ver Viaje</Link>
                             </div>
                         </div>
                     ))}
                 </div>
-
-                
             </div>
-            {/* Imagen de la flecha */}
-            <div className="w-40 d-flex justify-content-center mt-3">
-                    <button className="btn btn-danger" onClick={addContainer}>
-                        Desplegar más viajes 
-                    </button>
-                </div>
         </div>
     );
 }
