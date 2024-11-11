@@ -1,0 +1,126 @@
+/* Estilo del fondo del modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 10px; /* Añadimos padding para evitar que el modal quede pegado en pantallas pequeñas */
+  }
+  
+  /* Contenedor del modal */
+  .modal-content {
+    background-color: #2a2a5e;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px; /* Ajustamos el tamaño máximo */
+    text-align: center;
+    color: white;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box; /* Incluye el padding en el ancho total */
+  }
+  
+  /* Mensaje de advertencia */
+  .reminder {
+    font-size: 14px;
+    color: #ff9999;
+    margin-bottom: 15px;
+  }
+  
+  /* Estilo del botón de omitir */
+  .close-button {
+    background-color: #ff4d4d;
+    border: none;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  
+  /* Estilo de los labels */
+  .label {
+    font-size: 14px;
+    margin-top: 10px;
+    color: #FDFFFA;
+    text-align: left;
+    width: 100%;
+  }
+  
+  /* Estilo de los inputs */
+  .input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  /* Estilo de los botones */
+  .confirm-button, .cancel-button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%; /* Los botones ocuparán todo el ancho en pantallas pequeñas */
+  }
+  
+  /* Ajuste de márgenes para los detalles del vehículo */
+  .vehicle-details {
+    padding-left: 0;
+    list-style: none;
+    text-align: left;
+    width: 100%;
+  }
+  
+  /* Botón como enlace */
+  .link-button {
+    background: none;
+    border: none;
+    color: #4da6ff;
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 1rem;
+  }
+  
+  /* Alinear los botones */
+  .buttons-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+  }
+  
+  /* Media queries para pantallas pequeñas */
+  @media (max-width: 600px) {
+    .modal-content {
+      max-width: 90%; /* Ocupa casi todo el ancho de la pantalla */
+      padding: 15px;
+    }
+  
+    .close-button {
+      padding: 5px 10px;
+    }
+  
+    .confirm-button, .cancel-button {
+      font-size: 0.9rem; /* Reduce el tamaño de fuente en pantallas más pequeñas */
+    }
+  }
+  

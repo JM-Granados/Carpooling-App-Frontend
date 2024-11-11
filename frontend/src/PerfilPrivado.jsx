@@ -7,7 +7,7 @@ import axios from 'axios';
 import NavBarDriver from '../src/NavBar/NavBar-Driver'; // Componente NavBar_Guest para la barra de navegación de usuarios no autenticados.
 import NavBarClient from '../src/NavBar/NavBar-Client'; // Componente NavBar_Guest para la barra de navegación de usuarios no autenticados.
 
-import './PerfilConductor.css'; // Estilos específicos para el componente Perfil Conductor.
+import './Perfil/PerfilConductor.css'; // Estilos específicos para el componente Perfil Conductor.
 import './ActividadReciente.css'; // Estilos específicos para el componente Perfil Conductor.
 
 // Importación de recursos gráficos.
