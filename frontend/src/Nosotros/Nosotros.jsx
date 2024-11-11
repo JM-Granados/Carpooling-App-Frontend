@@ -30,6 +30,9 @@ const getNavBarComponent = (role) => {
 };
 
 function Nosotros() {
+    const storedTrip = localStorage.getItem('selectedTrip');
+
+    console.log(storedTrip)
     const history = useHistory();
     const [userRole, setUserRole] = useState(null);
 

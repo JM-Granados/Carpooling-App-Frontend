@@ -24,6 +24,7 @@ import { LocalizationProvider, DateTimePicker } from '@mui/x-date-pickers';
 import { MobileDateTimePicker } from '@mui/x-date-pickers/MobileDateTimePicker';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { DateTimePickerTabs } from '@mui/x-date-pickers/DateTimePicker';
+import dayjs from 'dayjs';
 import Box from '@mui/material/Box';
 import './HomeClient.css'; // Estilos específicos para el componente HomeGuest.
 
@@ -327,9 +328,14 @@ function CustomTabs(props) {
     );
 }
 
-
-
 const HomeClient = () => {
+    const [startingPoint, setStartingPoint] = useState("");
+    const [finishingPoint, setFinishingPoint] = useState("");
+    const [departureDate, setDepartureDate] = useState(new Date());
+    const [filteredTrips, setFilteredTrips] = useState([]);
+    const [isFiltering, setIsFiltering] = useState(false);
+
+
     // Estado para manejar mensajes de error.
     const [errorMessage, setErrorMessage] = useState("");
     const [fade, setFade] = useState(false);
@@ -345,6 +351,11 @@ const HomeClient = () => {
             }, 5000); // Tiempo visible antes de comenzar a difuminar
         }
     }, [errorMessage, fade]);
+
+    const handleConductorClick = (trip) => {
+        // Guardar los datos del viaje en localStorage
+        localStorage.setItem('selectedTrip', JSON.stringify(trip));
+    };
 
     // Declaracion de instituciones
     const [containers, setContainers] = useState([]);
@@ -368,6 +379,45 @@ const HomeClient = () => {
 
         fetchContainers();
     }, []);
+
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        setSearchParams(prev => ({ ...prev, [name]: value }));
+    };
+
+    const handleDateChange = (newValue) => {
+        setSearchParams(prev => ({ ...prev, date: newValue }));
+    };
+
+    const searchTrips = async () => {
+        setIsFiltering(true); // Activa el modo filtrado
+        const params = {};
+        if (startingPoint) params.starting_point = startingPoint;
+        if (finishingPoint) params.finishing_point = finishingPoint;
+        if (departureDate) {
+            // Asegura que la fecha esté en formato ISO 8601
+            params.departure_date = dayjs(departureDate).toISOString();
+        }
+        console.log(params);
+        try {
+            const response = await axios.get(`${API_URL}/trips/search`, { params });
+            setFilteredTrips(response.data);
+            console.log('Trips found:', response.data);
+            if (response.data.length === 0) {
+                setErrorMessage("No se encontraron viajes con los criterios especificados.");
+            }
+        } catch (error) {
+            console.error("Error al buscar viajes:", error);
+            setErrorMessage("Error al buscar viajes. Inténtalo de nuevo.");
+        }
+        setIsFiltering(false); // Desactiva el modo filtrado
+    };
+    
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        searchTrips();
+    };
 
     if (loading) {
         return (
@@ -456,7 +506,12 @@ const HomeClient = () => {
                     <div className="col-12 col-md-4">
                         <div className="input-group mb-2 mt-2">
                             <img src={DesdeHasta} alt="DesdeHasta" className="input-group-text" height={40} />
-                            <input type="text" className="form-control custom-input-color" placeholder="Desde" />
+                            <input
+                                type="text"
+                                className="form-control custom-input-color"
+                                placeholder="Desde"
+                                onChange={(e) => setStartingPoint(e.target.value)}
+                            />
                             <div className="vr"></div>
                         </div>
                     </div>
@@ -464,7 +519,12 @@ const HomeClient = () => {
                     <div className="col-12 col-md-4">
                         <div className="input-group mb-2 mt-2">
                             <img src={DesdeHasta} alt="DesdeHasta" className="input-group-text" height={40} />
-                            <input type="text" className="form-control custom-input-color" placeholder="Hasta" />
+                            <input
+                                type="text"
+                                className="form-control custom-input-color"
+                                placeholder="Hasta"
+                                onChange={(e) => setFinishingPoint(e.target.value)}
+                            />
                             <div className="vr"></div>
                         </div>
                     </div>
@@ -474,10 +534,17 @@ const HomeClient = () => {
                             <ThemeProvider theme={theme}>
                                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                                     <img src={Calendar} alt="Calendar" className="input-group-text" height={40} />
-                                    <MobileDateTimePicker label="¿Cuándo?" disablePast />
+                                    <MobileDateTimePicker
+                                        label="¿Cuándo?"
+                                        disablePast
+                                        onChange={(newValue) => {
+                                            setDepartureDate(newValue);
+                                        }}
+                                        renderInput={(params) => <TextField {...params} />}
+                                    />
                                 </LocalizationProvider>
                             </ThemeProvider>
-                            <div className="btn btn-outline-secondary">Buscar</div>
+                            <div className="btn btn-outline-secondary" onClick={handleSubmit} type="submit" >Buscar</div>
                         </div>
                     </div>
                 </div>
@@ -485,26 +552,28 @@ const HomeClient = () => {
 
             {/* Contenedor principal para las cards y la flecha */}
             <div className="container mt-4 d-flex align-items-center justify-content-between">
-                {/* Contenedor de las cards */}
                 <div className="row justify-content-center mt-3">
-                    {containers.map((container, index) => (
+                    {(isFiltering ? filteredTrips : containers).map((trip, index) => (
                         <div className="col-12 col-md-4 mb-3" key={index}>
                             <div className="card trip-card p-3">
-                                {container.name}
-                                <Link to="/PerfilConductor" className="btn btn-link text-danger p-0">Conductor: <span>{container.driver.name}</span></Link>
-                                <p>Vehículo: {container.vehicle.brand} - {container.vehicle.license_plate}</p>
-                                <p>Inicio: {container.starting_point.name}</p>
-                                <p>Final: {container.finishing_point.name}</p>
-                                <p>Cupos: {container.passenger_count}</p>
-                                <p>Fecha: {container.departure_date}</p>
-                                <p>Precio: {container.fare_per_person}</p>
+                                <div>{trip.name}</div>
+                                <Link to="/PerfilConductor" className="btn btn-link text-danger p-0" onClick={() => handleConductorClick(trip)}>
+                                    Conductor: <span>{trip.driver.name}</span>
+                                </Link>
+                                <p>Vehículo: {trip.vehicle.brand} - {trip.vehicle.license_plate}</p>
+                                <p>Inicio: {trip.starting_point.name}</p>
+                                <p>Final: {trip.finishing_point.name}</p>
+                                <p>Cupos: {trip.passenger_count}</p>
+                                <p>Fecha: {trip.departure_date}</p>
+                                <p>Precio: {trip.fare_per_person}</p>
                                 <Link to="/EmergenteViajeNoConfirmadoViajero" className="btn btn-danger w-auto">Ver Viaje</Link>
                             </div>
                         </div>
                     ))}
                 </div>
             </div>
-        </div>
+
+        </div >
     );
 }
 
