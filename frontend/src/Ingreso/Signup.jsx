@@ -1,7 +1,7 @@
 // Importaciones de React y otras librerías.
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
@@ -16,6 +16,7 @@ import "./Signup.css";
 
 // Definición del componente funcional HomeGuest.
 function Signup() {
+  const history = useHistory();
   const minAgeDate = dayjs().subtract(16, "year"); // Resta 16 años al año actual
 
   // Declaración de estados para email y password usando el hook useState de React.
@@ -374,9 +375,7 @@ function Signup() {
 
       // Verifica si la respuesta del servidor indica un registro exitoso.
       if (response.status === 201) {
-        // Si el status es 201, se maneja el éxito
-        // Aquí podrías redirigir al usuario o limpiar el formulario, etc.
-        // Por ejemplo: navigate('/login');
+        history.push('/Login');
       } else if (response.data && response.data.detail) {
         // Si el servidor devuelve un código que no es 201 pero incluye un 'detail'
         setErrorMessage(response.data.detail);
@@ -487,7 +486,6 @@ function Signup() {
                 className="campos form-control bg-transparent rounded-2 text-white"
                 id="EmailLogin"
                 aria-describedby="sLNameHelp"
-                required
                 placeholder="Segundo apellido"
                 onChange={(e) => setSecondLastName(e.target.value)}
               />
