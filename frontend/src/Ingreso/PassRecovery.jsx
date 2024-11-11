@@ -16,7 +16,7 @@ function Login() {
             <img src={Logo} alt="DesdeHasta" className="Logo mt-4" height={200} />
 
             <div className="CampoIN mt-4">
-                <h1 className="IN">Iniciar sesión</h1>
+                <h1 className="IN">Recuperar contraseña</h1>
             </div>
 
             <div className="CampoMensajeIn">

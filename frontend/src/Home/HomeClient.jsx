@@ -34,7 +34,7 @@ import Calendar from '../../../íconos/Calendar.png'; // Icono de calendario par
 import CarpoolImagen from '../../../íconos/CarpoolImagen.png' // Imagen sobre carpooling. Hay que arreglarla (mal cortado el borde)
 import Arrow from '../../../íconos/Arrow.png'
 import FlechaIngresar from '../../../íconos/Flecha Ingresar.png'; // Icono de flecha para indicar la dirección de la acción.
-
+import { useState } from 'react'; // Importación de useState para manejar el estado local del componente.
 
 /**
  * Función HomeGuest que renderiza la vista principal para usuarios no autenticados.
@@ -326,11 +326,24 @@ function CustomTabs(props) {
 
 
 
-function HomeClient() {
+const HomeClient = () => {
+    const [containers, setContainers] = useState([1, 2, 3]); // Inicialmente tres contenedores
+
+    const addContainer = () => {
+        setContainers([...containers, containers.length + 1]);
+    };
+
     return (
         <div>
             {/* Barra de navegación para usuarios no autenticados */}
             <NavBar_Client />
+
+            {/* Sección principal con imagen de fondo y mensaje de bienvenida */}
+            <div className="hero-image text-center">
+                <div className="content position-absolute mt-5 start-50 translate-middle">
+                    <h1 className="Titulo">Conectando compañeros, reduciendo huellas</h1>
+                </div>
+            </div>
 
             {/* Contenedor para los campos de entrada de búsqueda de viajes */}
             <div className="container text-start mt-3">
@@ -359,7 +372,7 @@ function HomeClient() {
                                     <MobileDateTimePicker label="¿Cuándo?" disablePast />
                                 </LocalizationProvider>
                             </ThemeProvider>
-                            <Link to="/Login" className="btn btn-outline-secondary">Buscar</Link>
+                            <div className="btn btn-outline-secondary">Buscar</div>
                         </div>
                     </div>
                 </div>
@@ -369,29 +382,30 @@ function HomeClient() {
             <div className="container mt-4 d-flex align-items-center justify-content-between">
                 {/* Contenedor de las cards */}
                 <div className="row flex-grow-1 justify-content-center">
-                    {[1, 2, 3].map((_, index) => (
+                    {containers.map((_, index) => (
                         <div className="col-12 col-md-4 mb-3" key={index}>
                             <div className="card trip-card p-3">
-                                <h6 className="text-danger">Conductor: <span>Daniel Muñoz</span></h6>
+                            <Link to="/PerfilConductor" className="btn btn-link text-danger p-0">Conductor: <span>Daniel Muñoz</span></Link>
                                 <p>Vehículo: Toyota Yaris - BFT111</p>
                                 <p>Inicio: Curridabat</p>
                                 <p>Final: Instituto Tecnológico San José</p>
                                 <p>Cupos: 2</p>
                                 <p>Fecha: 30-09-24</p>
                                 <p>Precio: 1000 colones</p>
-                                <button className="btn btn-danger w-100 mt-2">Ver Viaje</button>
+                                <Link to="/EmergenteViajeNoConfirmadoViajero" className="btn btn-danger w-auto">Ver Viaje</Link>
                             </div>
                         </div>
                     ))}
                 </div>
 
-                {/* Imagen de la flecha */}
-                <div className="arrow-container ms-3">
-                    <button className="arrow-button">
-                        <img src={FlechaIngresar} alt="Flecha Ingresar" className="arrow-image" />
+                
+            </div>
+            {/* Imagen de la flecha */}
+            <div className="w-40 d-flex justify-content-center mt-3">
+                    <button className="btn btn-danger" onClick={addContainer}>
+                        Desplegar más viajes 
                     </button>
                 </div>
-            </div>
         </div>
     );
 }

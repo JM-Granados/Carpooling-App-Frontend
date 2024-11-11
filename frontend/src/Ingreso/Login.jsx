@@ -2,17 +2,20 @@
 import { useState, useEffect } from "react"; // useState es importado pero no se usa, considera removerlo si no es necesario.
 import axios from 'axios'; // Axios es importado para realizar posibles solicitudes HTTP.
 import usePasswordToggle from "../ComponentsLogin/usePasswordToggle";
-import { Link } from 'react-router-dom'; // Importa Link de react-router-dom para la navegación sin recarga.
+import { Link, useHistory } from 'react-router-dom'; // Importa Link de react-router-dom para la navegación sin recarga.
 
 // Importación de componentes locales.
 import React from 'react';
 
 import './Login.css';
 
+const API_URL = import.meta.env.VITE_API_URL; // Para Vite
+
 import Logo from '../../../íconos/Logo.png'
 
 // Definition of the functional component for the Login page.
 function Login() {
+    const history = useHistory();
     const [PasswordInputType, ToggleIcon] = usePasswordToggle();
 
     // Declaración de estados para email y password usando el hook useState de React.
@@ -40,30 +43,43 @@ function Login() {
         e.preventDefault();  // Previene la recarga de la página al enviar el formulario.
         setErrorMessage('');  // Limpia mensajes de error anteriores.
 
-        const endpoint = `hola`;  // URL del endpoint de login.
+        const endpoint = `${API_URL}/users/login/`;  // URL del endpoint de login.
 
         try {
             // Intento de inicio de sesión usando axios para enviar una solicitud POST al servidor.
             const response = await axios.post(endpoint, { email, password });
 
             // Verifica si la respuesta del servidor indica un inicio de sesión exitoso.
-            if (response.data.message === "User logged in successfully") {
+            if (response.data.message === "Login successful") {
                 // Guarda los datos del usuario en el almacenamiento local y redirige a la página Home.
                 localStorage.setItem('user', JSON.stringify(response.data.user));
-                if(response.data.user.role == "Client") {
-                    //navigate('/Home_Client');
-                } else if(response.data.user.role == "Admin") {
-                    //navigate('/Home_Admin');
-                } else {
-                    //navigate('/Home_Operator');
+                console.log(response.data.user)
+                switch(response.data.user.user_type.id) {
+                    case 1:
+                        history.push('/HomeClient');
+                        break;
+                    case 2:
+                        history.push('/HomeAdmin');
+                        break;
+                    case 3:
+                        history.push('/HomeAdminxInst');
+                        break;
+                    default:
+                        history.push('/HomeDriver');
                 }
             } else {
                 // Si el mensaje no indica éxito, muestra un mensaje de error.
-                setErrorMessage(response.data.message);
+                setErrorMessage(response.data.message || 'Invalid login attempt.');
             }
         } catch (error) {
             // Captura errores de la solicitud y muestra un mensaje de error.
-            setErrorMessage(error.response?.data.error || 'An error occurred.');
+            if (error.response && error.response.data && error.response.data.detail) {
+                // Asegúrate de capturar el mensaje 'detail' si está disponible.
+                setErrorMessage(error.response.data.detail);
+            } else {
+                // Manejo de errores no específicos o problemas de red.
+                setErrorMessage('An error occurred. Please try again.');
+            }
         }
     }
 
@@ -119,7 +135,7 @@ function Login() {
                 </div>
 
                 <div class="d-grid gap-2 mt-4 mx-5">
-                    <button class="BotonIniciarSesion btn btn-primary border border-0 fw-bold" type="button">Iniciar sesión</button>
+                    <button class="BotonIniciarSesion btn btn-primary border border-0 fw-bold" type="submit">Iniciar sesión</button>
                 </div>
 
                 <div className="form-text text-start mt-4 mx-5 d-flex mb-5" id="basic-addon4">

@@ -1,7 +1,7 @@
 // Importaciones de React y otras librerías.
 import { useState, useEffect } from "react"; // useState es importado pero no se usa, considera removerlo si no es necesario.
 import axios from "axios"; // Axios es importado para realizar posibles solicitudes HTTP.
-import { Link } from "react-router-dom"; // Importa Link de react-router-dom para la navegación sin recarga.
+import { Link, useHistory } from "react-router-dom"; // Importa Link de react-router-dom para la navegación sin recarga.
 
 //Backend
 const API_URL = import.meta.env.VITE_API_URL; // Para Vite
@@ -25,18 +25,37 @@ const navBarComponents = {
 };
 
 const getNavBarComponent = (role) => {
-    const Component = navBarComponents[role] || NavBar_Guest; // Retorna NavBarGuest como default si el rol no coincide
+    const Component = navBarComponents[role] || NavBar_Guest;
     return <Component />;
 };
 
-// Definición del componente funcional HomeGuest.
 function Nosotros() {
-    const user = JSON.parse(localStorage.getItem('user'));
+    const history = useHistory();
+    const [userRole, setUserRole] = useState(null);
+
+    useEffect(() => {
+        // Obtener el usuario de localStorage
+        const user = JSON.parse(localStorage.getItem('user'));
+        console.log("Datos del usuario desde localStorage:", user); // Log para ver los datos del usuario en la consola
+        
+        if (user) {
+            console.log("Tipo de usuario:", user.user_type.id); // Log para verificar el tipo de usuario
+            setUserRole(user.user_type.id);
+        } else {
+            console.log("No se encontró usuario, mostrando vista de invitado.");
+            setUserRole(0); // 0 representa `NavBar_Guest`
+        }
+    }, []);
+
+    if (userRole === null) {
+        return <div>Loading...</div>; // Muestra un mensaje de carga mientras se obtiene el rol
+    }
+
 
     // Renderiza el componente HomeGuest.
     return (
         <div className="subfondoSignup text-start align-center mx-5">
-            {user ? getNavBarComponent(user.user_type.id) : <NavBar_Guest />} {/* Inserta la barra de navegación para invitados en la parte superior de la página. */}
+            {getNavBarComponent(userRole)}
             <div className="CampoRE">
                 <h1 className="RE mt-5">Nosotros y ayuda</h1>
             </div>
@@ -179,15 +198,14 @@ function Nosotros() {
                     </div>
                 </div>
             </div>
-            <div class="d-grid gap-2 col-6 mx-auto mt-5 justify-content-center">
-                <a href="#" onClick={(e) => { e.preventDefault(); navigate(-1); }}>
-                    <button
-                        class="BotonIniciarSesion btn btn-primary border border-0 fw-bold justify-content-center mb-5"
-                        type="button"
-                    >
-                        Regresar
-                    </button>
-                </a>
+            <div className="d-grid gap-2 col-6 mx-auto mt-5 justify-content-center">
+                <button
+                    className="BotonIniciarSesion btn btn-primary border border-0 fw-bold justify-content-center mb-5"
+                    type="button"
+                    onClick={() => history.goBack()}
+                >
+                    Regresar
+                </button>
             </div>
         </div>
     );
