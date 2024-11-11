@@ -2,6 +2,8 @@ import React from 'react';
 import './EmergenteDetalles.css';
 import { Link, useHistory } from 'react-router-dom'; // Importa useHistory en lugar de useNavigate
 
+const API_URL = import.meta.env.VITE_API_URL; // Para Vite
+
 const EmergenteDetalle = ({ onClose, onCancel }) => {
   const history = useHistory(); // Inicializa el hook useHistory
   const handleCancel = () => {
@@ -55,6 +57,7 @@ const EmergenteDetalle = ({ onClose, onCancel }) => {
           </ul>
           <p><strong>Precio:</strong> <span className="empty">[Precio]</span></p>
         </div>
+
         <button
           className="BotonIniciarSesion btn btn-primary border border-0 fw-bold justify-content-center mb-5"
           type="button"
