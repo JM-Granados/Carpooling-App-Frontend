@@ -1,8 +1,6 @@
 import React from 'react';
 import './EmergenteDetalles.css';
-import { useState } from 'react';
-import { Link } from '@mui/material';
-
+import { Link } from 'react-router-dom'; // Importa Link de react-router-dom
 
 const EmergenteDetalle = ({ onClose, onCancel }) => {
   const handleCancel = () => {
@@ -11,9 +9,7 @@ const EmergenteDetalle = ({ onClose, onCancel }) => {
       onCancel(); // Lógica para cancelar el viaje
     }
   };
-  const handleRedirect = () => {
-    history.push('/PerfilConductor');
-    };
+
   return (
     <div className="modal-overlay">
       <div className="modal-content">
@@ -29,7 +25,8 @@ const EmergenteDetalle = ({ onClose, onCancel }) => {
         </div>
 
         <div className="info-container">
-            <Link className="btn btn-link p-0" onClick={handleRedirect}>Nombre del conductor:</Link>
+          {/* Usa Link para redirigir al perfil del conductor */}
+          <Link to="/PerfilConductor" className="btn btn-link p-0">Nombre del conductor</Link>
 
           <p><strong>Vehículo:</strong></p>
           <ul className="vehicle-details">

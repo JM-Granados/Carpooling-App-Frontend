@@ -3,6 +3,9 @@ import { useState } from 'react';
 import axios from 'axios';
 
 // Importación de componentes y estilos locales.
+
+import NavBarClient from '../NavBar/NavBar-Client'; // Componente NavBar_Guest para la barra de navegación de usuarios no autenticados.
+
 import NavBarDriver from '../NavBar/NavBar-Driver'; // Componente NavBar_Guest para la barra de navegación de usuarios no autenticados.
 import './PerfilConductor.css'; // Estilos específicos para el componente Perfil Conductor.
 

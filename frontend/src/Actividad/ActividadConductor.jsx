@@ -19,12 +19,9 @@ import { DateTimePickerTabs } from '@mui/x-date-pickers/DateTimePicker';
 import Box from '@mui/material/Box';
 import './ActividadReciente.css'; // Estilos específicos para el componente HomeGuest.
 
-// Importación de recursos gráficos.
-import Carpool from '../../../íconos/Carpool.png'; // Icono gráfico representativo del carpooling.
-import DesdeHasta from '../../../íconos/Desde-Hasta.png'; // Iconos para los campos de entrada de origen y destino.
-import Calendar from '../../../íconos/Calendar.png'; // Icono de calendario para el campo de fecha.
+
 import FlechaIngresar from '../../../íconos/flecha ingresar.png'; // Icono de flecha para el botón de búsqueda.
-import Arrow from '../../../íconos/Arrow.png'
+
 
 /**
  * Función HomeGuest que renderiza la vista principal para usuarios no autenticados.
